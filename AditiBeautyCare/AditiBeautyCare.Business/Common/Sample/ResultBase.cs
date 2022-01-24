@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AditiBeautyCare.Business.Common.Sample;
+﻿using System.Collections.Generic;
 
 namespace AditiBeautyCare.Business.Common.Sample
 {
+    /// <summary>
+    /// This is the base cass of RequestResults.
+    /// </summary>
     public class ResultBase
     {
 

@@ -1,11 +1,7 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
 }
 @model IEnumerable<AditiBeautyCare.Web.UI.Models.Sample.SampleModel>
-<h1>Index</h1>
-
+<h1>Sample</h1>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -42,10 +38,6 @@
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
-            @*
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            *@
         </tr>
         }
         @using (Html.BeginForm("Index", "Home", new { pageIndex = @ViewBag.PreviousPage }, FormMethod.Post))

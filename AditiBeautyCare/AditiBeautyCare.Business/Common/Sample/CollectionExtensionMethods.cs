@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AditiBeautyCare.Business.Common.Sample
 {
     public static class CollectionExtensionMethods
     {
         #region Public Methods
-
         /// <summary>
         /// Gets the subset of validation messages from  that are of severity Error or higher.
         /// </summary>
@@ -24,7 +21,6 @@ namespace AditiBeautyCare.Business.Common.Sample
 
             return errorValMsgs;
         }
-
         #endregion
     }
 }

@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AditiBeautyCare.Business.Common.Sample;
+﻿using System.Collections.Generic;
 namespace AditiBeautyCare.Business.Common.Sample
 {
     public class RequestResult<T> : ResultBase
     {
         #region public Properties
+        /// <summary>
+        /// This represents the requested data type objet when method is successfull.
+        /// </summary>
         public T RequestedObject { get; set; }
-
+        /// <summary>
+        /// This represents the successfull status when there is no error message and the requested object is not null.
+        /// </summary>
         public bool IsSuccessful
         {
             get
             {
                 bool successful = !HasFailureMessages();
-                if(successful && RequestedObject == null)
+                if (successful && RequestedObject == null)
                 {
                     successful = false;
                 }
@@ -22,48 +24,48 @@ namespace AditiBeautyCare.Business.Common.Sample
             }
         }
 
-		#endregion
+        #endregion
 
-		#region Constructors
+        #region Constructors
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="RequestResult&lt;T&gt;"/> class.
-		/// </summary>
-		public RequestResult()
-		{
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequestResult&lt;T&gt;"/> class.
+        /// </summary>
+        public RequestResult()
+        {
+        }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="RequestResult&lt;T&gt;"/> class.
-		/// </summary>
-		/// <param name="requestedObject">The requested object.</param>
-		public RequestResult(T requestedObject) : this()
-		{
-			RequestedObject = requestedObject;
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequestResult&lt;T&gt;"/> class.
+        /// </summary>
+        /// <param name="requestedObject">The requested object.</param>
+        public RequestResult(T requestedObject) : this()
+        {
+            RequestedObject = requestedObject;
+        }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="RequestResult&lt;T&gt;"/> class.
-		/// </summary>
-		/// <param name="validationMessages">The validation messages.</param>
-		public RequestResult(IList<ValidationMessage> validationMessages)
-			: this()
-		{
-			ValidationMessages = validationMessages;
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequestResult&lt;T&gt;"/> class.
+        /// </summary>
+        /// <param name="validationMessages">The validation messages.</param>
+        public RequestResult(IList<ValidationMessage> validationMessages)
+            : this()
+        {
+            ValidationMessages = validationMessages;
+        }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="RequestResult&lt;T&gt;"/> class.
-		/// </summary>
-		/// <param name="requestedObject">The requested object.</param>
-		/// <param name="validationMessages">The validation messages.</param>
-		public RequestResult(T requestedObject, IList<ValidationMessage> validationMessages)
-			: this()
-		{
-			RequestedObject = requestedObject;
-			ValidationMessages = validationMessages;
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequestResult&lt;T&gt;"/> class.
+        /// </summary>
+        /// <param name="requestedObject">The requested object.</param>
+        /// <param name="validationMessages">The validation messages.</param>
+        public RequestResult(T requestedObject, IList<ValidationMessage> validationMessages)
+            : this()
+        {
+            RequestedObject = requestedObject;
+            ValidationMessages = validationMessages;
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

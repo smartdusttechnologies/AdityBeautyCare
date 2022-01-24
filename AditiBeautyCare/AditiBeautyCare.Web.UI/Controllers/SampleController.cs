@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AditiBeautyCare.Business.Core.Interfaces;
 using Microsoft.AspNetCore.Hosting;
-using AditiBeautyCare.Web.UI.Models;
 
 namespace AditiBeautyCare.Web.UI.Controllers
 {
@@ -26,7 +25,6 @@ namespace AditiBeautyCare.Web.UI.Controllers
         {
             var samples = _sampleService.GetPages(1);
             List<UI.Models.Sample.SampleModel> sampless = new List<UI.Models.Sample.SampleModel>();
-
             foreach (var item in samples)
             {
                 sampless.Add(new Models.Sample.SampleModel { Id = item.Id, Name = item.Name, Description = item.Description });
@@ -41,7 +39,6 @@ namespace AditiBeautyCare.Web.UI.Controllers
         {
             var samples = _sampleService.GetPages(pageIndex);
             List<UI.Models.Sample.SampleModel> sampless = new List<UI.Models.Sample.SampleModel>();
-
             foreach (var item in samples)
             {
                 sampless.Add(new Models.Sample.SampleModel { Id = item.Id, Name = item.Name, Description = item.Description });
@@ -63,36 +60,31 @@ namespace AditiBeautyCare.Web.UI.Controllers
             {
                 return NotFound();
             }
-
-
             var sample = _sampleService.Get((int)id);
-
-
             if (sample == null)
             {
                 return NotFound();
             }
-
             var sampleUIModel = new Models.Sample.SampleModel
             {
-
                 Id = sample.Id,
                 Name = sample.Name,
                 Description = sample.Description,
             };
             return View(sampleUIModel);
-
         }
 
-        // GET: SampleController/Create
+        /// <summary>
+        /// Inseting details for Sample
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Create(int id)
         {
-
             return base.View(new Models.Sample.SampleModel { Id = id });
         }
 
-        // POST: SampleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind] Models.Sample.SampleModel sample)
@@ -111,7 +103,11 @@ namespace AditiBeautyCare.Web.UI.Controllers
             return View(sample);
         }
 
-        // GET: SampleController/Edit/
+        /// <summary>
+        /// Edit deatils of Sample
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -119,27 +115,20 @@ namespace AditiBeautyCare.Web.UI.Controllers
             {
                 return NotFound();
             }
-
-
             var sample = _sampleService.Get((int)id);
-
-
             if (sample == null)
             {
                 return NotFound();
             }
-
             var sampleUIModel = new Models.Sample.SampleModel
             {
-
                 Id = sample.Id,
                 Name = sample.Name,
                 Description = sample.Description,
             };
             return View(sampleUIModel);
         }
-
-        // POST: SampleController/Edit/5
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, [Bind] Models.Sample.SampleModel sample)
@@ -150,7 +139,6 @@ namespace AditiBeautyCare.Web.UI.Controllers
             }
             if (ModelState.IsValid)
             {
-
                 var sampleBusinessModel = new Business.Core.Model.SampleModel
                 {
                     Id = sample.Id,
@@ -158,34 +146,29 @@ namespace AditiBeautyCare.Web.UI.Controllers
                     Description = sample.Description
                 };
                 _sampleService.Update(id, sampleBusinessModel);
-
                 return RedirectToAction("Index");
             }
-
             return View(sample);
-
         }
 
-        // GET: SampleController/Delete/5
+        /// <summary>
+        ///  Delete Details of Sample
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-
             var sample = _sampleService.Get((int)id);
-
-
             if (sample == null)
             {
                 return NotFound();
             }
-
             var sampleUIModel = new Models.Sample.SampleModel
             {
-
                 Id = sample.Id,
                 Name = sample.Name,
                 Description = sample.Description,
@@ -193,7 +176,6 @@ namespace AditiBeautyCare.Web.UI.Controllers
             return View(sampleUIModel);
         }
 
-        // POST: SampleController/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int? id)
@@ -204,7 +186,6 @@ namespace AditiBeautyCare.Web.UI.Controllers
             }
             _sampleService.Delete((int)id);
             return RedirectToAction("Index");
-
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using AditiBeautyCare.Business.Core.Model;
 using AditiBeautyCare.Business.Common.Sample;
 using AditiBeautyCare.Business.Core.Interfaces;
@@ -12,7 +10,7 @@ namespace AditiBeautyCare.Business.Services
     public class SampleService : ISampleService
     {
         private readonly ISampleRepository _sampleRepository;
-      
+        #region public methods
         public SampleService(ISampleRepository sampleRepository)
         {
             _sampleRepository = sampleRepository;
@@ -20,7 +18,7 @@ namespace AditiBeautyCare.Business.Services
         public RequestResult<int> Add(SampleModel sample)
         {
             _sampleRepository.Insert(sample);
-             return new RequestResult<int>(1);
+            return new RequestResult<int>(1);
         }
         public RequestResult<int> AddCollection(List<SampleModel> expenses)
         {
@@ -36,10 +34,10 @@ namespace AditiBeautyCare.Business.Services
         {
             return _sampleRepository.Get();
         }
-       public List<SampleModel> GetPages(int pageIndex)
-       {
-           return _sampleRepository.GetPages(pageIndex).ToNonNullList();
-       }
+        public List<SampleModel> GetPages(int pageIndex)
+        {
+            return _sampleRepository.GetPages(pageIndex).ToNonNullList();
+        }
         public SampleModel Get(int id)
         {
             return _sampleRepository.Get(id);
@@ -50,5 +48,6 @@ namespace AditiBeautyCare.Business.Services
             _sampleRepository.Update(sample);
             return new RequestResult<int>(1);
         }
+        #endregion
     }
 }

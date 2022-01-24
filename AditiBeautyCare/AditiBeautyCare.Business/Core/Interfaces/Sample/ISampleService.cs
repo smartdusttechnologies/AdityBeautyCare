@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using AditiBeautyCare.Business.Core.Model;
-using AditiBeautyCare.Business.Common;
 using AditiBeautyCare.Business.Common.Sample;
 
 namespace AditiBeautyCare.Business.Core.Interfaces
 {
     public interface ISampleService
     {
-      
         List<SampleModel> Get();
         List<SampleModel> GetPages(int pageIndex);
         SampleModel Get(int id);

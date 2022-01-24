@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AditiBeautyCare.Web.UI.Models.Sample
 {
+    /// <summary>
+    /// Declaring Public Properties
+    /// </summary>
     public class SampleModel
     {
         public int Id { get; set; }

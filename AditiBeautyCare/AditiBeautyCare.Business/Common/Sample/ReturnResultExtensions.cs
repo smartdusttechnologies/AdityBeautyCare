@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace AditiBeautyCare.Business.Common.Sample
 {
+    /// <summary>
+    /// this contains all the extenstion methods of requested results return type.
+    /// </summary>
     public static class ReturnResultExtensions
     {
         /// <summary>
@@ -27,7 +28,6 @@ namespace AditiBeautyCare.Business.Common.Sample
             {
                 errorValMsgs.AddRange(returnResut.ValidationMessages.GetFailureValidationMessages());
             }
-
             return errorValMsgs;
         }
     }

@@ -13,7 +13,9 @@ namespace AditiBeautyCare.Business.Infrastructure
         {
             _configuration = configuration;
         }
-
+        /// <summary>
+        /// Database Connection
+        /// </summary>
         public IDbConnection GetConnection
         {
             get
