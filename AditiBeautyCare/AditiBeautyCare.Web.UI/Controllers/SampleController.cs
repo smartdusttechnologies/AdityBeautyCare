@@ -7,19 +7,30 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace AditiBeautyCare.Web.UI.Controllers
 {
+    /// <summary>
+    /// a base class for view
+    /// </summary>
     public class SampleController : Controller
     {
         private readonly ILogger<SampleController> _logger;
         private readonly ISampleService _sampleService;
         private readonly IWebHostEnvironment _hostingEnvironment;
-
+        /// <summary>
+        /// passing parameter via varibales for establing connection
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="sampleService"></param>
+        /// <param name="hostingEnvironment"></param>
         public SampleController(ILogger<SampleController> logger, ISampleService sampleService, IWebHostEnvironment hostingEnvironment)
         {
             _logger = logger;
             _sampleService = sampleService;
             _hostingEnvironment = hostingEnvironment;
         }
-
+       /// <summary>
+       /// for getting old page index
+       /// </summary>
+       /// <returns></returns>
         [HttpGet]
         public ActionResult Index()
         {
@@ -33,7 +44,11 @@ namespace AditiBeautyCare.Web.UI.Controllers
             ViewBag.PreviousPage = 0;
             return View(sampless.AsEnumerable());
         }
-
+       /// <summary>
+       /// for getting current  page index
+        /// </summary>
+       /// <param name="pageIndex"></param>
+       /// <returns></returns>
         [HttpPost]
         public ActionResult Index(int pageIndex)
         {
@@ -84,7 +99,11 @@ namespace AditiBeautyCare.Web.UI.Controllers
         {
             return base.View(new Models.Sample.SampleModel { Id = id });
         }
-
+        /// <summary>
+        /// for creating data
+        /// </summary>
+        /// <param name="sample"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind] Models.Sample.SampleModel sample)
@@ -128,7 +147,12 @@ namespace AditiBeautyCare.Web.UI.Controllers
             };
             return View(sampleUIModel);
         }
-       
+       /// <summary>
+       /// Edit and binding with business project
+       /// </summary>
+       /// <param name="id"></param>
+       /// <param name="sample"></param>
+       /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, [Bind] Models.Sample.SampleModel sample)

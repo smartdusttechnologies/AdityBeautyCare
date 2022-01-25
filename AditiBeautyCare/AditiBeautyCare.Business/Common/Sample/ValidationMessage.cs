@@ -3,6 +3,9 @@
 
     public class ValidationMessage
     {
+        /// <summary>
+        /// Decaring Public properties for validation
+        /// </summary>
         #region Public Properties
         public string Reason { get; set; }
 

@@ -7,6 +7,9 @@ using AditiBeautyCare.Business.Data.Repository.Interfaces;
 
 namespace AditiBeautyCare.Business.Services
 {
+    /// <summary>
+    /// IsampleService is implimenting the services for SampleService
+    /// </summary>
     public class SampleService : ISampleService
     {
         private readonly ISampleRepository _sampleRepository;

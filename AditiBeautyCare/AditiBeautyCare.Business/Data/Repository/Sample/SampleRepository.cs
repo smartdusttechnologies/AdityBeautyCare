@@ -9,6 +9,9 @@ using PagedList;
 
 namespace AditiBeautyCare.Business.Data.Repository
 {
+    /// <summary>
+    /// Connection between Database using ISampleRepository we Establing a connection
+    /// </summary>
     public class SampleRepository : ISampleRepository
     {
         private readonly IConnectionFactory _connectionFactory;
@@ -27,7 +30,12 @@ namespace AditiBeautyCare.Business.Data.Repository
             using IDbConnection db = _connectionFactory.GetConnection;
             return db.Query<SampleModel>("Select * From [Sample] where IsDeleted=0").ToList();
         }
-
+        /// <summary>
+        /// adding pagination
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
         public IPagedList<SampleModel> GetPages(int pageIndex = 1, int pageSize = 10)
         {
             using IDbConnection db = _connectionFactory.GetConnection;
@@ -36,7 +44,11 @@ namespace AditiBeautyCare.Business.Data.Repository
             var pageResult = query.Read<SampleModel>().ToList();
             return new StaticPagedList<SampleModel>(pageResult, pageIndex, pageSize, row);
         }
-
+        /// <summary>
+        /// Connecting with database Via connectionfactory for displaying data
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public SampleModel Get(int id)
         {
             using IDbConnection db = _connectionFactory.GetConnection;
@@ -55,7 +67,11 @@ namespace AditiBeautyCare.Business.Data.Repository
             using IDbConnection db = _connectionFactory.GetConnection;
             return db.Execute(query, sample);
         }
-
+        /// <summary>
+        /// Inserting data to list
+        /// </summary>
+        /// <param name="expenses"></param>
+        /// <returns></returns>
         public int InsertCollection(List<SampleModel> expenses)
         {
             string query = @"Insert into [New](Name, Description) 

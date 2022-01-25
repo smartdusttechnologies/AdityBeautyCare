@@ -5,6 +5,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace AditiBeautyCare.Business.Infrastructure
 {
+    /// <summary>
+    /// Implimenting Connectionfactory for establishing connection with databsase
+    /// </summary>
     public class ConnectionFactory : IConnectionFactory
     {
         private static IConfiguration _configuration;

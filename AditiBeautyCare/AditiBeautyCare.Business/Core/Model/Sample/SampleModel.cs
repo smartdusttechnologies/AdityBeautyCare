@@ -1,5 +1,8 @@
 ﻿namespace AditiBeautyCare.Business.Core.Model
 {
+    /// <summary>
+    /// Declaring properties here
+    /// </summary>
     public class SampleModel : Entity
     {
         #region Public Properties

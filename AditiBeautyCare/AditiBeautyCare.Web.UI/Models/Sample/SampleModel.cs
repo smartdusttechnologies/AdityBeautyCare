@@ -7,10 +7,12 @@ namespace AditiBeautyCare.Web.UI.Models.Sample
     /// </summary>
     public class SampleModel
     {
+        #region Public Properties
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
+        #endregion
     }
 }

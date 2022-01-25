@@ -4,6 +4,9 @@ using AditiBeautyCare.Business.Common.Sample;
 
 namespace AditiBeautyCare.Business.Core.Interfaces
 {
+    /// <summary>
+    /// these ISampleService is implementing interface for SampleService
+    /// </summary>
     public interface ISampleService
     {
         List<SampleModel> Get();
@@ -13,7 +16,5 @@ namespace AditiBeautyCare.Business.Core.Interfaces
         RequestResult<int> Update(int id, SampleModel sample);
         bool Delete(int id);
         RequestResult<int> AddCollection(List<SampleModel> sample);
-        
     }
-
 }
