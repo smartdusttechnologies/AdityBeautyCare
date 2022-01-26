@@ -3,46 +3,121 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AditiBeautyCare.Web.UI</title>
+    <title>@ViewData["Title"] - AditiBeautyCare</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/23b93d01d8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Style.css" />
+    <style>
+        .ddm {
+            display: block;
+            color: red;
+            float: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: lightcyan
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: yellow;
+            min-width: 160px;
+            box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: red;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: grey;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
-    <header>
-         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Aditi Beauty Care</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1 ">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="row xl-12">
+        <nav>
+            <div class="icon"><b style="color:red">A</b>diti <b style="color:maroon">B</b>eauty <b style="color:deepskyblue"> C</b>are</div>
+            <div class="search_box">
+                <input type="search" placeholder="Search" />
+                <span class="fa fa-search"></span>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+                            <ol>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">Plan & Pricing</a></li>
+                                        <div class="dropdown">
+                                        <li>
+                                            <a href="#">Online</a>
+                                            <div class="dropdown-content">
+                                                <a href="#" class="ddm">Book Slot</a>
+                                                <a href="#" class="ddm">Product</a>
+                                                <a href="#" class="ddm">Services</a>
+                                            </div>
+                                        </li>
+                                            </div>
+
+                                            <li><a href="#">About Us</a></li>
+                                            <div class="dropdown">
+                                                <li>
+                                                    <a href="#">Get In Touch</a>
+                                                    <div class="dropdown-content">
+                                                        <a href="#" class="ddm">Link 1</a>
+                                                        <a href="#" class="ddm">Link 2</a>
+                                                        <a href="#" class="ddm">Link 3</a>
+                                                    </div>
+                                                </li>
+                                            </div>
+
+                                            <li><a href="#"></a></li>
+                                            <li><a href="#" class="fas fa-user-circle "></a></li>
+                                            <li><a href="#" class="fa fa-shopping-cart"></a></li>
+                               </ol>
+
+    <label for="" class="bar">
+        <span class="fa fa-bars" id="bars"></span>
+        <span class="fa fa-times" id="times"></span>
+    </label>
+ </nav>
+
+
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - AditiBeautyCare- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+
+    <div class="content">
+        <p>
+            @RenderBody()
+        </p>
+        
+    </div>
+
+            <!--Social Link At Footer-->
+
+
+    
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+
+                <h6 style="color:darkblue" text-align="center"> © 2020 Copyright  :Aditi Beauty Care</h6>
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </div>
 </body>
+
 </html>
