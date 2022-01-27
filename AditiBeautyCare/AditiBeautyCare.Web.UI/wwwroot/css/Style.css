@@ -1,16 +1,39 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+﻿
+
+body {
+    font-family: 'Times New Roman';
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Poppins;
+}
+
+.bg {
+    background-image: url("/Image/HomePageImage.jpg");
+    height: 750px;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text {
+    text-align: center;
+    padding: 50px;
+    margin-top: 0px;
+    width: 500px;
+    color: #111;
+    background: transparent;
+    background-color: rgba(255, 255, 255, .2);
+    transform: translate(20%, 50%);
 }
 
 nav {
     display: flex;
     width: 100%;
-    background-color: cornsilk;
+    background-color: whitesmoke;
     position: relative;
     justify-content: space-between;
     text-align: center;
@@ -45,8 +68,8 @@ nav {
             }
 
             nav ol li:hover a {
-                background-color: palegreen;
-                color: brown;
+                background-color: whitesmoke;
+                color: black;
             }
 
     nav .search_box {
@@ -117,35 +140,28 @@ input[type="checkbox"] {
 
 @media screen and (max-width:1250px) {
     nav {
-        display
-
-{
-    display: block;
-    padding: 0;
-}
-
-nav .icon {
-    display: inline-block;
-    padding: 15px 30px;
-}
-
-nav .search_box {
-    width: 100%;
-    display: inline-flex;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-    nav .search_box input {
-        width: 90%;
+        display: block;
+        padding: 0;
     }
 
-nav ol {
-    display: flex;
-    flex-direction: column;
+        nav .icon {
+            display: inline-block;
+            padding: 15px 30px;
+        }
+
+        nav .search_box {
+            width: 100%;
+            display: inline-flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+            nav .search_box input {
+                width: 90%;
+            }
+
+        nav ol {
+            display: flex;
+            flex-direction: column;
+        }
 }
-
-}
-
-
-
