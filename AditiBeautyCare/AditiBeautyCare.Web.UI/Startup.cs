@@ -32,12 +32,9 @@ namespace AditiBeautyCare.Web.UI
             //Services
             services.AddScoped<ISampleService, SampleService>();
 
-
             //Repository
             services.AddScoped<IConnectionFactory, AditiBeautyCare.Business.Infrastructure.ConnectionFactory>();
             services.AddScoped<ISampleRepository, SampleRepository>();
-
-           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +61,7 @@ namespace AditiBeautyCare.Web.UI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Sample}/{action=Index}/{id?}");
+                    pattern: "{controller=home}/{action=Index}/{id?}");
             });
         }
     }
