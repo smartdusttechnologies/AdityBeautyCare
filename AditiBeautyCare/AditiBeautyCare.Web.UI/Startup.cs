@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AditiBeautyCare.Business.Core.Interfaces;
+using AditiBeautyCare.Business.Core.Interfaces.BeautyCareService;
 using AditiBeautyCare.Business.Data.Repository;
+using AditiBeautyCare.Business.Data.Repository.BeautyCareService;
 using AditiBeautyCare.Business.Data.Repository.Interfaces;
+using AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService;
 using AditiBeautyCare.Business.Infrastructure;
 using AditiBeautyCare.Business.Services;
+using AditiBeautyCare.Business.Services.BeautyCareService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,10 +35,12 @@ namespace AditiBeautyCare.Web.UI
             services.AddControllersWithViews();
             //Services
             services.AddScoped<ISampleService, SampleService>();
+            services.AddScoped<IBeautyCareService, BeautyCareService>();
 
             //Repository
             services.AddScoped<IConnectionFactory, AditiBeautyCare.Business.Infrastructure.ConnectionFactory>();
             services.AddScoped<ISampleRepository, SampleRepository>();
+            services.AddScoped<IBeautyCareServiceRepository, BeautyCareRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

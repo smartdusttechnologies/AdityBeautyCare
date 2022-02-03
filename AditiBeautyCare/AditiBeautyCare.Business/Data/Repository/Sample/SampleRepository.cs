@@ -72,12 +72,12 @@ namespace AditiBeautyCare.Business.Data.Repository
         /// </summary>
         /// <param name="expenses"></param>
         /// <returns></returns>
-        public int InsertCollection(List<SampleModel> expenses)
+        public int InsertCollection(List<SampleModel> sample)
         {
             string query = @"Insert into [New](Name, Description) 
                 values (@Name, @Description)";
             using IDbConnection db = _connectionFactory.GetConnection;
-            return db.Execute(query, expenses);
+            return db.Execute(query, sample);
         }
 
         /// <summary>
