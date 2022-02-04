@@ -51,13 +51,14 @@
                 <div class="card">
                     <img src="~/Image/@services.ImageUrl" alt="@services.Description">
                     <div class="m-3">
-                        <h3 hidden>Service ID:@services.ServiceId</h3>
+                        <h3 hidden>Service ID:@services.Id</h3>
                         <h3>Service Name:@services.ServiceName</h3>
                         <h5>Duration:@services.ServiceDuration</h5>
                         <h5>Price: @services.ServicePrice</h5>
-                        <button type="button" class="btn btn-lg  mt-2 text-white" style="background-color: #102c44;" data-bs-toggle="modal" data-bs-target="#myModal">
+                     @*   <a asp-controller="BeautyCareService" asp-action="Book"  asp-route-id="@services.ServiceId">aaaaaaaaaaaa</a>*@
+                        <a  class="btn btn-lg  mt-2 text-white" asp-action="BookService" asp-route-id="@services.Id" style="background-color: #102c44;" >
                             Book Now
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -70,82 +71,4 @@
 
 
 
-
-<!-- The Modal -->
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Service Name</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-
-                <form _lpchecked="1">
-                    <div class="form-outline mb-4">
-                        <input type="date" id="form6Example5" class="form-control" />
-                        <label class="form-label" for="form6Example5" style="margin-left: 0px;">Booking Date*</label>
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 39.2px;"></div><div class="form-notch-trailing"></div></div>
-                    </div>
-
-                     <div class="row mb-4">
-                        <div class="col">
-                            <div class="form-outline">
-                                <input type="time" id="form6Example1" class="form-control" required/>
-                                <label class="form-label" for="form6Example1" style="margin-left: 0px;">From*</label>
-                                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="form-outline">
-                                <input type="time" id="form6Example2" class="form-control" required/>
-                                <label class="form-label" for="form6Example2" style="margin-left: 0px;">TO*</label>
-                                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="form-outline mb-4">
-                        <input type="text" id="form6Example5" class="form-control" required/>
-                        <label class="form-label" for="form6Example5" style="margin-left: 0px;">Name*</label>
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 39.2px;"></div><div class="form-notch-trailing"></div></div>
-                    </div>
-                   
-
-                    <!-- Email input -->
-                    <div class="form-outline mb-4">
-                        <input type="email" id="form6Example5" class="form-control" />
-                        <label class="form-label" for="form6Example5" style="margin-left: 0px;">Email</label>
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 39.2px;"></div><div class="form-notch-trailing"></div></div>
-                    </div>
-
-                    <!-- Number input -->
-                    <div class="form-outline mb-4">
-                        <input type="number" id="form6Example6" class="form-control" required>
-                        <label class="form-label" for="form6Example6" style="margin-left: 0px;">Phone*</label>
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 44.8px;"></div><div class="form-notch-trailing"></div></div>
-                    </div>
-
-                    <!-- Message input -->
-                    <div class="form-outline mb-4">
-                        <textarea class="form-control" id="form6Example7" rows="4"></textarea>
-                        <label class="form-label" for="form6Example7" style="margin-left: 0px;">Additional information</label>
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 134.4px;"></div><div class="form-notch-trailing"></div></div>
-                    </div>
-
-
-                    <!-- Submit button -->
-                    <button type="button" class="btn btn-lg btn-dark mt-2 text-white"  style="background-color: #102c44;">Book Service</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 </body>

@@ -11,7 +11,7 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
     public class BeautyCareServiceModel:Entity
     {
         #region Public Properties
-        public int ServiceId { get; set; }
+      
         [Required]
         public string ServiceName { get; set; }
         [Required]

@@ -12,6 +12,7 @@ namespace AditiBeautyCare.Business.Core.Interfaces.BeautyCareService
 
         BeautyCareServiceModel Get(int id);
         List<BeautyCareServiceModel> GetPages(int pageIndex);
-
+        RequestResult<int> Add(BeautyCareServiceBookingModel beautyCareService);
+        RequestResult<int> AddCollection(List<BeautyCareServiceBookingModel> beautyCareService);
     }
 }

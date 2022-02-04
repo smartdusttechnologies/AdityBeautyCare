@@ -12,5 +12,7 @@ namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
      
         BeautyCareServiceModel Get(int id);
         IPagedList<BeautyCareServiceModel> GetPages(int pageIndex = 1, int pageSize = 10);
+        int Insert(BeautyCareServiceBookingModel beautyCareService);
+        int InsertCollection(List<BeautyCareServiceBookingModel> beautyCareService);
     }
 }

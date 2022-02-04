@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AditiBeautyCare.Web.UI", "AditiBeautyCare.Web.UI\AditiBeautyCare.Web.UI.csproj", "{F99B42AC-ECC3-42DA-BB44-B1087D8767DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AditiBeautyCare.Web.UI", "AditiBeautyCare.Web.UI\AditiBeautyCare.Web.UI.csproj", "{F99B42AC-ECC3-42DA-BB44-B1087D8767DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AditiBeautyCare.Business", "AditiBeautyCare.Business\AditiBeautyCare.Business.csproj", "{E109923E-D848-477B-9D7C-61DF6BCAA37D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AditiBeautyCare.Business", "AditiBeautyCare.Business\AditiBeautyCare.Business.csproj", "{E109923E-D848-477B-9D7C-61DF6BCAA37D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{51F24674-1B4D-4BCE-BE5D-953DDAB78CE5}"
 EndProject

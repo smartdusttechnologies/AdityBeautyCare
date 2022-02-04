@@ -10,7 +10,7 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
     public class BeautyCareServiceModel
     {
         #region Public Properties
-        public int ServiceId { get; set; }
+        public int Id { get; set; }
         [Required]
         public string ServiceName { get; set; }
         [Required]
