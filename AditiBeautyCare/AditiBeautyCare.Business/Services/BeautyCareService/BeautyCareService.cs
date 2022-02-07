@@ -38,6 +38,25 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
             _beautyCareServiceRepository.InsertCollection(beautyCareService);
             return new RequestResult<int>(1);
         }
+        public List<BeautyCareServiceBookingModel> Getbooking()
+        {
+            return _beautyCareServiceRepository.Getbooking();
+        }
+
+        public BeautyCareServiceBookingModel Getbooking(int id)
+        {
+            return _beautyCareServiceRepository.Getbooking(id);
+        }
+
+        public List<BeautyCareServiceBookingModel> GetbookingPages(int pageIndex)
+        {
+            return _beautyCareServiceRepository.GetbookingPages(pageIndex).ToNonNullList();
+        }
+        public RequestResult<int> Updatebooking(int id, BeautyCareServiceBookingModel beautyCareServicebooking)
+        {
+            _beautyCareServiceRepository.Updatebooking(beautyCareServicebooking);
+            return new RequestResult<int>(1);
+        }
         #endregion
     }
 }

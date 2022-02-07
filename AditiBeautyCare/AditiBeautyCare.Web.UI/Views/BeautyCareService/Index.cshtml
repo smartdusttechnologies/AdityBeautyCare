@@ -52,10 +52,9 @@
                     <img src="~/Image/@services.ImageUrl" alt="@services.Description">
                     <div class="m-3">
                         <h3 hidden>Service ID:@services.Id</h3>
-                        <h3>Service Name:@services.ServiceName</h3>
-                        <h5>Duration:@services.ServiceDuration</h5>
-                        <h5>Price: @services.ServicePrice</h5>
-                     @*   <a asp-controller="BeautyCareService" asp-action="Book"  asp-route-id="@services.ServiceId">aaaaaaaaaaaa</a>*@
+                        <h3>Service Name:@services.Name</h3>
+                        <h5>Duration:@services.Duration</h5>
+                        <h5>Price: @services.Price</h5>
                         <a  class="btn btn-lg  mt-2 text-white" asp-action="BookService" asp-route-id="@services.Id" style="background-color: #102c44;" >
                             Book Now
                         </a>

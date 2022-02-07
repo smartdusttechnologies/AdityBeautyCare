@@ -42,6 +42,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
             var pageResult = query.Read<BeautyCareServiceModel>().ToList();
             return new StaticPagedList<BeautyCareServiceModel>(pageResult, pageIndex, pageSize, row);
         }
+
         public int Insert(BeautyCareServiceBookingModel beautyCareService)
         {
             string query = @"Insert into [BeautyCareServiceBooking](ServiceId,UserName,UserEmail,Date,[From],[To],UserMobileNumber, Description) 
@@ -57,6 +58,44 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
             using IDbConnection db = _connectionFactory.GetConnection;
             return db.Execute(query, beautyCareService);
         }
+
+        public List<BeautyCareServiceBookingModel> Getbooking()
+        {
+            using IDbConnection db = _connectionFactory.GetConnection;
+            return db.Query<BeautyCareServiceBookingModel>("Select * From [BeautyCareServicebooking] where IsDeleted=0").ToList();
+        }
+
+        public BeautyCareServiceBookingModel Getbooking(int id)
+        {
+            using IDbConnection db = _connectionFactory.GetConnection;
+            return db.Query<BeautyCareServiceBookingModel>("Select top 1 * From [BeautyCareServicebooking] where Id=@id and IsDeleted=0", new { id }).FirstOrDefault();
+        }
+
+        public IPagedList<BeautyCareServiceBookingModel> GetbookingPages(int pageIndex = 1, int pageSize = 10)
+        {
+            using IDbConnection db = _connectionFactory.GetConnection;
+            var query = db.QueryMultiple("SELECT COUNT(*) FROM [BeautyCareServicebooking] where IsDeleted=0;SELECT* FROM [BeautyCareServicebooking] where IsDeleted=0 ORDER BY Id desc OFFSET ((@PageNumber - 1) * @Rows) ROWS FETCH NEXT @Rows ROWS ONLY ; ", new { PageNumber = pageIndex, Rows = pageSize }, commandType: CommandType.Text);
+            var row = query.Read<int>().First();
+            var pageResult = query.Read<BeautyCareServiceBookingModel>().ToList();
+            return new StaticPagedList<BeautyCareServiceBookingModel>(pageResult, pageIndex, pageSize, row);
+        }
+
+        public int Updatebooking(BeautyCareServiceBookingModel beautyCareservicebooking)
+        {
+            string query = @"update [BeautyCareServicebooking] Set 
+                              UserName = @UserName,
+                              UserEmail =@UserEmail,
+                                ServiceId=@ServiceId,
+                                Date=@Date,
+                                [From]=@From,
+                                [To]=@To,
+                                UserMobileNumber=@UserMobileNumber,
+                              Description = @Description
+                            Where Id = @Id";
+            using IDbConnection db = _connectionFactory.GetConnection;
+            return db.Execute(query, beautyCareservicebooking);
+        }
+
         #endregion
     }
 

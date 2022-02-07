@@ -36,11 +36,13 @@ namespace AditiBeautyCare.Web.UI
             //Services
             services.AddScoped<ISampleService, SampleService>();
             services.AddScoped<IBeautyCareService, BeautyCareService>();
+            services.AddScoped<IGetInTouchService, GetInTouchService>();
 
             //Repository
             services.AddScoped<IConnectionFactory, AditiBeautyCare.Business.Infrastructure.ConnectionFactory>();
             services.AddScoped<ISampleRepository, SampleRepository>();
             services.AddScoped<IBeautyCareServiceRepository, BeautyCareRepository>();
+            services.AddScoped<IGetInTouchRepository, GetInTouchRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

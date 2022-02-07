@@ -1,0 +1,47 @@
+﻿
+
+    <div class="container">
+        <br />
+        <br />
+
+        <h1 style="text-align:center;"><b>Get In Touch</b></h1>
+
+        <form class="form-horizontal" method="post" asp-controller="Home" asp-action="Index">
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="Name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="EmailTo">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="subject">Subject:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="subject" placeholder="Enter Subject" name="Subject">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="message">Message:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="message" placeholder="Enter message up to 1000 Words" name="Body">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success btn-lg float-right">Submit</button>
+                </div>
+            </div>
+            <span style="color:green">@ViewBag.Message</span>
+        </form>
+       
+    </div>
+

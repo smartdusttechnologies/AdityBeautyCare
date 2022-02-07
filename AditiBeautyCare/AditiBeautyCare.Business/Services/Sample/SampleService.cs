@@ -23,9 +23,9 @@ namespace AditiBeautyCare.Business.Services
             _sampleRepository.Insert(sample);
             return new RequestResult<int>(1);
         }
-        public RequestResult<int> AddCollection(List<SampleModel> samples)
+        public RequestResult<int> AddCollection(List<SampleModel> expenses)
         {
-            _sampleRepository.InsertCollection(samples);
+            _sampleRepository.InsertCollection(expenses);
             return new RequestResult<int>(1);
         }
         public bool Delete(int id)
