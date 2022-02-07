@@ -9,8 +9,8 @@ namespace AditiBeautyCare.Business.Core.Interfaces.BeautyCareService
     public interface IGetInTouchService
     {
 
-        RequestResult<int> Add(GetInTouchModel mailsend);
-        RequestResult<int> AddCollection(List<GetInTouchModel> mailsend);
+        RequestResult<int> Add(EmailModel mailsend);
+        //RequestResult<int> AddCollection(List<EmailModel> mailsend);
 
     }
 }

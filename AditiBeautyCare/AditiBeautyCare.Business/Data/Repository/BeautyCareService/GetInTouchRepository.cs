@@ -17,7 +17,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         {
             _connectionFactory = connectionFactory;
         }
-        public int Insert(GetInTouchModel mailsend)
+        public int Insert(EmailModel mailsend)
         {
             string query = @"Insert into [GetInTouch](EmailTo,Name,Subject,Body) 
                 values (@EmailTo,@Name,@Subject,@Body)";
@@ -25,7 +25,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
             return db.Execute(query, mailsend);
         }
 
-        public int InsertCollection(List<GetInTouchModel> mailsend)
+        public int InsertCollection(List<EmailModel> mailsend)
         {
             string query = @"Insert into [GetInTouch](EmailTo,Name,Subject,Body) 
                 values @EmailTo,@Name,@Subject,@Body)";

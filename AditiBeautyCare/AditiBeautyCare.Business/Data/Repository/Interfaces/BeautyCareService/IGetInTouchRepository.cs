@@ -7,7 +7,7 @@ namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
 {
     public interface IGetInTouchRepository
     {
-        int Insert(GetInTouchModel mailsend);
-        int InsertCollection(List<GetInTouchModel> mailsend);
+        int Insert(EmailModel mailsend);
+        int InsertCollection(List<EmailModel> mailsend);
     }
 }

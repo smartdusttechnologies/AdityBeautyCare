@@ -37,6 +37,7 @@ namespace AditiBeautyCare.Web.UI
             services.AddScoped<ISampleService, SampleService>();
             services.AddScoped<IBeautyCareService, BeautyCareService>();
             services.AddScoped<IGetInTouchService, GetInTouchService>();
+            services.AddScoped<IEmailService, EmailService>();
 
             //Repository
             services.AddScoped<IConnectionFactory, AditiBeautyCare.Business.Infrastructure.ConnectionFactory>();

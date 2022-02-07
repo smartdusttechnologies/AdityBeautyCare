@@ -11,24 +11,31 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
     public class GetInTouchService: IGetInTouchService
     {
         private readonly IGetInTouchRepository _getInTouchRepository;
+        private readonly IEmailService _emailservice;
         #region public methods
-        public GetInTouchService(IGetInTouchRepository getInTouchRepository)
+        public GetInTouchService(IGetInTouchRepository getInTouchRepository, IEmailService  emailservice)
         {
             _getInTouchRepository = getInTouchRepository;
+                _emailservice = emailservice;
         }
         
 
-        public RequestResult<int> Add(GetInTouchModel mailsend)
+        public RequestResult<int> Add(EmailModel emailmodel)
         {
-            _getInTouchRepository.Insert(mailsend);
-            return new RequestResult<int>(1);
+            var isemailsendsuccessfully = _emailservice.Sendemail(emailmodel);
+            if (isemailsendsuccessfully)
+            {
+                _getInTouchRepository.Insert(emailmodel);
+                return new RequestResult<int>(1);
+            }
+            return new RequestResult<int>(0);
         }
 
-        public RequestResult<int> AddCollection(List<GetInTouchModel> mailsend)
-        {
-            _getInTouchRepository.InsertCollection(mailsend);
-            return new RequestResult<int>(1);
-        }
+        //public RequestResult<int> AddCollection(List<GetInTouchModel> mailsend)
+        //{
+        //    _getInTouchRepository.InsertCollection(mailsend);
+        //    return new RequestResult<int>(1);
+        //}
 
         
         #endregion
