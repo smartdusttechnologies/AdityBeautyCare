@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AditiBeautyCare.Business.Common.Sample
+namespace AditiBeautyCare.Business.Common
 {
     /// <summary>
-    /// These are common utility methods used across projects at class level. 
+    /// GenericUtils 
     /// </summary>
     public static class GenericUtils
     {
@@ -21,5 +21,4 @@ namespace AditiBeautyCare.Business.Common.Sample
         }
         #endregion
     }
-
 }

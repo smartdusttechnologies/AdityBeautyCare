@@ -1,6 +1,9 @@
-﻿namespace AditiBeautyCare.Business.Common.Sample
-{
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
+namespace AditiBeautyCare.Business.Common
+{
     public class ValidationMessage
     {
         /// <summary>

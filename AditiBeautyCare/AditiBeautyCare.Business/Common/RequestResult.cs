@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
-namespace AditiBeautyCare.Business.Common.Sample
+﻿using AditiBeautyCare.Business.Common;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AditiBeautyCare.Business.Common
 {
     public class RequestResult<T> : ResultBase
     {

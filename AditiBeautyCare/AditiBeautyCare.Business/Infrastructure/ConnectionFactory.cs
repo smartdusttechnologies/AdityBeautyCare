@@ -11,7 +11,10 @@ namespace AditiBeautyCare.Business.Infrastructure
     public class ConnectionFactory : IConnectionFactory
     {
         private static IConfiguration _configuration;
-
+        /// <summary>
+        /// configaring with connectionfactory
+        /// </summary>
+        /// <param name="configuration"></param>
         public ConnectionFactory(IConfiguration configuration)
         {
             _configuration = configuration;

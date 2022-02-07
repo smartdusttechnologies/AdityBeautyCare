@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AditiBeautyCare.Business.Common.Sample
+namespace AditiBeautyCare.Business.Common
 {
+    /// <summary>
+    /// Collection extention methods are used to validation
+    /// </summary>
     public static class CollectionExtensionMethods
     {
         #region Public Methods
@@ -18,7 +21,6 @@ namespace AditiBeautyCare.Business.Common.Sample
             {
                 errorValMsgs.AddRange(validationMessages.Where(vm => vm.Severity >= ValidationSeverity.Error));
             }
-
             return errorValMsgs;
         }
         #endregion

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using AditiBeautyCare.Business.Core.Model;
-using AditiBeautyCare.Business.Common.Sample;
+using AditiBeautyCare.Business.Common;
 using AditiBeautyCare.Business.Core.Interfaces;
 using AditiBeautyCare.Business.Data.Repository.Interfaces;
 

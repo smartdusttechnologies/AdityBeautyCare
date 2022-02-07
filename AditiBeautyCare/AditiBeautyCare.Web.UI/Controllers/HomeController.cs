@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using AditiBeautyCare.Web.UI.Models;
+using AditiBeautyCare.Business.Core.Interfaces.BeautyCareService;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace AditiBeautyCare.Web.UI.Controllers
 {
@@ -11,23 +11,54 @@ namespace AditiBeautyCare.Web.UI.Controllers
     /// </summary>
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
+        private readonly IGetInTouchService _getInTouchService;
+        private readonly IWebHostEnvironment _hostingEnvironment;
+
         /// <summary>
-        /// Default Action of the Home Cotroller
+        /// Declaring the variables for establing connection
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="beautyCareService"></param>
+        /// <param name="hostingEnvironment"></param>
+        public HomeController(ILogger<HomeController> logger, IGetInTouchService getInTouchService, IWebHostEnvironment hostingEnvironment)
+        {
+            _logger = logger;
+            _getInTouchService = getInTouchService;
+            _hostingEnvironment = hostingEnvironment;
+        }
+
+        /// <summary>
+        /// load index
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
-        
+      
         /// <summary>
-        /// UI Shows the Various Plans and respective Prices
+        /// Saving the mail details to database and sending mail to client
         /// </summary>
+        /// <param name="emailmodel"></param>
         /// <returns></returns>
-        public IActionResult PlanPricing()
+        [HttpPost]
+        public IActionResult Getintouch(EmailModel emailmodel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var getbussinessModel = new Business.Core.Model.BeautyCareService.EmailModel
+                {
+                    Name = emailmodel.Name,
+                    Body = emailmodel.Body,
+                    EmailTo = emailmodel.EmailTo,
+                    Subject = emailmodel.Subject   
+            };
+                _getInTouchService.Add(getbussinessModel);
+                ViewBag.Message = "Email Sent Successfully";
+            }      
+             return  RedirectToAction("Index");
         }
-
     }
 }

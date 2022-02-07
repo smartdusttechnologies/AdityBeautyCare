@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace AditiBeautyCare.Business.Common.Sample
+namespace AditiBeautyCare.Business.Common
 {
-    /// <summary>
-    /// this contains all the extenstion methods of requested results return type.
-    /// </summary>
     public static class ReturnResultExtensions
     {
+
         /// <summary>
         /// Determines whether this instance has any failure Validation Messages
         /// </summary>
@@ -30,5 +30,6 @@ namespace AditiBeautyCare.Business.Common.Sample
             }
             return errorValMsgs;
         }
+
     }
 }
