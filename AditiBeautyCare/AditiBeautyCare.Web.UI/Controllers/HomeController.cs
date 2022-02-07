@@ -44,7 +44,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <param name="emailmodel"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Getintouch(EmailModel emailmodel)
+        public IActionResult GetInTouch(EmailModel emailmodel)
         {
             if (ModelState.IsValid)
             {

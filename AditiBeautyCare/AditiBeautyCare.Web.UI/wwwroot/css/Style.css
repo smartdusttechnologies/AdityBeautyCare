@@ -7,17 +7,15 @@ body {
 * {
     margin: 0;
     padding: 0;
-   
 }
 
-.bg{
+.bg {
     background-image: url("/Image/HomePageImage.jpg");
     height: 750px;
-     position: relative;
+    position: relative;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-   
 }
 
 text {
@@ -42,7 +40,6 @@ nav {
 }
 
     nav .icon {
-        
         color: darkblue;
         cursor: pointer;
     }

@@ -6,7 +6,7 @@ CREATE TABLE [dbo].[BeautyCareServiceBooking]
 	[Date] [varchar](50) NOT NULL,
 	[From] [varchar](50) NOT NULL,
 	[To] [varchar](50) NOT NULL,
-	[IsDeleted] [bit] CONSTRAINT [D_BeautyCareServiceBooking_IsDeleted] DEFAULT ((0)) NOT NULL,
+	[IsDeleted] [bit] CONSTRAINT [D_BeautyCareServices_IsDeleted] DEFAULT ((0)) NOT NULL,
 	[UserMobileNumber] [varchar](250) NOT NULL,
 	[ServiceID] BIGINT NOT NULL,
 	CONSTRAINT [PK_BeautyCareServiceBooking] PRIMARY KEY CLUSTERED ([Id] ASC)
