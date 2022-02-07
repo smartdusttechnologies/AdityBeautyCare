@@ -9,14 +9,27 @@ using System.Text;
 
 namespace AditiBeautyCare.Business.Services.BeautyCareService
 {
+    /// <summary>
+    /// Implimenting IEmailService through Interface
+    /// </summary>
     public class EmailService : IEmailService
     {
         private readonly IConfiguration _configuration;
+
+        /// <summary>
+        /// Establing connection with connection factory
+        /// </summary>
+        /// <param name="configuration"></param>
         public EmailService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Sending mail
+        /// </summary>
+        /// <param name="emailModel"></param>
+        /// <returns></returns>
         public bool Sendemail(EmailModel emailModel)
         {
             //Read SMTP settings from AppSettings.json.

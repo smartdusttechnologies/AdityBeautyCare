@@ -8,18 +8,32 @@ using System.Linq;
 
 namespace AditiBeautyCare.Web.UI.Controllers
 {
+    /// <summary>
+    /// Implimenting BeautyCareServiceController
+    /// </summary>
     public class BeautyCareServiceController : Controller
     {
         private readonly ILogger<BeautyCareServiceController> _logger;
         private readonly IBeautyCareService _beautyCareService;
         private readonly IWebHostEnvironment _hostingEnvironment;
 
+        /// <summary>
+        /// Declaring the variables for establing connection
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="beautyCareService"></param>
+        /// <param name="hostingEnvironment"></param>
         public BeautyCareServiceController(ILogger<BeautyCareServiceController> logger, IBeautyCareService beautyCareService, IWebHostEnvironment hostingEnvironment)
         {
             _logger = logger;
             _beautyCareService = beautyCareService;
             _hostingEnvironment = hostingEnvironment;
         }
+
+        /// <summary>
+        /// For getting page list and data 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             var services = _beautyCareService.GetPages(1);
@@ -32,6 +46,12 @@ namespace AditiBeautyCare.Web.UI.Controllers
             ViewBag.PreviousPage = 0;
             return View(servicess.AsEnumerable());
         }
+
+        /// <summary>
+        /// For getting data with page index
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Index(int pageIndex)
         {
@@ -45,12 +65,24 @@ namespace AditiBeautyCare.Web.UI.Controllers
             ViewBag.PreviousPage = pageIndex == 1 ? 1 : pageIndex - 1;
             return View(servicess.AsEnumerable());
         }
+
+        /// <summary>
+        /// For Booking service  it will load the view
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult BookService(int id)
         {         
            var beautyCareServiceBookingModel = new Models.BeautyCareService.BeautyCareServiceBookingModel { Date = DateTime.Now.ToString("yyyy-MM-dd"), ServiceId = id };
                 return View(beautyCareServiceBookingModel);
         }
+
+        /// <summary>
+        /// For Booking service  it will add data to database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult  BookService([Bind] Models.BeautyCareService.BeautyCareServiceBookingModel booking)
@@ -74,6 +106,11 @@ namespace AditiBeautyCare.Web.UI.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// For admin dashboard  it will load the view 
+        /// </summary>
+        /// <param ></param>
+        /// <returns></returns>
         public IActionResult adminDashboard()
         {
             var orders = _beautyCareService.GetbookingPages(1);
@@ -86,6 +123,12 @@ namespace AditiBeautyCare.Web.UI.Controllers
             ViewBag.PreviousPage = 0;
             return View(orderss.AsEnumerable());
         }
+
+        /// <summary>
+        /// for admindashboard it loads the data
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult adminDashboard(int pageIndex)
         {
@@ -100,6 +143,11 @@ namespace AditiBeautyCare.Web.UI.Controllers
             return View(orderss.AsEnumerable());
         }
 
+        /// <summary>
+        /// Admin can edit the bookings this will load the data
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult adminEditService(int? id)
         {
@@ -126,7 +174,14 @@ namespace AditiBeautyCare.Web.UI.Controllers
             };
             return View(beautyCareServiceUIModel);
         }
-        
+
+
+       /// <summary>
+       /// admin can edit any user bookingdata
+       /// </summary>
+       /// <param name="id"></param>
+       /// <param name="beautyCareService"></param>
+       /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult adminEditService(int id, [Bind] Models.BeautyCareService.BeautyCareServiceBookingModel beautyCareService)
@@ -155,38 +210,5 @@ namespace AditiBeautyCare.Web.UI.Controllers
             }
             return RedirectToAction("adminDashboard");
         }
-
-        //[HttpGet]
-        //public ActionResult Create(int ServiceId)
-        //{
-
-        //    return View(new Models.BeautyCareService.BeautyCareServiceBookingModel { ServiceId = ServiceId });
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind] Models.BeautyCareService.BeautyCareServiceBookingModel booking)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var beautyCareServicebussinessModel = new Business.Core.Model.BeautyCareService.BeautyCareServiceBookingModel
-        //        {
-        //            OrderId = booking.OrderId,
-        //            ServiceId = booking.ServiceId,
-        //            UserName = booking.UserName,
-        //            Description = booking.Description,
-        //            UserEmail = booking.UserEmail,
-        //            UserMobileNumber = booking.UserMobileNumber,
-        //            Date = booking.Date,
-        //            From = booking.From,
-        //            To = booking.To
-        //        };
-        //        _beautyCareService.Add(beautyCareServicebussinessModel);
-
-        //    }
-        //    return RedirectToAction("Index");
-        //}
-
-
     }
 }

@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Net;
-
-using System.Net.Mail;
-using Microsoft.Extensions.Configuration;
 using AditiBeautyCare.Web.UI.Models;
 using AditiBeautyCare.Business.Core.Interfaces.BeautyCareService;
 using Microsoft.AspNetCore.Hosting;
@@ -18,37 +14,38 @@ namespace AditiBeautyCare.Web.UI.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IGetInTouchService _getInTouchService;
         private readonly IWebHostEnvironment _hostingEnvironment;
-      
 
+        /// <summary>
+        /// Declaring the variables for establing connection
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="beautyCareService"></param>
+        /// <param name="hostingEnvironment"></param>
         public HomeController(ILogger<HomeController> logger, IGetInTouchService getInTouchService, IWebHostEnvironment hostingEnvironment)
         {
             _logger = logger;
             _getInTouchService = getInTouchService;
             _hostingEnvironment = hostingEnvironment;
-          
         }
+
+        /// <summary>
+        /// load index
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Index()
         {
-           
             return View();
         }
       
         /// <summary>
-        /// Default Action of the Home Cotroller
+        /// Saving the mail details to database and sending mail to client
         /// </summary>
+        /// <param name="emailmodel"></param>
         /// <returns></returns>
-       
-
-        /// <summary>
-        /// UI Shows the Various Plans and respective Prices
-        /// </summary>
-        /// <returns></returns>
-        /// 
         [HttpPost]
         public IActionResult Getintouch(EmailModel emailmodel)
         {
-
             if (ModelState.IsValid)
             {
                 var getbussinessModel = new Business.Core.Model.BeautyCareService.EmailModel
@@ -56,21 +53,12 @@ namespace AditiBeautyCare.Web.UI.Controllers
                     Name = emailmodel.Name,
                     Body = emailmodel.Body,
                     EmailTo = emailmodel.EmailTo,
-                    Subject = emailmodel.Subject
-                  
+                    Subject = emailmodel.Subject   
             };
                 _getInTouchService.Add(getbussinessModel);
                 ViewBag.Message = "Email Sent Successfully";
-
-            }
-
-        
-                
-         
-            return  RedirectToAction("Index");
+            }      
+             return  RedirectToAction("Index");
         }
-
-
-
     }
 }

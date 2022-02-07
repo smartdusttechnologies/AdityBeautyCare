@@ -11,10 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <div>
-
+    <div class="container">
         <form  asp-action="adminEditService">
-
             <div class="row">
                 <div class="col">
                     <label class="form-label">Booking ID</label>
@@ -61,16 +59,10 @@
                     <label class="form-label">Description</label>
                     <input type="text" asp-for="Description" class="form-control" name="Description">
                 </div>
-
             </div>
             <button type="submit" value="Save" class="btn btn-primary">Save</button>
             <a asp-action="adminDashboard" class="btn btn-primary">Back to List</a>
-
-
         </form>
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
 
     </div>
 </body>

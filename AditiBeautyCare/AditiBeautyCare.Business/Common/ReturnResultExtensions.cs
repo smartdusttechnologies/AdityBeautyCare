@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AditiBeautyCare.Business.Common.BeautyCareService
+namespace AditiBeautyCare.Business.Common
 {
     public static class ReturnResultExtensions
     {

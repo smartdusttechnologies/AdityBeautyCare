@@ -21,36 +21,24 @@
     <!-- MDB -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
-
-       <style>
-.form-group > label {
-  top: 12px;
-  left: 6px;
-  position: relative;
-  background-color: white;
-  padding: 0px 0px 0px  0px;
- 
-}</style>  
-
+    <style>
+        .form-group > label {
+            top: 12px;
+            left: 6px;
+            position: relative;
+            background-color: white;
+            padding: 0px 0px 0px 0px;
+        }
+        </style>
 </head>
 <body>
     <div class="container mt-5">
-    
         <form _lpchecked="1" asp-controller="BeautyCareService" asp-action="BookService">
-          
-            
-               <input type="hidden" asp-for="ServiceId" id="ServiceId" name="ServiceId"/>
-
-               <div class="form-group">
-				    <label for="Date">Booking Date:</label>
-				    <input type="date" id="Date" class="form-control"  name="Date" value="@Model.Date" >
-			  </div>
-               @* <input type="date" id="Date"  name="Date" value="@Model.Date"  class="form-control" />
-
-                <label class="form-label" for="abc" style="margin-left: 0px;">Booking Date*</label>
-                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 39.2px;"></div><div class="form-notch-trailing"></div></div>
-            </div>*@
-
+            <input type="hidden" asp-for="ServiceId" id="ServiceId" name="ServiceId" />
+            <div class="form-group">
+                <label for="Date">Booking Date:</label>
+                <input type="date" id="Date" class="form-control" name="Date" value="@Model.Date">
+            </div>
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
@@ -59,7 +47,6 @@
                         <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div>
                     </div>
                 </div>
-
                 <div class="col">
                     <div class="form-outline">
                         <input type="time" id="To" name="To" class="form-control" required />
@@ -68,40 +55,31 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-outline mb-4">
                 <input type="text" id="UserName" name="UserName" class="form-control" required />
                 <label class="form-label" for="UserName" style="margin-left: 0px;">Name*</label>
                 <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 39.2px;"></div><div class="form-notch-trailing"></div></div>
             </div>
-
-
             <!-- Email input -->
             <div class="form-outline mb-4">
                 <input type="email" id="UserEmail" name="UserEmail" class="form-control" />
                 <label class="form-label" for="UserEmail" style="margin-left: 0px;">Email</label>
                 <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 39.2px;"></div><div class="form-notch-trailing"></div></div>
             </div>
-
             <!-- Number input -->
             <div class="form-outline mb-4">
                 <input type="number" id="UserMobileNumber" name="UserMobileNumber" class="form-control" required>
                 <label class="form-label" for="UserMobileNumber" style="margin-left: 0px;">Phone*</label>
                 <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 44.8px;"></div><div class="form-notch-trailing"></div></div>
             </div>
-
             <!-- Message input -->
             <div class="form-outline mb-4">
                 <textarea class="form-control" id="Description" name="Description" rows="4"></textarea>
                 <label class="form-label" for="Description" style="margin-left: 0px;">Additional information</label>
                 <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 134.4px;"></div><div class="form-notch-trailing"></div></div>
             </div>
-
-
             <!-- Submit button -->
             <button type="submit" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Book Service</button>
         </form>
-
     </div>
-
 </body>

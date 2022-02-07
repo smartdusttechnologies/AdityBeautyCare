@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace AditiBeautyCare.Business.Common.BeautyCareService
+namespace AditiBeautyCare.Business.Common
 {
+    /// <summary>
+    /// Collection extention methods are used to validation
+    /// </summary>
     public static class CollectionExtensionMethods
     {
-
         #region Public Methods
         /// <summary>
         /// Gets the subset of validation messages from  that are of severity Error or higher.
@@ -21,7 +21,6 @@ namespace AditiBeautyCare.Business.Common.BeautyCareService
             {
                 errorValMsgs.AddRange(validationMessages.Where(vm => vm.Severity >= ValidationSeverity.Error));
             }
-
             return errorValMsgs;
         }
         #endregion
