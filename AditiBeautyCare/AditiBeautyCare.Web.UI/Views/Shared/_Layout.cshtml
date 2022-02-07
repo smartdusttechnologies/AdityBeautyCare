@@ -37,7 +37,7 @@
         }
 
         .dropdown-menu a:hover {
-            background-color: deeppink;
+            background-color: lightpink;
         }
 
         .dropdown {
@@ -81,13 +81,14 @@
                 <input type="search" placeholder="Search" />
                 <span class="fa fa-search"></span>
             </div>
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-5 ml-4">
+                
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="Index">Home<span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Plan & Pricing</a>
+                    <a class="nav-link" href="#">Dashboard</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -95,9 +96,10 @@
                         Onine
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Product</a>
+                        <a class="dropdown-item" href="home/product">Product</a>
                         <a class="dropdown-item" href="#">Services</a>
                         <a class="dropdown-item" href="#">Book Slot</a>
+                        <a class="dropdown-item" asp-area="" asp-action="PlanPricing" asp-controller="Home">Plan & Pricing</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -116,8 +118,7 @@
                 </li>
                 <li class="nav-link"><a href="#" class="fas fa-user-circle "></a></li>
                 <li class="nav-link"><a href="#" class="fa fa-shopping-cart"></a></li>
-                <li class="nav-link"><a href="#" class="fa fa-tachometer"></a></li>
-            </ul>
+             </ul>
         </div>
     </nav>
 
