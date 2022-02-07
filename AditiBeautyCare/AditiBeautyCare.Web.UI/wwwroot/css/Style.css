@@ -7,7 +7,6 @@ body {
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 .bg {
@@ -19,11 +18,11 @@ body {
     background-size: cover;
 }
 
-.text {
+text {
     text-align: center;
     padding: 50px;
     margin-top: 0px;
-    width: 500px;
+    width: 390px;
     color: #111;
     background: transparent;
     background-color: rgba(255, 255, 255, .2);
@@ -33,7 +32,7 @@ body {
 nav {
     display: flex;
     width: 100%;
-    background-color: greenyellow;
+    background-color: whitesmoke;
     position: relative;
     justify-content: space-between;
     text-align: center;
@@ -41,34 +40,31 @@ nav {
 }
 
     nav .icon {
-        font-size: 35px;
-        font-weight: 800;
         color: darkblue;
         cursor: pointer;
     }
 
-    nav ol {
+    nav ul {
         display: flex;
         list-style: none;
         margin: auto 0;
     }
 
-
-        nav ol li {
+        nav ul li {
             margin: 0 2px;
         }
 
-            nav ol li a {
+
+            nav ul li a {
                 color: darkslategray;
                 font-size: 20px;
                 text-decoration: none;
                 text-transform: capitalize;
                 letter-spacing: 1px;
                 padding: 5px 10px;
-                
             }
 
-            nav ol li:hover a {
+            nav ul li:hover a {
                 background-color: whitesmoke;
                 color: black;
             }
@@ -82,8 +78,8 @@ nav {
 
         nav .search_box input {
             border: none;
-            outline:1px solid black;
-            background-color: none;
+            outline: none;
+            background-color: white;
             height: 100%;
             padding: 0 10px;
             font-size: 20px;
@@ -91,7 +87,7 @@ nav {
         }
 
         nav .search_box span {
-            color: black;
+            color: red;
             font-size: 20px;
             background-color: white;
             height: 100%;
@@ -103,7 +99,7 @@ nav {
         }
 
             nav .search_box span:hover {
-                color: brown;
+                color: aqua;
             }
 
             nav .search_box span::after {
@@ -131,7 +127,7 @@ nav {
         nav .bar span {
             position: absolute;
             color: white;
-            font-size: 30px;
+            font-size: 35px;
         }
 
 input[type="checkbox"] {
@@ -141,19 +137,14 @@ input[type="checkbox"] {
 
 @media screen and (max-width:1250px) {
     nav {
-        
-        display: inline-block;
+        display: block;
         padding: 0;
     }
-        nav ol {
-            display: flex;
-            list-style: none;
-            margin: auto 0;
-        }
-        nav .icon {
+
+        /*nav .icon {
             display: inline-block;
             padding: 15px 30px;
-        }
+        }*/
 
         nav .search_box {
             width: 100%;
@@ -166,44 +157,8 @@ input[type="checkbox"] {
                 width: 90%;
             }
 
-        nav ol {
+        nav ul {
             display: flex;
             flex-direction: column;
-            background-color:lightpink;
-            height:50px;
-            visibility:visible;
-            transition:0.3s;
-           
         }
-        nav ol li{
-            text-align:center;
-        }
-            nav ol li a{
-                color:firebrick;
-                font-size:28px;
-                padding:10px;
-                display:block;
-            }
-
-            nav .bar{
-                display:none;
-                position:absolute;
-                top:20px;
-                right:80px;
-                cursor:pointer;
-            }
-
-            nav .bar #times{
-                display:none;
-            }
-            #check:checked ~ nav .bar #times{
-                display:block;
-            }
-            #check:checked ~ nav .bar #bars {
-                display: none;
-            }
-    #check:checked ~ nav ol{
-        visibility:visible;
-        height:465px;
-    }
 }

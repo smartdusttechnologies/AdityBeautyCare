@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>
@@ -21,14 +23,21 @@
     <script src="~/js/bootstrap.esm.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <style>
-        .ddm {
+        #footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 2.5rem; /* Footer height */
+        }
+
+        .dropdown-item {
             display: block;
-            color: pink;
+            align-items: center;
             float: none;
         }
 
-        .dropdown-content a:hover {
-            background-color: lightcyan
+        .dropdown-menu a:hover {
+            background-color: deeppink;
         }
 
         .dropdown {
@@ -36,170 +45,169 @@
             display: inline-block;
         }
 
-        .dropdown-content {
+        .dropdown-menu {
             display: none;
             position: absolute;
             background-color: lightgoldenrodyellow;
-            min-width: 160px;
+            min-width: 200px;
             box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
 
-            .dropdown-content a {
-                color: blue;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
+        .dropdown-item a {
+            color: blue;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
 
-                .dropdown-content a:hover {
-                    background-color: grey;
-                }
 
-        .dropdown:hover .dropdown-content {
+
+        .dropdown:hover .dropdown-menu {
             display: block;
         }
     </style>
 </head>
 <body>
-    <nav class="container-fluid">
-        <nav>
-            <div class="icon" style="padding:0; margin:0">
-                <img src="~/Image/Aditi_logo.jpg" />
-            </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="~/Image/Aditi_logo.jpg" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="search_box">
                 <input type="search" placeholder="Search" />
                 <span class="fa fa-search"></span>
             </div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmenu" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
 
-                    <div class="collapse navbar-collapse" id="navbarmenu">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Plan & Pricing</a>
+                </li>
 
-                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="PlanPricing">Plan & Pricing</a></li>
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <a class="nav-link" href="#">Online</a>
-                                    <div class="dropdown-content">
-                                        <a href="#" class="ddm">Book Slot</a>
-                                        <a href="#" class="ddm">Product</a>
-                                        <a asp-area="" asp-controller="BeautyCareService" asp-action="Index" class="ddm">Services</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <a class="nav-link" href="#">Get In Touch</a>
-                                    <div class="dropdown-content">
-                                        <a href="#" class="ddm">Link 1</a>
-                                        <a href="#" class="ddm">Link 2</a>
-                                        <a href="#" class="ddm">Link 3</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nav-item"><a href="#" class="fas fa-user-circle "></a></li>
-                            <li class="nav-item"><a href="#" class="fa fa-shopping-cart"></a></li>
-                        </ul>
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Onine
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Product</a>
+                        <a class="dropdown-item" href="#">Services</a>
+                        <a class="dropdown-item" href="#">Book Slot</a>
                     </div>
-                </div>
-            </nav>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
 
-        </nav>
-
-
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Get In Touch
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Link1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                </li>
+                <li class="nav-link"><a href="#" class="fas fa-user-circle "></a></li>
+                <li class="nav-link"><a href="#" class="fa fa-shopping-cart"></a></li>
+                <li class="nav-link"><a href="#" class="fa fa-tachometer"></a></li>
+            </ul>
+        </div>
     </nav>
+
     <div>
         @RenderBody()
     </div>
 
     <!-- Remove the container if you want to extend the Footer to full width. -->
     <div>
+        <footer id="footer"></footer>
         <!-- Footer -->
-        <footer class="text-center text-lg-start text-white"
-                style="background-color: #3e4551">
-            <!-- Grid container -->
-            <div class="container p-4 pb-0">
+        <div id="footer">
+            <footer class="text-center text-lg-start text-white"
+                    style="background-color: #3e4551">
+                <!-- Grid container -->
+                <div class="container p-4 pb-0">
 
 
-                <hr class="mb-4" />
+                    <hr class="mb-4" />
 
-                <!-- Section: CTA -->
-                <section class="">
-                    <p class="d-flex justify-content-center align-items-center">
-                        <span class="me-3">Register for free</span>
-                        <button type="button" class="btn btn-outline-light btn-rounded">
-                            Sign up!
-                        </button>
-                    </p>
-                </section>
-                <!-- Section: CTA -->
+                    <!-- Section: CTA -->
+                    <section class="">
+                        <p class="d-flex justify-content-center align-items-center">
+                            <span class="me-3">Register for free</span>
+                            <button type="button" class="btn btn-outline-light btn-rounded">
+                                Sign up!
+                            </button>
+                        </p>
+                    </section>
+                    <!-- Section: CTA -->
 
-                <hr class="mb-4" />
+                    <hr class="mb-4" />
 
-                <!-- Section: Social media -->
-                <section class="mb-4 text-center">
-                    <!-- Facebook -->
-                    <a class="btn btn-outline-light btn-floating m-1"
-                       href="#!"
-                       role="button">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
+                    <!-- Section: Social media -->
+                    <section class="mb-4 text-center">
+                        <!-- Facebook -->
+                        <a class="btn btn-outline-light btn-floating m-1"
+                           href="#!"
+                           role="button">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
 
-                    <!-- Twitter -->
-                    <a class="btn btn-outline-light btn-floating m-1"
-                       href="#!"
-                       role="button">
-                        <i class="fab fa-twitter"></i>
-                    </a>
+                        <!-- Twitter -->
+                        <a class="btn btn-outline-light btn-floating m-1"
+                           href="#!"
+                           role="button">
+                            <i class="fab fa-twitter"></i>
+                        </a>
 
-                    <!-- Google -->
-                    <a class="btn btn-outline-light btn-floating m-1"
-                       href="#!"
-                       role="button">
-                        <i class="fab fa-google"></i>
-                    </a>
+                        <!-- Google -->
+                        <a class="btn btn-outline-light btn-floating m-1"
+                           href="#!"
+                           role="button">
+                            <i class="fab fa-google"></i>
+                        </a>
 
-                    <!-- Instagram -->
-                    <a class="btn btn-outline-light btn-floating m-1"
-                       href="#!"
-                       role="button">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                        <!-- Instagram -->
+                        <a class="btn btn-outline-light btn-floating m-1"
+                           href="#!"
+                           role="button">
+                            <i class="fab fa-instagram"></i>
+                        </a>
 
-                    <!-- Linkedin -->
-                    <a class="btn btn-outline-light btn-floating m-1"
-                       href="#!"
-                       role="button">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+                        <!-- Linkedin -->
+                        <a class="btn btn-outline-light btn-floating m-1"
+                           href="#!"
+                           role="button">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
 
-                    <!-- Github -->
-                    <a class="btn btn-outline-light btn-floating m-1"
-                       href="#!"
-                       role="button">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </section>
-                <!-- Section: Social media -->
-            </div>
-            <!-- Grid container -->
-            <!-- Copyright -->
-            <div class="text-center p-3"
-                 style="background-color: rgba(0, 0, 0, 0.2)">
-                © 2022 Copyright:
-                <a class="text-white" href="#">Aditi Beauti Care</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
-        <!-- Footer -->
+                        <!-- Github -->
+                        <a class="btn btn-outline-light btn-floating m-1"
+                           href="#!"
+                           role="button">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </section>
+                    <!-- Section: Social media -->
+                </div>
+                <!-- Grid container -->
+                <!-- Copyright -->
+                <div class="text-center p-3"
+                     style="background-color: rgba(0, 0, 0, 0.2)">
+                    © 2022 Copyright:
+                    <a class="text-white" href="#">Aditi Beauti Care</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+            <!-- Footer -->
+        </div>
     </div>
 </body>
 </html>
