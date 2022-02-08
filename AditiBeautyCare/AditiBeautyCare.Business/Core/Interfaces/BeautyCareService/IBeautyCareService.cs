@@ -33,6 +33,20 @@ namespace AditiBeautyCare.Business.Core.Interfaces.BeautyCareService
         /// </summary>
         /// <param name="beautyCareService"></param>
         /// <returns></returns>
+        RequestResult<int> Add(BeautyCareServiceModel beautyCareService);
+
+        /// <summary>
+        /// implimenting add collection service
+        /// </summary>
+        /// <param name="beautyCareService"></param>
+        /// <returns></returns>
+        RequestResult<int> AddCollection(List<BeautyCareServiceModel> beautyCareService);
+
+        /// <summary>
+        ///implimenting add method
+        /// </summary>
+        /// <param name="beautyCareService"></param>
+        /// <returns></returns>
         RequestResult<int> Add(BeautyCareServiceBookingModel beautyCareService);
 
         /// <summary>

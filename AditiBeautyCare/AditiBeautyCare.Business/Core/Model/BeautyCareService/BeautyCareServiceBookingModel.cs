@@ -42,11 +42,12 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         /// Declaring UserEmail Property
         /// </summary>
         public string UserEmail { get; set; }
-        [Required]
+
 
         /// <summary>
         /// Declaring UserMobileNumber Property
         /// </summary>
+        [Required]
         public string UserMobileNumber { get; set; }
 
         /// <summary>

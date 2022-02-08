@@ -67,6 +67,43 @@ namespace AditiBeautyCare.Web.UI.Controllers
         }
 
         /// <summary>
+        /// For adding service  it will load the view
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult adminAddService(int id)
+        {
+            var beautyCareServiceModel = new Models.BeautyCareService.BeautyCareServiceModel { Id = id };
+            return View(beautyCareServiceModel);
+        }
+
+        /// <summary>
+        /// For adding  service  it will add to data to database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult adminAddService([Bind] Models.BeautyCareService.BeautyCareServiceModel addservice)
+        {
+            if (ModelState.IsValid)
+            {
+                var beautyCareServicebussinessModel = new Business.Core.Model.BeautyCareService.BeautyCareServiceModel
+                {
+                   Name = addservice.Name,
+                   Description = addservice.Description,
+                   Duration = addservice.Duration,
+                   ImageUrl = addservice.ImageUrl,
+                   Price = addservice.Price
+                };
+                _beautyCareService.Add(beautyCareServicebussinessModel);
+
+            }
+            return RedirectToAction("Index");
+        }
+
+        /// <summary>
         /// For Booking service  it will load the view
         /// </summary>
         /// <param name="id"></param>
