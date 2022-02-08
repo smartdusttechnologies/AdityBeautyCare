@@ -60,12 +60,40 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
             var pageResult = query.Read<BeautyCareServiceModel>().ToList();
             return new StaticPagedList<BeautyCareServiceModel>(pageResult, pageIndex, pageSize, row);
         }
+
         /// <summary>
         /// Inserting data using Insert method
         /// </summary>
         /// <param name="beautyCareService"></param>
         /// <returns></returns>
-       
+
+        public int Insert(BeautyCareServiceModel beautyCareService)
+        {
+            string query = @"Insert into [BeautyCareServices](Name,Duration,ImageUrl,Price,Description) 
+                values (@Name,@Duration,@Price,@ImageUrl,@Description)";
+            using IDbConnection db = _connectionFactory.GetConnection;
+            return db.Execute(query, beautyCareService);
+        }
+
+        /// <summary>
+        /// Inserting data to collection
+        /// </summary>
+        /// <param name="beautyCareService"></param>
+        /// <returns></returns>
+        public int InsertCollection(List<BeautyCareServiceModel> beautyCareService)
+        {
+            string query = @"Insert into [BeautyCareServices](Name,Duration,ImageUrl,Price,Description) 
+                values (@Name,@Duration,@Price,@ImageUrl,@Description)";
+            using IDbConnection db = _connectionFactory.GetConnection;
+            return db.Execute(query, beautyCareService);
+        }
+
+        /// <summary>
+        /// Inserting data using Insert method
+        /// </summary>
+        /// <param name="beautyCareService"></param>
+        /// <returns></returns>
+
         public int Insert(BeautyCareServiceBookingModel beautyCareService)
         {
             string query = @"Insert into [BeautyCareServiceBooking](ServiceId,UserName,UserEmail,Date,[From],[To],UserMobileNumber, Description) 

@@ -8,6 +8,7 @@ CREATE TABLE [dbo].[BeautyCareServiceBooking]
 	[To] [varchar](50) NOT NULL,
 	[IsDeleted] [bit] CONSTRAINT [D_BeautyCareServiceBooking_IsDeleted] DEFAULT ((0)) NOT NULL,
 	[UserMobileNumber] [varchar](250) NOT NULL,
-	[ServiceID] BIGINT NOT NULL,
-	CONSTRAINT [PK_BeautyCareServiceBooking] PRIMARY KEY CLUSTERED ([Id] ASC)
+	[ServiceId] BIGINT NOT NULL,
+	CONSTRAINT [PK_BeautyCareServiceBooking] PRIMARY KEY CLUSTERED ([Id] ASC),
+	CONSTRAINT [FK_BeautyCareServiceBooking_BeautyCareServices] FOREIGN KEY (ServiceId) REFERENCES [dbo].[BeautyCareServices] ([Id])
 );

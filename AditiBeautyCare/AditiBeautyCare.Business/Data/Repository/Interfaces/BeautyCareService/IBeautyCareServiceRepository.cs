@@ -31,6 +31,18 @@ namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
         /// Implimenting Interface for Insert method in BeautyCareServiceRepository
         /// </summary>
         /// <returns></returns>
+        int Insert(BeautyCareServiceModel beautyCareService);
+
+        /// <summary>
+        /// Implimenting Interface for InsertCollection method in BeautyCareServiceRepository
+        /// </summary>
+        /// <returns></returns>
+        int InsertCollection(List<BeautyCareServiceModel> beautyCareService);
+
+        /// <summary>
+        /// Implimenting Interface for Insert method in BeautyCareServiceRepository
+        /// </summary>
+        /// <returns></returns>
         int Insert(BeautyCareServiceBookingModel beautyCareService);
 
         /// <summary>
