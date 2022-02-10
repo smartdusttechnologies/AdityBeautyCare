@@ -61,10 +61,11 @@
             display: block;
         }
 
-
-
         .dropdown:hover .dropdown-menu {
             display: block;
+        }
+        .navbar nav .nav-link {
+            background-color:lightgreen;
         }
     </style>
 </head>
@@ -84,38 +85,46 @@
             <ul class="navbar-nav mr-5 ml-4">
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="Index">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link current" aria-current="page" asp-action="Index" asp-controller="Home">Home<span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
+                    <a class="nav-link currnet" aria-current="page" asp-action="adminDashboard" asp-controller="BeautyCareService">Dashboard</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Onine
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="home/product">Product</a>
-                        <a class="dropdown-item" href="#">Services</a>
-                        <a class="dropdown-item" href="#">Book Slot</a>
-                        <a class="dropdown-item" asp-area="" asp-action="PlanPricing" asp-controller="Home">Plan & Pricing</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link current" aria-current="page" asp-action="Index" asp-controller="BeautyCareService">Services</a>
                 </li>
+
+                @*<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Onine
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="home/product">Product</a>
+                <a class="dropdown-item" href="home/services">Services</a>
+                <a class="dropdown-item" href="#">Book Slot</a>
+                <a class="dropdown-item" asp-area="" asp-action="PlanPricing" asp-controller="Home">Plan & Pricing</a>
+            </div>
+        </li>*@
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
                 </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Get In Touch
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Link1</a>
-                        <a class="dropdown-item" href="#">Link 2</a>
-                        <a class="dropdown-item" href="#">Link 3</a>
-                    </div>
+                <!--Coommented the dropdown below -->
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="getintouch" asp-controller="Home">Get In Touch</a>
                 </li>
+
+                @*<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Get In Touch
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Link1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+            </div>
+        </li>*@
                 <li class="nav-link"><a href="#" class="fas fa-user-circle "></a></li>
                 <li class="nav-link"><a href="#" class="fa fa-shopping-cart"></a></li>
             </ul>

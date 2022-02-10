@@ -60,5 +60,10 @@ namespace AditiBeautyCare.Web.UI.Controllers
             }      
              return  RedirectToAction("Index");
         }
+        
+        public IActionResult getintouch()
+        {
+            return View();
+        }
     }
 }

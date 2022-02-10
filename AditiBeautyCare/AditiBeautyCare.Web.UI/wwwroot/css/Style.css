@@ -1,6 +1,4 @@
-﻿
-
-body {
+﻿body {
     font-family: 'Times New Roman';
 }
 
@@ -8,21 +6,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
-
-
-/*text {
-    background: transparent;
-    text-align: center;
-    position: static;
-    display: grid;
-    height: auto;
-    width: 50%;
-    min-height: 580px;
-    grid-template-rows: min-content 1fr;
-    grid-template-columns: 100%;
-    align-content: space-evenly;
-}*/
 
 nav {
     display: flex;
