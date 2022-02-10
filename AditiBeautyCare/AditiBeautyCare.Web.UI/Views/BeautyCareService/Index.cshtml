@@ -46,7 +46,7 @@
                                 <h3>Service Name:@services.Name</h3>
                                 <h5>Duration:@services.Duration</h5>
                                 <h5>Price: @services.Price</h5>
-                                <a class="btn btn-lg  mt-2 text-white" asp-action="BookService" asp-route-id="@services.Id" style="background-color: #102c44;">
+                                <a class="btn btn-lg  mt-2 text-white" asp-action="BookService" asp-route-id="@services.Id,@services.Name" style="background-color: #102c44;">
                                     Book Now
                                 </a>
                             </div>
@@ -56,4 +56,5 @@
             }
         </div>
     </div>
+    </br>
 </body>
