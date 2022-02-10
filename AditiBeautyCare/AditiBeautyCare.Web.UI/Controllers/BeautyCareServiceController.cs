@@ -111,7 +111,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
         [HttpGet]
         public IActionResult BookService(int id)
         {         
-           var beautyCareServiceBookingModel = new Models.BeautyCareService.BeautyCareServiceBookingModel { Date = DateTime.Now.ToString("yyyy-MM-dd"), ServiceId = id };
+           var beautyCareServiceBookingModel = new Models.BeautyCareService.BeautyCareServiceBookingModel { Date = DateTime.Now.Date, ServiceId = id };
                 return View(beautyCareServiceBookingModel);
         }
 
@@ -154,7 +154,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
             List<UI.Models.BeautyCareService.BeautyCareServiceBookingModel> orderss = new List<UI.Models.BeautyCareService.BeautyCareServiceBookingModel>();
             foreach (var item in orders)
             {
-                orderss.Add(new Models.BeautyCareService.BeautyCareServiceBookingModel { Id = item.Id, UserName = item. UserName, UserEmail=item.UserEmail,Date=item.Date,Description=item.Description,UserMobileNumber=item.UserMobileNumber,From=item.From,To=item.To});
+                orderss.Add(new Models.BeautyCareService.BeautyCareServiceBookingModel { Id = item.Id, UserName = item. UserName, UserEmail=item.UserEmail,Date=item.Date,Description=item.Description,UserMobileNumber=item.UserMobileNumber,From=item.From,To=item.To,ServiceName=item.ServiceName});
             }
             ViewBag.nextPage = 2;
             ViewBag.PreviousPage = 0;
@@ -173,7 +173,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
             List<UI.Models.BeautyCareService.BeautyCareServiceBookingModel> orderss = new List<UI.Models.BeautyCareService.BeautyCareServiceBookingModel>();
             foreach (var item in orders)
             {
-                orderss.Add(new Models.BeautyCareService.BeautyCareServiceBookingModel { Id = item.Id, UserName = item.UserName, UserEmail = item.UserEmail, Date = item.Date, Description = item.Description, UserMobileNumber = item.UserMobileNumber, From = item.From, To = item.To });
+                orderss.Add(new Models.BeautyCareService.BeautyCareServiceBookingModel { Id = item.Id, UserName = item.UserName, UserEmail = item.UserEmail, Date = item.Date, Description = item.Description, UserMobileNumber = item.UserMobileNumber, From = item.From, To = item.To,ServiceName=item.ServiceName});
             }
             ViewBag.nextPage = pageIndex + 1;
             ViewBag.PreviousPage = pageIndex == 1 ? 1 : pageIndex - 1;

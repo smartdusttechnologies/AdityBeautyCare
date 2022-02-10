@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
 {
@@ -7,6 +8,11 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         #region Public Properties
         //public int property declared
         public int Id { get; set; }
+
+        /// <summary>
+        /// Beautycare Service Name 
+        /// </summary>
+        public string ServiceName { get; set; }
 
         /// <summary>
         /// Declaring ServiceId Property
@@ -29,7 +35,7 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// Declaring Date Property
         /// </summary>
         [Required]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// Declaring UserName Property
@@ -52,6 +58,8 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// Declaring Description Property
         /// </summary>
         public string Description { get; set; }
+
+      
         #endregion
     }
 }
