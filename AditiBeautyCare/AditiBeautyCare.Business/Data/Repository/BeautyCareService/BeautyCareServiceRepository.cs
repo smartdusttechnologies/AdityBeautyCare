@@ -145,7 +145,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         public IPagedList<BeautyCareServiceBookingModel> GetbookingPages(int pageIndex = 1, int pageSize = 10)
         {
             using IDbConnection db = _connectionFactory.GetConnection;
-            var query = db.QueryMultiple("SELECT COUNT(*) FROM [BeautyCareServicebooking] where IsDeleted=0;SELECT* FROM [BeautyCareServicebooking] where IsDeleted=0 ORDER BY Id desc OFFSET ((@PageNumber - 1) * @Rows) ROWS FETCH NEXT @Rows ROWS ONLY ; ", new { PageNumber = pageIndex, Rows = pageSize }, commandType: CommandType.Text);
+            var query = db.QueryMultiple("SELECT COUNT(*) FROM [BeautyCareServicebooking] where IsDeleted=0;SELECT BCSB.ServiceId,BCS.Name as ServiceName,BCSB.Id,BCSB.Date,BCSB.UserName,BCSB.UserMobileNumber,BCSB.[From],BCSB.[To],BCSB.UserEmail,BCSB.Description FROM [BeautyCareServicebooking] BCSB INNER JOIN [BeautyCareServices] BCS ON BCS.Id=BCSB.ServiceId where BCSB.IsDeleted=0 and BCS.IsDeleted=0 and Date>=GETDATE() ORDER BY Date asc");
             var row = query.Read<int>().First();
             var pageResult = query.Read<BeautyCareServiceBookingModel>().ToList();
             return new StaticPagedList<BeautyCareServiceBookingModel>(pageResult, pageIndex, pageSize, row);

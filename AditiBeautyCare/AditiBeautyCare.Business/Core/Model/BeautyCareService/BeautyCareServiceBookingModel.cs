@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
 {
@@ -13,6 +14,11 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         /// Declaring ServiceId Property
         /// </summary>
        public int ServiceId { get; set; }
+
+        /// <summary>
+        /// Beautycare Service Name 
+        /// </summary>
+       public string ServiceName { get; set; }
 
         /// <summary>
         /// Declaring From Property
@@ -30,7 +36,7 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         /// Declaring Date Property
         /// </summary>
         [Required]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// Declaring UserName Property
