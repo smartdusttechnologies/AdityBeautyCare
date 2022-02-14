@@ -4,6 +4,9 @@
     ViewData["Title"] = "Services";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +24,7 @@
     <!-- MDB -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         .form-group > label {
             top: 12px;
@@ -29,7 +33,7 @@
             background-color: white;
             padding: 0px 0px 0px 0px;
         }
-        </style>
+    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -38,6 +42,7 @@
             <div class="form-group">
                 <label for="Date">Booking Date:</label>
                 <input type="date" id="Date" class="form-control" name="Date" value="@Model.Date">
+
             </div>
             <div class="row mb-4">
                 <div class="col">
@@ -83,3 +88,4 @@
         </form>
     </div>
 </body>
+</html>

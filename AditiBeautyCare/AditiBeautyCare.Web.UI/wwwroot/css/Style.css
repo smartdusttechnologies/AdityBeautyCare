@@ -7,14 +7,34 @@
     padding: 0;
 }
 
-nav {
+/*.bg {
+    background-image: url("/Image/HomePageImage.jpg");
+    height: 750px;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+text {
+    text-align: center;
+    padding: 50px;
+    margin-top: 0px;
+    width: 390px;
+    color: #111;
+    background: transparent;
+    background-color: rgba(255, 255, 255, .2);
+    transform: translate(20%, 50%);
+}
+*/
+/*nav {
     display: flex;
     width: 100%;
     background-color: whitesmoke;
     position: relative;
     justify-content: space-between;
     text-align: center;
-    padding: 15px 30px;
+    padding: 15px 30px;*/
 }
 
     nav .icon {

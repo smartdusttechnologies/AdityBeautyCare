@@ -3,8 +3,10 @@ using AditiBeautyCare.Web.UI.Models;
 using AditiBeautyCare.Business.Core.Interfaces.BeautyCareService;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
+using AditiBeautyCare.Web.UI.Controllers;
 
-namespace AditiBeautyCare.Web.UI.Controllers
+
+namespace AditiBeautyCare.Web.UI.Common
 {
     /// <summary>
     /// Controllers Loads the Home Page Application
@@ -51,8 +53,8 @@ namespace AditiBeautyCare.Web.UI.Controllers
                 var getbussinessModel = new Business.Core.Model.BeautyCareService.EmailModel
                 {
                     Name = emailmodel.Name,
-                    Body = emailmodel.Body,
-                    EmailTo = emailmodel.EmailTo,
+                    Body = emailmodel.Message,
+                    EmailTo = emailmodel.Email,
                     Subject = emailmodel.Subject   
             };
                 _getInTouchService.Add(getbussinessModel);
@@ -60,10 +62,10 @@ namespace AditiBeautyCare.Web.UI.Controllers
             }      
              return  RedirectToAction("Index");
         }
-        
-        public IActionResult getintouch()
+        public IActionResult ContactUs()
         {
             return View();
         }
+        
     }
 }
