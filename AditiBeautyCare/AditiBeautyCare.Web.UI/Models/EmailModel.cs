@@ -19,7 +19,7 @@ namespace AditiBeautyCare.Web.UI.Models
         /// <summary>
         /// Declaring emailto property
         /// </summary>
-        public string EmailTo { get; set; }
+        public string Email { get; set; }
 
         /// <summary>
         /// declaring name property
@@ -34,6 +34,6 @@ namespace AditiBeautyCare.Web.UI.Models
         /// <summary>
         /// Declaring Body property
         /// </summary>
-        public string Body { get; set; }
+        public string Message { get; set; }
     }
 }

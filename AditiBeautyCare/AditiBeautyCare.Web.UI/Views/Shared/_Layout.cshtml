@@ -8,7 +8,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] AditiBeautyCare</title>
+    <title> AditiBeautyCare</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <script src="https://kit.fontawesome.com/23b93d01d8.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,7 +22,13 @@
     <script src="~/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/bootstrap.esm.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
+
+
     <style>
+        body {
+            font-family: 'Times New Roman';
+        }
+
         #footer {
             position: absolute;
             bottom: 0;
@@ -30,17 +36,24 @@
             height: 2.5rem; /* Footer height */
         }
 
-        .dropdown-item {
+        /* .dropdown-item {
             display: block;
             align-items: center;
             float: none;
-        }
+        }*/
 
-        .dropdown-menu a:hover {
+        /* .dropdown-menu a:hover {
             background-color: lightpink;
-        }
+        }*/
 
-        .dropdown {
+        /*nav ul li:hover a {
+            background-color: whitesmoke;
+            text-transform: uppercase;
+            color: black;
+        }*/
+
+
+        /*.dropdown {
             position: relative;
             display: inline-block;
         }
@@ -52,20 +65,25 @@
             min-width: 200px;
             box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
-        }
+        }*/
 
-        .dropdown-item a {
+        /*.dropdown-item a {
             color: blue;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
         }
 
-
-
         .dropdown:hover .dropdown-menu {
             display: block;
-        }
+        }*/
+        /*
+        .nav .active {
+            color: red;
+            background-color:blue;
+        }*/
+
+
     </style>
 </head>
 <body>
@@ -81,41 +99,49 @@
                 <input type="search" placeholder="Search" />
                 <span class="fa fa-search"></span>
             </div>
-            <ul class="navbar-nav mr-5 ml-4">
+            <ul class="navbar-nav ml-5 ml-5 flex-grow-5 align-items-center">
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="Index">Home<span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
+                <li class="nav-item @Html.ActiveClass("Home", "Index")">
+                    <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Onine
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="home/product">Product</a>
-                        <a class="dropdown-item" href="#">Services</a>
-                        <a class="dropdown-item" href="#">Book Slot</a>
-                        <a class="dropdown-item" asp-area="" asp-action="PlanPricing" asp-controller="Home">Plan & Pricing</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                <li class="nav-item @Html.ActiveClass("BeautyCareService", "adminDashboard")">
+                    <a class="nav-link" asp-action="adminDashboard" asp-controller="BeautyCareService">Dashboard</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Get In Touch
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Link1</a>
-                        <a class="dropdown-item" href="#">Link 2</a>
-                        <a class="dropdown-item" href="#">Link 3</a>
-                    </div>
+                <li class="nav-item @Html.ActiveClass("BeautyCareService", "Index")">
+                    <a class="nav-link " asp-action="Index" asp-controller="BeautyCareService">Services</a>
                 </li>
+
+                @*<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Onine
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="home/product">Product</a>
+                            <a class="dropdown-item" href="home/services">Services</a>
+                            <a class="dropdown-item" href="#">Book Slot</a>
+                            <a class="dropdown-item" asp-area="" asp-action="PlanPricing" asp-controller="Home">Plan & Pricing</a>
+                        </div>
+                    </li>*@
+                <li class="nav-item @Html.ActiveClass("Home", "AboutUs")">
+                    <a class="nav-link " href="#">About Us</a>
+                </li>
+                <!--Coommented the dropdown below -->
+                <li class="nav-item @Html.ActiveClass("GetInTouch", "Home")">
+                    <a class="nav-link" asp-action="ContactUs" asp-controller="Home">Get In Touch</a>
+                </li>
+
+                @*<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Get In Touch
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Link1</a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
+                    </li>*@
                 <li class="nav-link"><a href="#" class="fas fa-user-circle "></a></li>
                 <li class="nav-link"><a href="#" class="fa fa-shopping-cart"></a></li>
             </ul>
@@ -211,4 +237,5 @@
         </div>
     </div>
 </body>
+
 </html>
