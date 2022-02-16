@@ -66,10 +66,11 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ServiceName)
+                            @Html.DisplayFor(modelItem => item.ServiceName) 
                         </td>
+                      
                         <td>
                             @Html.DisplayFor(modelItem => item.From)
                         </td>
@@ -96,7 +97,7 @@
                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                             <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         </td>*@
-                    </tr>
+                    </tr> 
                 }
             </tbody>
         </table>
@@ -104,6 +105,13 @@
     <br />
   <script type="text/javascript">
     $('#myTable').DataTable();
+</script>
+
+
+<script>
+    $('#myTable').on('click', 'tbody tr', function() {
+  window.location.href = $(this).data('href');
+});
 </script>
 </body>
 
