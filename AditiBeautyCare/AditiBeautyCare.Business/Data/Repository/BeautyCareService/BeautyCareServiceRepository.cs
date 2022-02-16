@@ -55,7 +55,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         public IPagedList<BeautyCareServiceModel> GetPages(int pageIndex = 1, int pageSize = 10)
         {
             using IDbConnection db = _connectionFactory.GetConnection;
-            var query = db.QueryMultiple("SELECT COUNT(*) FROM [BeautyCareServices] where IsDeleted=0;SELECT* FROM [BeautyCareServices] where IsDeleted=0 ORDER BY Id desc OFFSET ((@PageNumber - 1) * @Rows) ROWS FETCH NEXT @Rows ROWS ONLY", new { PageNumber = pageIndex, Rows = pageSize }, commandType: CommandType.Text);
+            var query = db.QueryMultiple("SELECT COUNT(*) FROM [BeautyCareServices] where IsDeleted=0;SELECT* FROM [BeautyCareServices] where IsDeleted=0 ORDER BY Id desc");
             var row = query.Read<int>().First();
             var pageResult = query.Read<BeautyCareServiceModel>().ToList();
             return new StaticPagedList<BeautyCareServiceModel>(pageResult, pageIndex, pageSize, row);
