@@ -85,7 +85,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("")]
+        
         public ActionResult adminAddService([Bind] Models.BeautyCareService.BeautyCareServiceModel addservice)
         {
             if (ModelState.IsValid)
