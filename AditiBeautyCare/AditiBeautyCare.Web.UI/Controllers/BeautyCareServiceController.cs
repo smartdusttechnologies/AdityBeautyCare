@@ -85,6 +85,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("")]
         public ActionResult adminAddService([Bind] Models.BeautyCareService.BeautyCareServiceModel addservice)
         {
             if (ModelState.IsValid)
@@ -98,7 +99,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
                    Price = addservice.Price
                 };
                 _beautyCareService.Add(beautyCareServicebussinessModel);
-
+               
             }
             return RedirectToAction("Index");
         }
@@ -109,9 +110,9 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult BookService(int id)
+        public IActionResult BookService(int id, string serviceName)
         {         
-           var beautyCareServiceBookingModel = new Models.BeautyCareService.BeautyCareServiceBookingModel { Date = DateTime.Now.Date, ServiceId = id };
+           var beautyCareServiceBookingModel = new Models.BeautyCareService.BeautyCareServiceBookingModel { Date = DateTime.Now.Date, ServiceId = id, ServiceName=serviceName };
                 return View(beautyCareServiceBookingModel);
         }
 
@@ -138,9 +139,10 @@ namespace AditiBeautyCare.Web.UI.Controllers
                     To = booking.To
                 };
                 _beautyCareService.Add(beautyCareServicebussinessModel);
+                return RedirectToAction("Index");
 
             }
-            return RedirectToAction("Index");
+            return View(booking);
         }
 
         /// <summary>

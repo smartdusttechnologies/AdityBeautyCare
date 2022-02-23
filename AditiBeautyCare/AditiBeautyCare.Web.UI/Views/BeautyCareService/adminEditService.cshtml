@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "adminEditService";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
     <title>Bootstrap Example</title>
@@ -12,7 +13,7 @@
 </head>
 <body>
     <div class="container">
-        <form  asp-action="adminEditService">
+        <form  asp-action="adminEditService" method="get">
             <div class="row">
                 <div class="col">
                     <label class="form-label">Booking ID</label>

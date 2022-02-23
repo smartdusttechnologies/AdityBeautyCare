@@ -52,14 +52,19 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// <summary>
         /// Declaring UserMobileNumber Property
         /// </summary>
+        //[Required(ErrorMessage = "Required 10Digit ")]
+        //[RegularExpression(@"^(\d{10})$", ErrorMessage = "Less than 10Digit ")]
+        //[Display (Name="userMobileNumber")]
+        [Required(ErrorMessage = "Please Fill 10 Digit No.")]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Please Fill 10 Digit ") ]
+
         public string UserMobileNumber { get; set; }
 
         /// <summary>
         /// Declaring Description Property
         /// </summary>
         public string Description { get; set; }
-
-      
+           
         #endregion
     }
 }

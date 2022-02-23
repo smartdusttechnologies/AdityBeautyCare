@@ -1,9 +1,10 @@
 ﻿@model AditiBeautyCare.Web.UI.Models.BeautyCareService.BeautyCareServiceBookingModel
 
-@{
-    ViewData["Title"] = "Services";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    @{
+        ViewData["Title"] = "Services";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +22,8 @@
     <!-- MDB -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>
         .form-group > label {
             top: 12px;
@@ -29,16 +32,39 @@
             background-color: white;
             padding: 0px 0px 0px 0px;
         }
-        </style>
+    </style>
+    <script></script>
+    <script>
+        $('#from').datetimepicker({
+            timepicker: true,
+            datepicker: false,
+            format: 'H:i',
+            value: '09.00',
+            hours12: false,
+            step: 5,
+            allowTimes: ['09.00', '09.15', '09.30', '09.45',
+                '10.00', '10.15', '10.30', '10.45',
+                '11.00', '11.15', '11.30', '11.45',
+                '12.00', '12.15', '12.30', '12.45',
+                '13.00', '13.15', '13.30', '13.45',
+                '14.00', '14.15', '14.30', '14.45',
+                '15.00', '15.15', '15.30', '15.45',
+                '16.00', '16.15', '16.30', '16.45',
+                '17.00', '17.15', '17.30', '17.45',
+                '18.00', '18.15', '18.30', '18.45',
+                '19.00', '19.15', '19.30']
+        })
+    </script>
 </head>
 <body>
     <div class="container mt-5">
-        <H2>Service Booking</H2>
-        
+        <H2>Service Booking  :  <input type="text" asp-for="ServiceName" id="ServiceId" name="ServiceId" /></H2>
+
         <form _lpchecked="1" asp-controller="BeautyCareService" asp-action="BookService">
             <input type="hidden" asp-for="ServiceId" id="ServiceId" name="ServiceId" />
+            @*<input type="text" asp-for="ServiceName" id="ServiceId" name="ServiceId" />*@
             <div class="form-group">
-                <label for="Date">Booking Date:</label>
+                <label for="Date">Booking Date</label>
                 <input type="date" id="Date" class="form-control" name="Date" value="@Model.Date">
             </div>
             <div class="row mb-4">
@@ -70,10 +96,16 @@
             </div>
             <!-- Number input -->
             <div class="form-outline mb-4">
-                <input type="number" id="UserMobileNumber" name="UserMobileNumber" class="form-control" required>
-                <label class="form-label" for="UserMobileNumber" style="margin-left: 0px;">Phone*</label>
+
+                <input type="tel" id="UserMobileNumber" name="UserMobileNumber" placeholder="10 digit mobile no." class="form-control" maxlength="10" required>
+
+                <label class="form-label" for="UserMobileNumber" style="margin-left: 0px; ">Phone*</label>
+
                 <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 44.8px;"></div><div class="form-notch-trailing"></div></div>
+
             </div>
+            @Html.ValidationMessageFor(model => model.UserMobileNumber)
+
             <!-- Message input -->
             <div class="form-outline mb-4">
                 <textarea class="form-control" id="Description" name="Description" rows="4"></textarea>
@@ -82,7 +114,16 @@
             </div>
             <!-- Submit button -->
             <button type="submit" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Book Service</button>
-              <a asp-action="Index" class="btn btn-primary" style="background-color: #102c44;">Back to List</a>
+            <a asp-action="Index" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Back to List</a>
+
         </form>
-    </div>
+
+        <p> @ViewBag.Message</p>
+
+    </div><br />
+    <br />
+
+    
 </body>
+
+</html>

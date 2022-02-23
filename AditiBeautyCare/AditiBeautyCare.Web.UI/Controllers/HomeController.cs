@@ -54,7 +54,7 @@ namespace AditiBeautyCare.Web.UI.Common
                 {
                     Name = emailmodel.Name,
                     Body = emailmodel.Message,
-                    EmailTo = emailmodel.Email,
+                    EmailTo = emailmodel.EmailTo,
                     Subject = emailmodel.Subject
                 };
                 _getInTouchService.Add(getbussinessModel);
