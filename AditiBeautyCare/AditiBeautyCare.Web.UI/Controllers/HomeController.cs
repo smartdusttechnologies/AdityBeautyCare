@@ -53,7 +53,7 @@ namespace AditiBeautyCare.Web.UI.Common
                 var getbussinessModel = new Business.Core.Model.BeautyCareService.EmailModel
                 {
                     Name = emailmodel.Name,
-                    Body = emailmodel.Message,
+                    Message = emailmodel.Message,
                     EmailTo = emailmodel.EmailTo,
                     Subject = emailmodel.Subject
                 };

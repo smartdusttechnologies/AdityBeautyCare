@@ -139,6 +139,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
                     To = booking.To
                 };
                 _beautyCareService.Add(beautyCareServicebussinessModel);
+                
                 return RedirectToAction("Index");
 
             }
