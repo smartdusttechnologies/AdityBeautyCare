@@ -83,5 +83,11 @@ namespace AditiBeautyCare.Business.Core.Interfaces.BeautyCareService
         /// <param name="beautyCareServicebooking"></param>
         /// <returns></returns>
         RequestResult<int> Updatebooking(int id, BeautyCareServiceBookingModel beautyCareServicebooking);
+        
+
+
+        bool Delete(int id);
+
+       
     }
 }

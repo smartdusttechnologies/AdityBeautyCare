@@ -12,7 +12,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
     /// <summary>
     /// Connection between Database using ISampleRepository we Establing a connection
     /// </summary>
-    public class BeautyCareRepository:IBeautyCareServiceRepository
+    public class BeautyCareRepository : IBeautyCareServiceRepository
     {
         private readonly IConnectionFactory _connectionFactory;
         #region Public Methods
@@ -28,7 +28,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         /// fetching data from database using Get method
         /// </summary>
         /// <returns></returns>
-        
+
         public List<BeautyCareServiceModel> Get()
         {
             using IDbConnection db = _connectionFactory.GetConnection;
@@ -39,7 +39,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        
+
         public BeautyCareServiceModel Get(int id)
         {
             using IDbConnection db = _connectionFactory.GetConnection;
@@ -51,7 +51,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        
+
         public IPagedList<BeautyCareServiceModel> GetPages(int pageIndex = 1, int pageSize = 10)
         {
             using IDbConnection db = _connectionFactory.GetConnection;
@@ -171,7 +171,15 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
             using IDbConnection db = _connectionFactory.GetConnection;
             return db.Execute(query, beautyCareservicebooking);
         }
-
+        public bool Delete(int id)
+        {
+            string query = @"update [New] Set 
+                                IsDeleted = @IsDeleted
+                            Where Id = @Id and  Id=@id ";
+            using IDbConnection db = _connectionFactory.GetConnection;
+            db.Execute(query, new { IsDeleted = true, Id = id });
+            return true;
+        }
         #endregion
     }
 

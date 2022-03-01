@@ -14,31 +14,17 @@
             font-family: 'Times New Roman';
         }
     </style>
-    @*<script>
-var page=1;
-window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-           ifrm = document.createElement("IFRAME");
-        ifrm.setAttribute("src", page+".html");
-        ifrm.style.width = 100+"%";
-        ifrm.style.height = 800+"px";
-        document.body.appendChild(ifrm);
-        page++
-    }
-};
-    </script>*@
-    @*<script>
-        function passvalues(Name)
-        {
-            /*document.getElementById("servname").value = Name;*/
-            var name = document.getElementById("servname").value;
-            
-            localStorage.setItem("model.name", name);
-            return false;
-        }
-    </script>*@
+   
 </head>
 <body>
+
+    @if (ViewBag.IsSuccess != null && ViewBag.IsSuccess)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations!</strong> Your Booking is successful
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
     <div class="text-center mt-4">
         <h1> OUR SERVICES </h1>
     </div>
@@ -50,16 +36,16 @@ window.onscroll = function(ev) {
                 <div class="col-sm-4">
                     <div class="container mt-3">
                         <div class="card">
-                            <img src="~/Image/@services.ImageUrl" alt="@services.Description" height="300px" >
+                            <img src="~/Image/@services.ImageUrl" alt="@services.Description" height="300px">
                             <div class="m-3">
                                 <h3 hidden>Service ID:@services.Id</h3>
                                 <h3>Service Name:@services.Name</h3>
                                 <h5>Duration:@services.Duration</h5>
                                 <h5>Price: @services.Price</h5>
-                                <a class="btn btn-lg  mt-2 text-white"  href="@Url.Action("BookService","BeautyCareService",new { Id =@services.Id,ServiceName=@services.Name})" style="background-color: #102c44;">
+                                <a class="btn btn-lg  mt-2 text-white" href="@Url.Action("BookService","BeautyCareService",new { Id =@services.Id,ServiceName=@services.Name})" style="background-color: #102c44;">
                                     Book Now
                                 </a>
-                                
+
                             </div>
                         </div>
                     </div>

@@ -15,60 +15,49 @@
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="adminAddService" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+        <h2 style="align-items:center; color:lightslategray">Add New Service</h2><br />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="adminAddService" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control" />
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Price" class="control-label"></label>
-                    <input asp-for="Price" class="form-control" />
-                    <span asp-validation-for="Price" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Duration" class="control-label"></label>
-                    <input asp-for="Duration" class="form-control" />
-                    <span asp-validation-for="Duration" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ImageUrl" class="control-label"></label>
-                    <input type="file" id="file" asp-for="ImageUrl" class="form-control" />
-                    <p id="output"></p>
-                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            </form>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Duration" class="control-label"></label>
+                        <input asp-for="Duration" class="form-control" />
+                        <span asp-validation-for="Duration" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageUrl" class="control-label"></label>
+                        <input type="file" id="file" asp-for="ImageUrl" class="form-control" />
+                        <p id="output"></p>
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
         </div>
     </div>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-    <script type="text/javascript">
-        $('#file').on('change', function () {
-
-            const size =
-                (this.files[0].size / 1024 / 1024).toFixed(2);
-
-            if (size > 4 || size < 2) {
-                alert("File must be between the size of 2-4 MB");
-            } else {
-                $("#output").html('<b>' +
-                    'This file size is: ' + size + " MB" + '</b>');
-            }
-        });
-    </script>
 </body>
 </html>
