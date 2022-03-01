@@ -256,7 +256,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
             }
             return RedirectToAction("adminDashboard");
         }
-
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -284,8 +284,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
             return View(beautyCareServiceUIModel);
         }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult DeleteConfirmed(int? id)
         {
             if (id == null)
@@ -293,7 +292,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
                 return NotFound();
             }
             _beautyCareService.Delete((int)id);
-            return RedirectToAction("Index");
+            return RedirectToAction("adminDashboard");
         }
     }
     

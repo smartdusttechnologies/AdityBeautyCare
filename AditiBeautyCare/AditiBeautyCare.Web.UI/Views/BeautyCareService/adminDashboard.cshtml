@@ -11,12 +11,17 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
     <link href="https://kit.fontawesome.com/23b93d01d8.js" rel="stylesheet">
+  
+  
 </head>
 <style>
     #rowdata {
         cursor: pointer;
         
     }
+    tr:hover {
+  background-color: yellow;
+}
 </style>
 <body>
     <div class="container mt-3 mb-3">
@@ -57,7 +62,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr class="clickable-row" id="rowdata" data-href="adminEditService/@item.Id" >
+                    <tr @*class="clickable-row" id="rowdata" data-href="adminEditService/@item.Id"*@ >
                         <td>
                             @Html.DisplayFor(modelItem => item.ServiceName)
                         </td>
@@ -83,18 +88,14 @@
                                 @Html.DisplayFor(modelItem => item.Description)
                             </td>*@
                         <td>
-                           
-                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+                             <a asp-action="DeleteConfirmed" asp-route-id="@item.Id" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-    <br />
-    <script type="text/javascript">
-        $('#myTable').DataTable();
-    </script>
+   
     <script>
         jQuery(document).ready(function ($) {
             $(".clickable-row").click(function () {
