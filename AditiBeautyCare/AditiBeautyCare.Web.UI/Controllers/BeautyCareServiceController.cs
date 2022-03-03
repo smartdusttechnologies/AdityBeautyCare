@@ -44,6 +44,8 @@ namespace AditiBeautyCare.Web.UI.Controllers
             }
             ViewBag.nextPage = 2;
             ViewBag.PreviousPage = 0;
+            ViewBag.IsSuccess = TempData["IsTrue"] != null ? TempData["IsTrue"] : false;
+            
             return View(servicess.AsEnumerable());
         }
 
@@ -85,6 +87,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public ActionResult adminAddService([Bind] Models.BeautyCareService.BeautyCareServiceModel addservice)
         {
             if (ModelState.IsValid)
@@ -98,7 +101,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
                    Price = addservice.Price
                 };
                 _beautyCareService.Add(beautyCareServicebussinessModel);
-
+               
             }
             return RedirectToAction("Index");
         }
@@ -109,9 +112,9 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult BookService(int id)
+        public IActionResult BookService(int id, string serviceName)
         {         
-           var beautyCareServiceBookingModel = new Models.BeautyCareService.BeautyCareServiceBookingModel { Date = DateTime.Now.Date, ServiceId = id };
+           var beautyCareServiceBookingModel = new Models.BeautyCareService.BeautyCareServiceBookingModel { Date = DateTime.Now.Date, ServiceId = id, ServiceName=serviceName };
                 return View(beautyCareServiceBookingModel);
         }
 
@@ -138,10 +141,16 @@ namespace AditiBeautyCare.Web.UI.Controllers
                     To = booking.To
                 };
                 _beautyCareService.Add(beautyCareServicebussinessModel);
+                //ViewBag.isucesssa = Isucesss;
+                TempData["IsTrue"] = true;
+
+                return RedirectToAction("Index");
 
             }
-            return RedirectToAction("Index");
+           
+            return View(booking);
         }
+
 
         /// <summary>
         /// For admin dashboard  it will load the view 
@@ -173,7 +182,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
             List<UI.Models.BeautyCareService.BeautyCareServiceBookingModel> orderss = new List<UI.Models.BeautyCareService.BeautyCareServiceBookingModel>();
             foreach (var item in orders)
             {
-                orderss.Add(new Models.BeautyCareService.BeautyCareServiceBookingModel { Id = item.Id, UserName = item.UserName, UserEmail = item.UserEmail, Date = item.Date, Description = item.Description, UserMobileNumber = item.UserMobileNumber, From = item.From, To = item.To,ServiceName=item.ServiceName});
+                orderss.Add(new Models.BeautyCareService.BeautyCareServiceBookingModel { Id = item.Id, UserName = item.UserName, UserEmail = item.UserEmail, Date = item.Date, Description = item.Description, UserMobileNumber = item.UserMobileNumber, From = item.From, To = item.To, ServiceName = item.ServiceName });
             }
             ViewBag.nextPage = pageIndex + 1;
             ViewBag.PreviousPage = pageIndex == 1 ? 1 : pageIndex - 1;
@@ -247,5 +256,44 @@ namespace AditiBeautyCare.Web.UI.Controllers
             }
             return RedirectToAction("adminDashboard");
         }
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var orders = _beautyCareService.Getbooking((int)id);
+            if (orders == null)
+            {
+                return NotFound();
+            }
+            var beautyCareServiceUIModel = new Models.BeautyCareService.BeautyCareServiceBookingModel
+            {
+                Id = orders.Id,
+                UserName = orders.UserName,
+                UserEmail = orders.UserEmail,
+                Date = orders.Date,
+                Description = orders.Description,
+                UserMobileNumber = orders.UserMobileNumber,
+                From = orders.From,
+                To = orders.To,
+                ServiceId = orders.ServiceId,
+                ServiceName = orders.ServiceName
+            };
+            return View(beautyCareServiceUIModel);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteConfirmed(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            _beautyCareService.Delete((int)id);
+            return RedirectToAction("adminDashboard");
+        }
     }
+    
 }

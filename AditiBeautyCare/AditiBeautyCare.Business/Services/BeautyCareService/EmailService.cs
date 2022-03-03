@@ -42,7 +42,7 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
             using (MailMessage mm = new MailMessage(fromAddress, emailModel.EmailTo))
             {
                 mm.Subject = emailModel.Subject;
-                mm.Body = emailModel.Body;
+                mm.Body = emailModel.Message;
 
 
                 mm.IsBodyHtml = false;

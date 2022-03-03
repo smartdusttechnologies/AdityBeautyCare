@@ -29,7 +29,7 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         /// Declaring Body property
         /// </summary>
         [Required]
-        public string Body { get; set; }
+        public string Message { get; set; }
     }
 }
 

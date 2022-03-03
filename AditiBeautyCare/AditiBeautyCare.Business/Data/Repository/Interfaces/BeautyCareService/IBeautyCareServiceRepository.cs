@@ -21,10 +21,10 @@ namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
         /// <returns></returns>
         BeautyCareServiceModel Get(int id);
 
-        /// <summary>
-        /// Implimenting Interface for GetPages method in BeautyCareServiceRepository
-        /// </summary>
-        /// <returns></returns>
+        ///// <summary>
+        ///// Implimenting Interface for GetPages method in BeautyCareServiceRepository
+        ///// </summary>
+        ///// <returns></returns>
         IPagedList<BeautyCareServiceModel> GetPages(int pageIndex = 1, int pageSize = 10);
 
         /// <summary>
@@ -63,10 +63,10 @@ namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
         /// <returns></returns>
         BeautyCareServiceBookingModel Getbooking(int id);
 
-        /// <summary>
-        /// Implimenting Interface for Getbookingpages method in BeautyCareServiceRepository
-        /// </summary>
-        /// <returns></returns>
+        ///// <summary>
+        ///// Implimenting Interface for Getbookingpages method in BeautyCareServiceRepository
+        ///// </summary>
+        ///// <returns></returns>
         IPagedList<BeautyCareServiceBookingModel> GetbookingPages(int pageIndex = 1, int pageSize = 10);
 
         /// <summary>
@@ -74,6 +74,8 @@ namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
         /// </summary>
         /// <returns></returns>
         int Updatebooking(BeautyCareServiceBookingModel beautycareServices);
-       
+
+        bool Delete(int id);
+
     }
 }
