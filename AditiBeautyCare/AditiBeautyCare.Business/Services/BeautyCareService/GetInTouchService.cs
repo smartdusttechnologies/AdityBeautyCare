@@ -29,15 +29,14 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
         /// </summary>
         /// <param name="emailmodel"></param>
         /// <returns></returns>
-        public RequestResult<int> Add(EmailModel emailmodel)
+        public RequestResult<bool> Add(EmailModel emailmodel)
         {
-            var isemailsendsuccessfully = _emailservice.Sendemail(emailmodel);
-            if (isemailsendsuccessfully)
+            var status = _getInTouchRepository.Insert(emailmodel);
+            if (status)
             {
-                _getInTouchRepository.Insert(emailmodel);
-                return new RequestResult<int>(1);
+                return new RequestResult<bool>(true);
             }
-            return new RequestResult<int>(0);
+            return new RequestResult<bool>(false);
         }
 
         /// <summary>

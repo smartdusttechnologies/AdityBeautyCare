@@ -94,26 +94,35 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         /// <param name="beautyCareService"></param>
         /// <returns></returns>
 
-        public int Insert(BeautyCareServiceBookingModel beautyCareService)
+        //public int Insert(BeautyCareServiceBookingModel beautyCareService)
+        //{
+        //    string query = @"Insert into [BeautyCareServiceBooking](ServiceId,UserName,UserEmail,Date,[From],[To],UserMobileNumber, Description) 
+        //        values (@ServiceId,@UserName,@UserEmail,@Date,@From,@To,@UserMobileNumber,@Description)";
+        //    using IDbConnection db = _connectionFactory.GetConnection;
+        //   // return db.Execute(query, beautyCareService);
+        //    
+        //}
+        public bool Insert(BeautyCareServiceBookingModel beautyCareServiceBooking)
         {
             string query = @"Insert into [BeautyCareServiceBooking](ServiceId,UserName,UserEmail,Date,[From],[To],UserMobileNumber, Description) 
-                values (@ServiceId,@UserName,@UserEmail,@Date,@From,@To,@UserMobileNumber,@Description)";
+              values (@ServiceId,@UserName,@UserEmail,@Date,@From,@To,@UserMobileNumber,@Description)";
             using IDbConnection db = _connectionFactory.GetConnection;
-            return db.Execute(query, beautyCareService);
-        }
+            var status = db.Execute(query, beautyCareServiceBooking);
 
+            return status > 0 ? true : false;
+        }
         /// <summary>
         /// Inserting data to collection
         /// </summary>
         /// <param name="beautyCareService"></param>
         /// <returns></returns>
-        public int InsertCollection(List<BeautyCareServiceBookingModel> beautyCareService)
-        {
-            string query = @"Insert into [BeautyCareServiceBooking](ServiceId,UserName,UserEmail,Date,From,To,UserMobileNumber,Description) 
-                values (@ServiceId,@UserName,@UserEmail,@Date,@From,@To,@UserMobileNumber, @Description)";
-            using IDbConnection db = _connectionFactory.GetConnection;
-            return db.Execute(query, beautyCareService);
-        }
+        //public int InsertCollection(List<BeautyCareServiceBookingModel> beautyCareService)
+        //{
+        //    string query = @"Insert into [BeautyCareServiceBooking](ServiceId,UserName,UserEmail,Date,From,To,UserMobileNumber,Description) 
+        //        values (@ServiceId,@UserName,@UserEmail,@Date,@From,@To,@UserMobileNumber, @Description)";
+        //    using IDbConnection db = _connectionFactory.GetConnection;
+        //    return db.Execute(query, beautyCareService);
+        //}
 
         /// <summary>
         /// Getting Booking from database

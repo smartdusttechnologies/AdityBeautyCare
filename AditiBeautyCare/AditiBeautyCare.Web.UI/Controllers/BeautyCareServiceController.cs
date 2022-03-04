@@ -1,4 +1,5 @@
 ﻿using AditiBeautyCare.Business.Core.Interfaces.BeautyCareService;
+using AditiBeautyCare.Business.Core.Model.BeautyCareService;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -16,18 +17,19 @@ namespace AditiBeautyCare.Web.UI.Controllers
         private readonly ILogger<BeautyCareServiceController> _logger;
         private readonly IBeautyCareService _beautyCareService;
         private readonly IWebHostEnvironment _hostingEnvironment;
-
+        private readonly IEmailService _emailservice;
         /// <summary>
         /// Declaring the variables for establing connection
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="beautyCareService"></param>
         /// <param name="hostingEnvironment"></param>
-        public BeautyCareServiceController(ILogger<BeautyCareServiceController> logger, IBeautyCareService beautyCareService, IWebHostEnvironment hostingEnvironment)
+        public BeautyCareServiceController(ILogger<BeautyCareServiceController> logger, IBeautyCareService beautyCareService, IWebHostEnvironment hostingEnvironment, IEmailService emailservice)
         {
             _logger = logger;
             _beautyCareService = beautyCareService;
             _hostingEnvironment = hostingEnvironment;
+            _emailservice = emailservice;
         }
 
         /// <summary>
@@ -123,13 +125,40 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        /// [HttpPost]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult  BookService([Bind] Models.BeautyCareService.BeautyCareServiceBookingModel booking)
+        //public ActionResult  BookService([Bind] Models.BeautyCareService.BeautyCareServiceBookingModel booking)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var beautyCareServicebussinessModel = new Business.Core.Model.BeautyCareService.BeautyCareServiceBookingModel
+        //        {
+        //            ServiceId = booking.ServiceId,
+        //            UserName = booking.UserName,
+        //            Description = booking.Description,
+        //            UserEmail = booking.UserEmail,
+        //            UserMobileNumber = booking.UserMobileNumber,
+        //            Date = booking.Date,
+        //            From = booking.From,
+        //            To = booking.To
+        //        };
+        //        _beautyCareService.Add(beautyCareServicebussinessModel);
+        //        //ViewBag.isucesssa = Isucesss;
+        //        TempData["IsTrue"] = true;
+
+        //        return RedirectToAction("Index");
+
+        //    }
+
+        //    return View(booking);
+        //}
+
+        public IActionResult BookService([Bind] Models.BeautyCareService.BeautyCareServiceBookingModel booking)
         {
             if (ModelState.IsValid)
             {
-                var beautyCareServicebussinessModel = new Business.Core.Model.BeautyCareService.BeautyCareServiceBookingModel
+                var beautyCareServiceBookingModel  = new Business.Core.Model.BeautyCareService.BeautyCareServiceBookingModel
                 {
                     ServiceId = booking.ServiceId,
                     UserName = booking.UserName,
@@ -140,18 +169,30 @@ namespace AditiBeautyCare.Web.UI.Controllers
                     From = booking.From,
                     To = booking.To
                 };
-                _beautyCareService.Add(beautyCareServicebussinessModel);
-                //ViewBag.isucesssa = Isucesss;
+
+                var result = _beautyCareService.Add(beautyCareServiceBookingModel);
+              
+                if (result.IsSuccessful)
+                {
+                    var emailModel = new Business.Core.Model.BeautyCareService.EmailModel
+                    {
+                        EmailTo = beautyCareServiceBookingModel.UserEmail,
+                        Name = beautyCareServiceBookingModel.UserName,
+                        Subject = "Service Booking confirmation : " + beautyCareServiceBookingModel.ServiceName,
+                        Message = beautyCareServiceBookingModel.Description
+                    };
+                    var isemailsendsuccessfully = _emailservice.Sendemail(emailModel);
+                    if (isemailsendsuccessfully)
+                    {
+                        ViewBag.Message = "Email Sent Successfully";
+                    }
+                }
                 TempData["IsTrue"] = true;
-
                 return RedirectToAction("Index");
-
             }
-           
-            return View(booking);
+            ViewBag.Message = "Unable to Process the request. Please contact administarator";
+            return View();
         }
-
-
         /// <summary>
         /// For admin dashboard  it will load the view 
         /// </summary>

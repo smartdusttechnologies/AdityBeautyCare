@@ -82,22 +82,30 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
         /// </summary>
         /// <param name="beautyCareService"></param>
         /// <returns></returns>
-        public RequestResult<int> Add(BeautyCareServiceBookingModel beautyCareService)
+        //public RequestResult<int> Add(BeautyCareServiceBookingModel beautyCareService)
+        //{
+        //    _beautyCareServiceRepository.Insert(beautyCareService);
+        //    return new RequestResult<int>(1);
+        //}
+        public RequestResult<bool> Add(BeautyCareServiceBookingModel beautyCareService)
         {
-            _beautyCareServiceRepository.Insert(beautyCareService);
-            return new RequestResult<int>(1);
+            var status = _beautyCareServiceRepository.Insert(beautyCareService);
+            if (status)
+            {
+                return new RequestResult<bool>(true);
+            }
+            return new RequestResult<bool>(false);
         }
-
         /// <summary>
         /// implimented beautycare service interfaces
         /// </summary>
         /// <param name="beautyCareService"></param>
         /// <returns></returns>
-        public RequestResult<int> AddCollection(List<BeautyCareServiceBookingModel> beautyCareService)
-        {
-            _beautyCareServiceRepository.InsertCollection(beautyCareService);
-            return new RequestResult<int>(1);
-        }
+        //public RequestResult<int> AddCollection(List<BeautyCareServiceBookingModel> beautyCareService)
+        //{
+        //    _beautyCareServiceRepository.InsertCollection(beautyCareService);
+        //    return new RequestResult<int>(1);
+        //}
 
         /// <summary>
         /// implimented beautycare service interfaces

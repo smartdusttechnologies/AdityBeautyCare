@@ -19,8 +19,8 @@
         cursor: pointer;
         
     }
-    tr:hover {
-  background-color: yellow;
+    .heighlet:hover {
+  background-color: #FFB6C1;
 }
 </style>
 <body>
@@ -62,7 +62,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr @*class="clickable-row" id="rowdata" data-href="adminEditService/@item.Id"*@ >
+                    <tr class="clickable-row heighlet" id="rowdata" data-href="adminEditService/@item.Id" >
                         <td>
                             @Html.DisplayFor(modelItem => item.ServiceName)
                         </td>
@@ -88,7 +88,7 @@
                                 @Html.DisplayFor(modelItem => item.Description)
                             </td>*@
                         <td>
-                             <a asp-action="DeleteConfirmed" asp-route-id="@item.Id" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></a>
+                             <button asp-action="DeleteConfirmed" asp-route-id="@item.Id" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
                 }

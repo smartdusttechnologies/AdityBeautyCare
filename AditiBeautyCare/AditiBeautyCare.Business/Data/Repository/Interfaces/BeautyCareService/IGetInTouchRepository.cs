@@ -13,13 +13,13 @@ namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
         /// </summary>
         /// <param name="mailsend"></param>
         /// <returns></returns>
-        int Insert(EmailModel mailsend);
+        bool Insert(EmailModel mailsend);
 
         /// <summary>
         /// Implimenting Interface for Insertcollection method in GetInTouchRepository
         /// </summary>
         /// <param name="mailsend"></param>
         /// <returns></returns>
-        int InsertCollection(List<EmailModel> mailsend);
+        //bool InsertCollection(List<EmailModel> mailsend);
     }
 }

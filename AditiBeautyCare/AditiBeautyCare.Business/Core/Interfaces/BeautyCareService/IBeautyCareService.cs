@@ -47,14 +47,14 @@ namespace AditiBeautyCare.Business.Core.Interfaces.BeautyCareService
         /// </summary>
         /// <param name="beautyCareService"></param>
         /// <returns></returns>
-        RequestResult<int> Add(BeautyCareServiceBookingModel beautyCareService);
+        RequestResult<bool> Add(BeautyCareServiceBookingModel beautyCareService);
 
         /// <summary>
         /// implimenting add collection service
         /// </summary>
         /// <param name="beautyCareService"></param>
         /// <returns></returns>
-        RequestResult<int> AddCollection(List<BeautyCareServiceBookingModel> beautyCareService);
+        //RequestResult<int> AddCollection(List<BeautyCareServiceBookingModel> beautyCareService);
 
         /// <summary>
         /// Implimenting Getbooking  method

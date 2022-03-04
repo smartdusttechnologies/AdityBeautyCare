@@ -1,5 +1,6 @@
 ﻿using AditiBeautyCare.Business.Common;
 using AditiBeautyCare.Business.Core.Model.BeautyCareService;
+using System.Collections.Generic;
 
 namespace AditiBeautyCare.Business.Core.Interfaces.BeautyCareService
 {
@@ -13,14 +14,14 @@ namespace AditiBeautyCare.Business.Core.Interfaces.BeautyCareService
         /// </summary>
         /// <param name="mailsend"></param>
         /// <returns></returns>
-        RequestResult<int> Add(EmailModel mailsend);
+        RequestResult<bool> Add(EmailModel mailsend);
 
         /// <summary>
         /// implimenting Add collection method
         /// </summary>
         /// <param name="mailsend"></param>
         /// <returns></returns>
-        //RequestResult<int> AddCollection(List<EmailModel> mailsend);
+       /// RequestResult<bool> AddCollection(List<EmailModel> mailsend);
 
     }
 }

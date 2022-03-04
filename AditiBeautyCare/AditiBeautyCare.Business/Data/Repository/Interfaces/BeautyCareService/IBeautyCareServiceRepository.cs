@@ -43,13 +43,14 @@ namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
         /// Implimenting Interface for Insert method in BeautyCareServiceRepository
         /// </summary>
         /// <returns></returns>
-        int Insert(BeautyCareServiceBookingModel beautyCareService);
+        ///  int Insert(BeautyCareServiceBookingModel beautyCareService);
+        bool Insert(BeautyCareServiceBookingModel beautyCareServiceBooking);
 
         /// <summary>
         /// Implimenting Interface for InsertCollection method in BeautyCareServiceRepository
         /// </summary>
         /// <returns></returns>
-        int InsertCollection(List<BeautyCareServiceBookingModel> beautyCareService);
+        //int InsertCollection(List<BeautyCareServiceBookingModel> beautyCareService);
 
         /// <summary>
         /// Implimenting Interface for Getbooking method in BeautyCareServiceRepository
