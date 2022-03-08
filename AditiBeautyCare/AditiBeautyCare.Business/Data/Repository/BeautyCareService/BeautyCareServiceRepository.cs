@@ -12,7 +12,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
     /// <summary>
     /// Connection between Database using ISampleRepository we Establing a connection
     /// </summary>
-    public class BeautyCareRepository:IBeautyCareServiceRepository
+    public class BeautyCareRepository : IBeautyCareServiceRepository
     {
         private readonly IConnectionFactory _connectionFactory;
         #region Public Methods
@@ -28,7 +28,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         /// fetching data from database using Get method
         /// </summary>
         /// <returns></returns>
-        
+
         public List<BeautyCareServiceModel> Get()
         {
             using IDbConnection db = _connectionFactory.GetConnection;
@@ -39,7 +39,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        
+
         public BeautyCareServiceModel Get(int id)
         {
             using IDbConnection db = _connectionFactory.GetConnection;
@@ -51,7 +51,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        
+
         public IPagedList<BeautyCareServiceModel> GetPages(int pageIndex = 1, int pageSize = 10)
         {
             using IDbConnection db = _connectionFactory.GetConnection;
@@ -145,7 +145,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         public IPagedList<BeautyCareServiceBookingModel> GetbookingPages(int pageIndex = 1, int pageSize = 10)
         {
             using IDbConnection db = _connectionFactory.GetConnection;
-            var query = db.QueryMultiple("SELECT COUNT(*) FROM [BeautyCareServicebooking] where IsDeleted=0;SELECT BCSB.ServiceId,BCS.Name as ServiceName,BCSB.Id,BCSB.Date,BCSB.UserName,BCSB.UserMobileNumber,BCSB.[From],BCSB.[To],BCSB.UserEmail,BCSB.Description FROM [BeautyCareServicebooking] BCSB INNER JOIN [BeautyCareServices] BCS ON BCS.Id=BCSB.ServiceId where BCSB.IsDeleted=0 and BCS.IsDeleted=0 and Date>=GETDATE() ORDER BY Date asc");
+            var query = db.QueryMultiple("SELECT COUNT(*) FROM [BeautyCareServicebooking] where IsDeleted=0;SELECT BCSB.ServiceId,BCS.Name as ServiceName,BCSB.Id,BCSB.Date,BCSB.UserName,BCSB.UserMobileNumber,BCSB.[From],BCSB.[To],BCSB.UserEmail FROM [BeautyCareServicebooking] BCSB INNER JOIN [BeautyCareServices] BCS ON BCS.Id=BCSB.ServiceId where BCSB.IsDeleted=0 and BCS.IsDeleted=0 and Date>=GETDATE() ORDER BY Date asc");
             var row = query.Read<int>().First();
             var pageResult = query.Read<BeautyCareServiceBookingModel>().ToList();
             return new StaticPagedList<BeautyCareServiceBookingModel>(pageResult, pageIndex, pageSize, row);
@@ -171,7 +171,16 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
             using IDbConnection db = _connectionFactory.GetConnection;
             return db.Execute(query, beautyCareservicebooking);
         }
-
+        //TODO: ADD COMMENT
+        public bool Delete(int id)
+        {
+            string query = @"update [BeautyCareServicebooking] Set 
+                                IsDeleted = @IsDeleted
+                            Where Id = @Id and  Id=@id ";
+            using IDbConnection db = _connectionFactory.GetConnection;
+            db.Execute(query, new { IsDeleted = true, Id = id });
+            return true;
+        }
         #endregion
     }
 

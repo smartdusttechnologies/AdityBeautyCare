@@ -34,7 +34,7 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
         {
             //Read SMTP settings from AppSettings.json.
             string host = _configuration["Smtp:Server"];
-            int port =int.Parse( _configuration["Smtp:Port"]);
+            int port = int.Parse(_configuration["Smtp:Port"]);
             string fromAddress = _configuration["Smtp:FromAddress"];
             string userName = _configuration["Smtp:UserName"];
             string password = _configuration["Smtp:Password"];
@@ -42,7 +42,7 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
             using (MailMessage mm = new MailMessage(fromAddress, emailModel.EmailTo))
             {
                 mm.Subject = emailModel.Subject;
-                mm.Body = emailModel.Body;
+                mm.Body = emailModel.Message;
 
 
                 mm.IsBodyHtml = false;
@@ -55,9 +55,9 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
                     smtp.Credentials = NetworkCred;
                     smtp.Port = port;
                     smtp.Send(mm);
-                   
+
                 }
-                
+
             }
             return true;
         }
