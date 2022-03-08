@@ -52,6 +52,10 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// <summary>
         /// Declaring UserMobileNumber Property
         /// </summary>
+
+        [Required(ErrorMessage = "Please Fill 10 Digit Mob. No.")]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Please Fill 10 Digit Mob. No. ")]
+
         public string UserMobileNumber { get; set; }
 
         /// <summary>
@@ -59,7 +63,6 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// </summary>
         public string Description { get; set; }
 
-      
         #endregion
     }
 }

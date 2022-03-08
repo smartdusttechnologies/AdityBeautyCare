@@ -8,7 +8,7 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
     /// <summary>
     /// IsampleService is implimenting the services for GetInTouchService
     /// </summary>
-    public class GetInTouchService: IGetInTouchService
+    public class GetInTouchService : IGetInTouchService
     {
         private readonly IGetInTouchRepository _getInTouchRepository;
         private readonly IEmailService _emailservice;
@@ -18,10 +18,10 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
         /// </summary>
         /// <param name="getInTouchRepository"></param>
         /// <param name="emailservice"></param>
-        public GetInTouchService(IGetInTouchRepository getInTouchRepository, IEmailService  emailservice)
+        public GetInTouchService(IGetInTouchRepository getInTouchRepository, IEmailService emailservice)
         {
             _getInTouchRepository = getInTouchRepository;
-                _emailservice = emailservice;
+            _emailservice = emailservice;
         }
 
         /// <summary>

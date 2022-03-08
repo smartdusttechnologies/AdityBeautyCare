@@ -4,6 +4,9 @@
     ViewData["Title"] = "Services";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,12 +18,24 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css"
-          rel="stylesheet" />
-    <!-- MDB -->
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+    <script>
+        function validateBookingSlot() {
+            var error = document.getElementById("error")
+            start = document.getElementById("from").value; //to update time value in each input bar
+            end = document.getElementById("To").value; //to update time value in each input bar
+
+            start = start.split(":");
+            end = end.split(":");
+            var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+            var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+            var diff = endDate.getTime() - startDate.getTime();
+            var hours = Math.floor(diff / 1000 / 60 / 60);
+            if (hours < 0)
+                error.innerHTML = "<span style='color: red;'>" +
+                    ".......Booking time slot TO should be later than From!!!</span>"
+
+        }
+    </script>
     <style>
         .form-group > label {
             top: 12px;
@@ -29,60 +44,142 @@
             background-color: white;
             padding: 0px 0px 0px 0px;
         }
-        </style>
+    </style>
+   
 </head>
 <body>
+
+    <div id="error" class=" alert-info" role="alert">
+
+    </div>
+
     <div class="container mt-5">
-        <H2>Service Booking</H2>
-        
-        <form _lpchecked="1" asp-controller="BeautyCareService" asp-action="BookService">
+        <H2>Service Booking :  @Model.ServiceName </H2>
+
+        <form _lpchecked="1" asp-controller="BeautyCareService" asp-action="BookService" novalidate>
             <input type="hidden" asp-for="ServiceId" id="ServiceId" name="ServiceId" />
             <div class="form-group">
-                <label for="Date">Booking Date:</label>
-                <input type="date" id="Date" class="form-control" name="Date" value="@Model.Date">
+                <label for="Date">Booking Date</label>
+                <input type="date" id="Date" class="form-control" asp-for="Date">
             </div>
+            <span asp-validation-for="Date" class="text-danger"></span>
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
-                        <input type="time" id="from" name="From" class="form-control" required />
                         <label class="form-label" for="from" style="margin-left: 0px;">From*</label>
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 68.8px;"></div><div class="form-notch-trailing"></div></div>
+                        <input type="time" id="from" asp-for="From" class="form-control active" onchange="validateBookingSlot()" required />
+
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;">
+                            </div>
+                            <div class="form-notch-middle" style="width: 68.8px;">
+                            </div>
+                            <div class="form-notch-trailing">
+                            </div>
+                            <span asp-validation-for="From" class="text-danger"></span>
+                        </div>
                     </div>
                 </div>
+
                 <div class="col">
                     <div class="form-outline">
-                        <input type="time" id="To" name="To" class="form-control" required />
+
                         <label class="form-label" for="To" style="margin-left: 0px;">TO*</label>
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 67.2px;"></div><div class="form-notch-trailing"></div></div>
+                        <input type="time" id="To" asp-for="To" class="form-control active" onchange="validateBookingSlot()" required />
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 67.2px;"></div>
+                            <div class="form-notch-trailing">  </div>
+                        </div>
+                        <span asp-validation-for="To" class="text-danger"></span>
                     </div>
                 </div>
             </div>
+
             <div class="form-outline mb-4">
-                <input type="text" id="UserName" name="UserName" class="form-control" required />
+
                 <label class="form-label" for="UserName" style="margin-left: 0px;">Name*</label>
-                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 39.2px;"></div><div class="form-notch-trailing"></div></div>
+                <input type="text" id="UserName" asp-for="UserName" class="form-control" required />
+                <div class="form-notch">
+                    <div class="form-notch-leading" style="width: 9px;"></div>
+                    <div class="form-notch-middle" style="width: 39.2px;"></div>
+                    <div class="form-notch-trailing"></div>
+                </div>
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
+
             <!-- Email input -->
             <div class="form-outline mb-4">
-                <input type="email" id="UserEmail" name="UserEmail" class="form-control" />
+
                 <label class="form-label" for="UserEmail" style="margin-left: 0px;">Email</label>
-                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 39.2px;"></div><div class="form-notch-trailing"></div></div>
+                <input type="email" id="UserEmail" asp-for="UserEmail" class="form-control" />
+                <div class="form-notch">
+                    <div class="form-notch-leading" style="width: 9px;">
+
+                    </div>
+                    <div class="form-notch-middle" style="width: 39.2px;">
+
+                    </div>
+                    <div class="form-notch-trailing">
+
+                    </div>
+
+                </div>
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
             </div>
+
             <!-- Number input -->
             <div class="form-outline mb-4">
-                <input type="number" id="UserMobileNumber" name="UserMobileNumber" class="form-control" required>
-                <label class="form-label" for="UserMobileNumber" style="margin-left: 0px;">Phone*</label>
-                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 44.8px;"></div><div class="form-notch-trailing"></div></div>
+
+                <label class="form-label" for="UserMobileNumber" style="margin-left: 0px; ">Phone*</label>
+                <input type="tel" id="UserMobileNumber" asp-for="UserMobileNumber" placeholder="10 digit mobile no." class="form-control" maxlength="10" required>
+
+                <div class="form-notch">
+                    <div class="form-notch-leading" style="width: 9px;"></div>
+                    <div class="form-notch-middle" style="width: 44.8px;"></div>
+                    <div class="form-notch-trailing"></div>
+                </div>
+                <span asp-validation-for="UserMobileNumber" class="text-danger"></span>
             </div>
+
             <!-- Message input -->
             <div class="form-outline mb-4">
-                <textarea class="form-control" id="Description" name="Description" rows="4"></textarea>
-                <label class="form-label" for="Description" style="margin-left: 0px;">Additional information</label>
+                <textarea class="form-control" id="Description" asp-for="Description" rows="4"></textarea> <label class="form-label" for="Description" style="margin-left: 0px;">Additional information</label>
+
                 <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 134.4px;"></div><div class="form-notch-trailing"></div></div>
             </div>
+            <span asp-validation-for="Description" class="text-danger"></span>
             <!-- Submit button -->
-            <button type="submit" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Book Service</button>
-              <a asp-action="Index" class="btn btn-primary" style="background-color: #102c44;">Back to List</a>
+            <button type="submit" class="btn btn-lg btn-dark mt-2 text-white" onclick="activationOfLabel()" style="background-color: #102c44;">Book Service</button>
+            <a asp-action="Index" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Back to List</a>
+
         </form>
+
     </div>
+    <br />
+
+    <br />
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict';
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation');
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms).forEach((form) => {
+                form.addEventListener('submit', (event) => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+    
 </body>
+
+</html>

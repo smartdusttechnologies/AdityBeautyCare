@@ -74,6 +74,8 @@ namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
         /// </summary>
         /// <returns></returns>
         int Updatebooking(BeautyCareServiceBookingModel beautycareServices);
-       
+        //TODO: ADD COMMENT
+        bool Delete(int id);
+
     }
 }

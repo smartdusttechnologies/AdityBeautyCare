@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
-{ 
+{
     /// <summary>
     /// Declaring Public Properties
     /// </summary>
@@ -37,6 +37,7 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// <summary>
         /// Declaring ImageUrl property
         /// </summary>
+
         public string ImageUrl { get; set; }
         #endregion
     }

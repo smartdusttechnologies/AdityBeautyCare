@@ -53,8 +53,8 @@ namespace AditiBeautyCare.Web.UI.Common
                 var getbussinessModel = new Business.Core.Model.BeautyCareService.EmailModel
                 {
                     Name = emailmodel.Name,
-                    Body = emailmodel.Message,
-                    EmailTo = emailmodel.Email,
+                    Message = emailmodel.Message,
+                    EmailTo = emailmodel.EmailTo,
                     Subject = emailmodel.Subject
                 };
                 _getInTouchService.Add(getbussinessModel);
@@ -66,6 +66,5 @@ namespace AditiBeautyCare.Web.UI.Common
         {
             return View();
         }
-
     }
 }

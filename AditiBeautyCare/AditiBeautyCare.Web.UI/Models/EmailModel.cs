@@ -19,7 +19,7 @@ namespace AditiBeautyCare.Web.UI.Models
         /// <summary>
         /// Declaring emailto property
         /// </summary>
-        public string Email { get; set; }
+        public string EmailTo { get; set; }
 
         /// <summary>
         /// declaring name property

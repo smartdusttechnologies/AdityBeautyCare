@@ -40,10 +40,12 @@ namespace AditiBeautyCare.Web.UI.Controllers
             List<UI.Models.BeautyCareService.BeautyCareServiceModel> servicess = new List<UI.Models.BeautyCareService.BeautyCareServiceModel>();
             foreach (var item in services)
             {
-                servicess.Add(new Models.BeautyCareService.BeautyCareServiceModel { Id = item.Id, Name = item.Name, Duration = item.Duration, Price = item.Price, Description = item.Description, ImageUrl=item.ImageUrl });
+                servicess.Add(new Models.BeautyCareService.BeautyCareServiceModel { Id = item.Id, Name = item.Name, Duration = item.Duration, Price = item.Price, Description = item.Description, ImageUrl = item.ImageUrl });
             }
             ViewBag.nextPage = 2;
             ViewBag.PreviousPage = 0;
+            ViewBag.IsSuccess = TempData["IsTrue"] != null ? TempData["IsTrue"] : false;
+
             return View(servicess.AsEnumerable());
         }
 
@@ -91,11 +93,11 @@ namespace AditiBeautyCare.Web.UI.Controllers
             {
                 var beautyCareServicebussinessModel = new Business.Core.Model.BeautyCareService.BeautyCareServiceModel
                 {
-                   Name = addservice.Name,
-                   Description = addservice.Description,
-                   Duration = addservice.Duration,
-                   ImageUrl = addservice.ImageUrl,
-                   Price = addservice.Price
+                    Name = addservice.Name,
+                    Description = addservice.Description,
+                    Duration = addservice.Duration,
+                    ImageUrl = addservice.ImageUrl,
+                    Price = addservice.Price
                 };
                 _beautyCareService.Add(beautyCareServicebussinessModel);
 
@@ -109,10 +111,10 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult BookService(int id)
-        {         
-           var beautyCareServiceBookingModel = new Models.BeautyCareService.BeautyCareServiceBookingModel { Date = DateTime.Now.Date, ServiceId = id };
-                return View(beautyCareServiceBookingModel);
+        public IActionResult BookService(int id, string serviceName)
+        {
+            var beautyCareServiceBookingModel = new Models.BeautyCareService.BeautyCareServiceBookingModel { Date = DateTime.Now.Date, ServiceId = id, ServiceName = serviceName };
+            return View(beautyCareServiceBookingModel);
         }
 
         /// <summary>
@@ -122,7 +124,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult  BookService([Bind] Models.BeautyCareService.BeautyCareServiceBookingModel booking)
+        public ActionResult BookService([Bind] Models.BeautyCareService.BeautyCareServiceBookingModel booking)
         {
             if (ModelState.IsValid)
             {
@@ -138,9 +140,11 @@ namespace AditiBeautyCare.Web.UI.Controllers
                     To = booking.To
                 };
                 _beautyCareService.Add(beautyCareServicebussinessModel);
+                TempData["IsTrue"] = true;
+                return RedirectToAction("Index");
 
             }
-            return RedirectToAction("Index");
+            return View(booking);
         }
 
         /// <summary>
@@ -154,7 +158,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
             List<UI.Models.BeautyCareService.BeautyCareServiceBookingModel> orderss = new List<UI.Models.BeautyCareService.BeautyCareServiceBookingModel>();
             foreach (var item in orders)
             {
-                orderss.Add(new Models.BeautyCareService.BeautyCareServiceBookingModel { Id = item.Id, UserName = item. UserName, UserEmail=item.UserEmail,Date=item.Date,Description=item.Description,UserMobileNumber=item.UserMobileNumber,From=item.From,To=item.To,ServiceName=item.ServiceName});
+                orderss.Add(new Models.BeautyCareService.BeautyCareServiceBookingModel { Id = item.Id, UserName = item.UserName, UserEmail = item.UserEmail, Date = item.Date, Description = item.Description, UserMobileNumber = item.UserMobileNumber, From = item.From, To = item.To, ServiceName = item.ServiceName });
             }
             ViewBag.nextPage = 2;
             ViewBag.PreviousPage = 0;
@@ -173,7 +177,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
             List<UI.Models.BeautyCareService.BeautyCareServiceBookingModel> orderss = new List<UI.Models.BeautyCareService.BeautyCareServiceBookingModel>();
             foreach (var item in orders)
             {
-                orderss.Add(new Models.BeautyCareService.BeautyCareServiceBookingModel { Id = item.Id, UserName = item.UserName, UserEmail = item.UserEmail, Date = item.Date, Description = item.Description, UserMobileNumber = item.UserMobileNumber, From = item.From, To = item.To,ServiceName=item.ServiceName});
+                orderss.Add(new Models.BeautyCareService.BeautyCareServiceBookingModel { Id = item.Id, UserName = item.UserName, UserEmail = item.UserEmail, Date = item.Date, Description = item.Description, UserMobileNumber = item.UserMobileNumber, From = item.From, To = item.To, ServiceName = item.ServiceName });
             }
             ViewBag.nextPage = pageIndex + 1;
             ViewBag.PreviousPage = pageIndex == 1 ? 1 : pageIndex - 1;
@@ -207,18 +211,17 @@ namespace AditiBeautyCare.Web.UI.Controllers
                 UserMobileNumber = orders.UserMobileNumber,
                 From = orders.From,
                 To = orders.To,
-                ServiceId=orders.ServiceId,
+                ServiceId = orders.ServiceId,
             };
             return View(beautyCareServiceUIModel);
         }
 
-
-       /// <summary>
-       /// admin can edit any user bookingdata
-       /// </summary>
-       /// <param name="id"></param>
-       /// <param name="beautyCareService"></param>
-       /// <returns></returns>
+        /// <summary>
+        /// admin can edit any user bookingdata
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="beautyCareService"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult adminEditService(int id, [Bind] Models.BeautyCareService.BeautyCareServiceBookingModel beautyCareService)
@@ -234,18 +237,58 @@ namespace AditiBeautyCare.Web.UI.Controllers
                     Id = beautyCareService.Id,
                     ServiceId = beautyCareService.ServiceId,
                     UserName = beautyCareService.UserName,
-                     Date = beautyCareService.Date,
-                      Description= beautyCareService.Description,
-                      From = beautyCareService.From,
-                      To = beautyCareService.To,
-                      UserEmail=beautyCareService.UserEmail,
-                      UserMobileNumber=beautyCareService.UserMobileNumber
-                      
+                    Date = beautyCareService.Date,
+                    Description = beautyCareService.Description,
+                    From = beautyCareService.From,
+                    To = beautyCareService.To,
+                    UserEmail = beautyCareService.UserEmail,
+                    UserMobileNumber = beautyCareService.UserMobileNumber
+
                 };
                 _beautyCareService.Updatebooking(id, beautyCareServiceBusinessModel);
                 return View(beautyCareService);
             }
             return RedirectToAction("adminDashboard");
         }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var orders = _beautyCareService.Getbooking((int)id);
+            if (orders == null)
+            {
+                return NotFound();
+            }
+            var beautyCareServiceUIModel = new Models.BeautyCareService.BeautyCareServiceBookingModel
+            {
+                Id = orders.Id,
+                UserName = orders.UserName,
+                UserEmail = orders.UserEmail,
+                Date = orders.Date,
+                Description = orders.Description,
+                UserMobileNumber = orders.UserMobileNumber,
+                From = orders.From,
+                To = orders.To,
+                ServiceId = orders.ServiceId,
+                ServiceName = orders.ServiceName
+            };
+            return View(beautyCareServiceUIModel);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteConfirmed(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            _beautyCareService.Delete((int)id);
+            return RedirectToAction("adminDashboard");
+        }
     }
+
 }

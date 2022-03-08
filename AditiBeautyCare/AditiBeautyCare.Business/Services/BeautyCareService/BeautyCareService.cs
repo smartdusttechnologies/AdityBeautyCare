@@ -2,7 +2,11 @@
 using AditiBeautyCare.Business.Core.Interfaces.BeautyCareService;
 using AditiBeautyCare.Business.Core.Model.BeautyCareService;
 using AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Mail;
+
 
 namespace AditiBeautyCare.Business.Services.BeautyCareService
 {
@@ -134,6 +138,17 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
         {
             _beautyCareServiceRepository.Updatebooking(beautyCareServicebooking);
             return new RequestResult<int>(1);
+        }
+        /// <summary>
+        /// Delete BEAUTY CARE SERVICE BY ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+
+        public bool Delete(int id)
+        {
+            _beautyCareServiceRepository.Delete(id);
+            return true;
         }
         #endregion
     }

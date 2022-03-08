@@ -5,7 +5,6 @@
 <head>
     <title>
     </title>
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> AditiBeautyCare</title>
@@ -22,9 +21,7 @@
     <script src="~/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/bootstrap.esm.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
-
-
-    <style>
+        <style>
         body {
             font-family: 'Times New Roman';
         }
@@ -82,14 +79,12 @@
             color: red;
             background-color:blue;
         }*/
-
-
-    </style>
+                </style>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="~/Image/Aditi_logo.jpg" /></a>
+        <a class="navbar-brand" asp-action="Index" asp-controller="Home"><img src="~/Image/Aditi_logo.jpg" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -108,9 +103,15 @@
                 <li class="nav-item @Html.ActiveClass("BeautyCareService", "adminDashboard")">
                     <a class="nav-link" asp-action="adminDashboard" asp-controller="BeautyCareService">Dashboard</a>
                 </li>
-
-                <li class="nav-item @Html.ActiveClass("BeautyCareService", "Index")">
-                    <a class="nav-link " asp-action="Index" asp-controller="BeautyCareService">Services</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" asp-action="Index" asp-controller="BeautyCareService">Book Service</a>
+                        <a class="dropdown-item" asp-action="adminAddService" asp-controller="BeautyCareService">Add Services</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
                 </li>
 
                 @*<li class="nav-item dropdown">
@@ -237,5 +238,4 @@
         </div>
     </div>
 </body>
-
 </html>
