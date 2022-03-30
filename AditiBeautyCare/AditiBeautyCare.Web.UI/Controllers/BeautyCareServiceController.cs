@@ -1,10 +1,15 @@
 ﻿using AditiBeautyCare.Business.Core.Interfaces.BeautyCareService;
+using AditiBeautyCare.Business.Core.Model.BeautyCareService;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Text;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Hosting.Internal;
+using Microsoft.Extensions.Configuration;
 
 namespace AditiBeautyCare.Web.UI.Controllers
 {
@@ -16,6 +21,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
         private readonly ILogger<BeautyCareServiceController> _logger;
         private readonly IBeautyCareService _beautyCareService;
         private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly IConfiguration _configuration;
 
         /// <summary>
         /// Declaring the variables for establing connection
@@ -23,11 +29,12 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <param name="logger"></param>
         /// <param name="beautyCareService"></param>
         /// <param name="hostingEnvironment"></param>
-        public BeautyCareServiceController(ILogger<BeautyCareServiceController> logger, IBeautyCareService beautyCareService, IWebHostEnvironment hostingEnvironment)
+        public BeautyCareServiceController(ILogger<BeautyCareServiceController> logger, IBeautyCareService beautyCareService, IWebHostEnvironment hostingEnvironment, IConfiguration configuration)
         {
             _logger = logger;
             _beautyCareService = beautyCareService;
             _hostingEnvironment = hostingEnvironment;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -40,7 +47,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
             List<UI.Models.BeautyCareService.BeautyCareServiceModel> servicess = new List<UI.Models.BeautyCareService.BeautyCareServiceModel>();
             foreach (var item in services)
             {
-                servicess.Add(new Models.BeautyCareService.BeautyCareServiceModel { Id = item.Id, Name = item.Name, Duration = item.Duration, Price = item.Price, Description = item.Description, ImageUrl = item.ImageUrl });
+                servicess.Add(new Models.BeautyCareService.BeautyCareServiceModel { Id = item.Id, Name = item.Name, Duration = item.Duration, Price = item.Price, Description = item.Description, FilePath=item.FilePath });
             }
             ViewBag.nextPage = 2;
             ViewBag.PreviousPage = 0;
@@ -61,7 +68,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
             List<UI.Models.BeautyCareService.BeautyCareServiceModel> servicess = new List<UI.Models.BeautyCareService.BeautyCareServiceModel>();
             foreach (var item in services)
             {
-                servicess.Add(new Models.BeautyCareService.BeautyCareServiceModel { Id = item.Id, Name = item.Name, Duration = item.Duration, Price = item.Price, Description = item.Description, ImageUrl = item.ImageUrl });
+                servicess.Add(new Models.BeautyCareService.BeautyCareServiceModel { Id = item.Id, Name = item.Name, Duration = item.Duration, Price = item.Price, Description = item.Description, ImageUrl=item.ImageUrl });
             }
             ViewBag.nextPage = pageIndex + 1;
             ViewBag.PreviousPage = pageIndex == 1 ? 1 : pageIndex - 1;
@@ -91,18 +98,43 @@ namespace AditiBeautyCare.Web.UI.Controllers
         {
             if (ModelState.IsValid)
             {
+                string uploadsFolder = _configuration["ImageString:Prefix"] + _configuration["ImageString:ImageStore"] + _configuration["ImageString:Postfix"];
+                string uniqueFileName = UploadedFile(addservice);
                 var beautyCareServicebussinessModel = new Business.Core.Model.BeautyCareService.BeautyCareServiceModel
-                {
+                               {
                     Name = addservice.Name,
                     Description = addservice.Description,
                     Duration = addservice.Duration,
-                    ImageUrl = addservice.ImageUrl,
+                    FilePath = uploadsFolder + uniqueFileName,
                     Price = addservice.Price
                 };
                 _beautyCareService.Add(beautyCareServicebussinessModel);
-
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View();
+        }
+
+        private string UploadedFile(Models.BeautyCareService.BeautyCareServiceModel addservice)
+        {
+                       
+            string uniqueFileName = null;
+          // if (File.Length > 0 && File.Length < (1000000 / 5)) //Image Greater than 0 and equal up To 100Kb
+            {
+                if (addservice.ImageUrl != null)
+            {
+                string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, _configuration["ImageString:ImageStore"]);
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + addservice.ImageUrl.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+
+                        //if (addservice.ImageUrl.Length > 0 && addservice.ImageUrl.Length < (100000)) //Image Greater than 0 and equal up To 100Kb
+                        {
+                            addservice.ImageUrl.CopyTo(fileStream);
+                        }                   
+                }
+            }
+
+            return uniqueFileName;
         }
 
         /// <summary>
@@ -251,6 +283,11 @@ namespace AditiBeautyCare.Web.UI.Controllers
             return RedirectToAction("adminDashboard");
         }
 
+        /// <summary>
+        /// To Delete the Service Booked by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Delete(int? id)
         {

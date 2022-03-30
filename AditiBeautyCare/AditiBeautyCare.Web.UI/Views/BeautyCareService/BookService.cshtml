@@ -33,9 +33,9 @@
             if (hours < 0)
                 error.innerHTML = "<span style='color: red;'>" +
                     ".......Booking time slot TO should be later than From!!!</span>"
-
-        }
+            }
     </script>
+    
     <style>
         .form-group > label {
             top: 12px;
@@ -56,13 +56,15 @@
     <div class="container mt-5">
         <H2>Service Booking :  @Model.ServiceName </H2>
 
-        <form _lpchecked="1" asp-controller="BeautyCareService" asp-action="BookService" novalidate>
+        <form _lpchecked="1" asp-controller="BeautyCareService" asp-action="BookService" novalidate >
             <input type="hidden" asp-for="ServiceId" id="ServiceId" name="ServiceId" />
+            
             <div class="form-group">
                 <label for="Date">Booking Date</label>
                 <input type="date" id="Date" class="form-control" asp-for="Date">
             </div>
             <span asp-validation-for="Date" class="text-danger"></span>
+            
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
@@ -97,7 +99,6 @@
             </div>
 
             <div class="form-outline mb-4">
-
                 <label class="form-label" for="UserName" style="margin-left: 0px;">Name*</label>
                 <input type="text" id="UserName" asp-for="UserName" class="form-control" required />
                 <div class="form-notch">
@@ -150,7 +151,7 @@
             </div>
             <span asp-validation-for="Description" class="text-danger"></span>
             <!-- Submit button -->
-            <button type="submit" class="btn btn-lg btn-dark mt-2 text-white" onclick="activationOfLabel()" style="background-color: #102c44;">Book Service</button>
+            <button type="submit" class="btn btn-lg btn-dark mt-2 text-white"  style="background-color: #102c44;">Book Service</button>
             <a asp-action="Index" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Back to List</a>
 
         </form>
@@ -159,26 +160,7 @@
     <br />
 
     <br />
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (() => {
-            'use strict';
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation');
-
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms).forEach((form) => {
-                form.addEventListener('submit', (event) => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        })();
-    </script>
+   
     
 </body>
 

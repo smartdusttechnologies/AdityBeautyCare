@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
 {
@@ -36,8 +37,9 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         /// Declaring ImageUrl Property
         /// </summary>
         [Required]
-        public string ImageUrl { get; set; }
-      
+        public IFormFile ImageUrl { get; set; }
+        public string FilePath { get; set; }
+
         #endregion
     }
 }

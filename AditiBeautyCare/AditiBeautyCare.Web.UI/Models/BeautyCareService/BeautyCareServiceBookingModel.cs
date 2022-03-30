@@ -20,21 +20,33 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         public int ServiceId { get; set; }
 
         /// <summary>
-        /// Declaring From Property
+        /// Declaring From Time Property
         /// </summary>
-        [Required]
+       
+
+        
+        [Required (ErrorMessage = "Please Choose Time Correctly")]
+        [DataType(DataType.Time)]
+        //[Range(From<To)]
+        
         public string From { get; set; }
 
         /// <summary>
-        /// Declaring To Property
+        /// Declaring To Time Property
         /// </summary>
-        [Required]
+        
+        [Required(ErrorMessage = "Please Set To after From")]
+        [DataType(DataType.Time)]
+       
+        //[Range(booking.To>From)]
+
         public string To { get; set; }
 
         /// <summary>
         /// Declaring Date Property
         /// </summary>
         [Required]
+        [Range(typeof(DateTime), "1/3/2022", "31/12/2022", ErrorMessage = "Value for {0} must be between {1} and {2}")]
         public DateTime Date { get; set; }
 
         /// <summary>
@@ -66,3 +78,5 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         #endregion
     }
 }
+
+

@@ -31,6 +31,7 @@ namespace AditiBeautyCare.Business.Infrastructure
                 var conn = factory.CreateConnection();
                 if (conn == null) return null;
                 conn.ConnectionString = _configuration["ConnectionStrings:IdentityDBLocal"];
+              //  conn.ConnectionString = _configuration["ImageString"];
                 conn.Open();
                 return conn;
             }
