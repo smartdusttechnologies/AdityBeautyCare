@@ -27,18 +27,17 @@
         <div class="row">
             <div class="col-md-4">
 
-                <form _lpchecked="1"  asp-controller="BeautyCareService" asp-action="adminAddService" >
+                <form  asp-controller="BeautyCareService" asp-action="adminAddService" enctype="multipart/form-data">
                     <input type="hidden" asp-for="Id" id="Id" name="Id" />
                     <div>
                         <div class="form-group">
                             <label for="Name">Name</label>
                             <input type="text" id="Name" class="form-control" asp-for="Name" >
+                            <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
-                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
 
                     <div class="form-outline mb-4">
-
                         <label class="form-label" for="Description" style="margin-left: 0px;">Description*</label>
                         <input type="text" id="Description" asp-for="Description" class="form-control"  />
                         <div class="form-notch">
@@ -74,7 +73,7 @@
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="ImageUrl" style="margin-left: 0px; ">ImageUrl*</label>
-                        <input type="file" id="ImageUrl" asp-for="ImageUrl" placeholder="Select File" class="form-control" >
+                        <input type="file"  asp-for="ImageUrl" placeholder="Select File"  class="form-control" >
                         <div class="form-notch">
                             <div class="form-notch-leading" style="width: 9px;"></div>
                             <div class="form-notch-middle" style="width: 44.8px;"></div>
@@ -82,8 +81,9 @@
                         </div>
                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
                     </div>
+
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Add Service Service</button>
+                    <button type="submit" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Add Service</button>
                     <a asp-action="Index" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Back to List</a>
                 </form>
 
@@ -101,6 +101,7 @@
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
     </script>
+
     <br />
 
 </body>

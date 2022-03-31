@@ -52,13 +52,12 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// </summary>
 
         [Required(ErrorMessage = "File Max Size 100Kb, jpg,png,jpeg allowed only")]
-        [MaxFileSize(100000, ErrorMessage ="File Size Up to Max -100Kb only")]
-        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png"}, ErrorMessage ="Only jpg,jpeg, png type of Files allowed")]
+        [MaxFileSize(100000, ErrorMessage = "File Size Up to Max -100Kb only")]
+        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" }, ErrorMessage = "Only jpg,jpeg, png type of Files allowed")]
         public IFormFile ImageUrl { get; set; } 
 
-        public string FilePath{ get; set; }
+       public string FilePath{ get; set; }
         #endregion
     }
-
-    
+   
 }
