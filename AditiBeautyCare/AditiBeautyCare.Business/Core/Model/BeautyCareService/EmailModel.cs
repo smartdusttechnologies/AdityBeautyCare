@@ -31,6 +31,7 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         //TODO:ADD THE CORRESPONDING DB CHANGES
         [Required]
         public string Message { get; set; }
+
     }
 }
 

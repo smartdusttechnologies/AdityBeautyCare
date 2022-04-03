@@ -34,7 +34,7 @@ namespace AditiBeautyCare.Web.UI.Common
 
         public string GetErrorMessage()
         {
-            return $"This photo extension is not allowed!";
+            return $"Only jpg,jpeg, png type of Files allowed.";
         }
     }
 }

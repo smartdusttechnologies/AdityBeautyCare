@@ -47,7 +47,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
             List<UI.Models.BeautyCareService.BeautyCareServiceModel> servicess = new List<UI.Models.BeautyCareService.BeautyCareServiceModel>();
             foreach (var item in services)
             {
-                servicess.Add(new Models.BeautyCareService.BeautyCareServiceModel { Id = item.Id, Name = item.Name, Duration = item.Duration, Price = item.Price, Description = item.Description, FilePath=item.FilePath });
+                servicess.Add(new Models.BeautyCareService.BeautyCareServiceModel { Id = item.Id, Name = item.Name, Duration = item.Duration, Price = item.Price, Description = item.Description, FilePath = item.FilePath });
             }
             ViewBag.nextPage = 2;
             ViewBag.PreviousPage = 0;

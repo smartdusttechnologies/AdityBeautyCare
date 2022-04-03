@@ -33,7 +33,7 @@ namespace AditiBeautyCare.Web.UI.Common
 
         public string GetErrorMessage()
         {
-            return $"Maximum allowed file size is { _maxFileSize} bytes.";
+            return $"Maximum allowed file size is { _maxFileSize/1000} KB.";
         }
     }
 }

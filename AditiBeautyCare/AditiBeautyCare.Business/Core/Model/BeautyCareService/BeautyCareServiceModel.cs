@@ -25,13 +25,13 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         /// Declaring Price Property
         /// </summary>
         [Required]
-        public string Price { get; set; }
+        public int Price { get; set; }
 
         /// <summary>
         /// Declaring Duration Property
         /// </summary>
         [Required]
-        public string Duration { get; set; }
+        public int Duration { get; set; }
 
         /// <summary>
         /// Declaring ImageUrl Property

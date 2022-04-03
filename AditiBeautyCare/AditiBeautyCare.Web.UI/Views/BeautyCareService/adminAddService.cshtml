@@ -27,42 +27,42 @@
         <div class="row">
             <div class="col-md-4">
 
-                <form  asp-controller="BeautyCareService" asp-action="adminAddService" enctype="multipart/form-data">
+                <form asp-controller="BeautyCareService" asp-action="adminAddService" enctype="multipart/form-data">
                     <input type="hidden" asp-for="Id" id="Id" name="Id" />
                     <div>
                         <div class="form-group">
                             <label for="Name">Name</label>
-                            <input type="text" id="Name" class="form-control" asp-for="Name" >
+                            <input type="text" id="Name" class="form-control" asp-for="Name">
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                     </div>
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="Description" style="margin-left: 0px;">Description*</label>
-                        <input type="text" id="Description" asp-for="Description" class="form-control"  />
+                        <input type="text" id="Description" asp-for="Description" class="form-control" />
                         <div class="form-notch">
                             <div class="form-notch-leading" style="width: 9px;"></div>
                             <div class="form-notch-middle" style="width: 39.2px;"></div>
                             <div class="form-notch-trailing"></div><span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                     </div>
-                    
-                   <div class="form-outline mb-4">
 
-                        <label class="form-label" for="Price" style="margin-left: 0px;">Price</label>
-                        <input type="text" id="Price" asp-for="Price" class="form-control" />
+                    <div class="form-outline mb-4">
+
+                        <label class="form-label" for="Price" style="margin-left: 0px;">Price (In Rupee)</label>
+                        <input type="number" id="Price" asp-for="Price" class="form-control" />
                         <div class="form-notch">
                             <div class="form-notch-leading" style="width: 9px;"></div>
                             <div class="form-notch-middle" style="width: 39.2px;"></div>
                             <div class="form-notch-trailing"></div>
                         </div>
                         <span asp-validation-for="Price" class="text-danger"></span>
-                   </div>
+                    </div>
 
 
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="Duration" style="margin-left: 0px; ">Duration*</label>
-                        <input type="text" id="Duration" asp-for="Duration" placeholder="fill duration." class="form-control" >
+                        <label class="form-label" for="Duration" style="margin-left: 0px; ">Duration* (In Minutes)</label>
+                        <input type="number" id="Duration" asp-for="Duration" placeholder="fill duration." class="form-control">
                         <div class="form-notch">
                             <div class="form-notch-leading" style="width: 9px;"></div>
                             <div class="form-notch-middle" style="width: 44.8px;"></div>
@@ -73,7 +73,7 @@
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="ImageUrl" style="margin-left: 0px; ">ImageUrl*</label>
-                        <input type="file"  asp-for="ImageUrl" placeholder="Select File"  class="form-control" >
+                        <input type="file" asp-for="ImageUrl" placeholder="Select File"  class="form-control">
                         <div class="form-notch">
                             <div class="form-notch-leading" style="width: 9px;"></div>
                             <div class="form-notch-middle" style="width: 44.8px;"></div>
@@ -83,7 +83,7 @@
                     </div>
 
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Add Service</button>
+                    <button type="submit" class="btn btn-lg btn-dark mt-2 text-white" o style="background-color: #102c44;">Add Service</button>
                     <a asp-action="Index" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Back to List</a>
                 </form>
 
@@ -92,7 +92,7 @@
             </div>
         </div>
     </div>
-   
+
     <script type="text/javascript">
 
         // Add the following code if you want the name of the file appear on select
@@ -101,6 +101,9 @@
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
     </script>
+  
+
+    
 
     <br />
 
