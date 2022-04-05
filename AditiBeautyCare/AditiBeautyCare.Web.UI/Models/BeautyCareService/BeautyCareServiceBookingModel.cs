@@ -6,7 +6,9 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
     public class BeautyCareServiceBookingModel
     {
         #region Public Properties
-        //public int property declared
+        /// <summary>
+        /// Service Id 
+        /// </summary>
         public int Id { get; set; }
 
         /// <summary>
@@ -24,7 +26,6 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// </summary>
         [Required (ErrorMessage = "Please Choose Time Correctly")]
         [DataType(DataType.Time)]
-        //[Range(From<To)]
         public string From { get; set; }
 
         /// <summary>
@@ -32,9 +33,6 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// </summary>
         [Required(ErrorMessage = "Please Set To after From")]
         [DataType(DataType.Time)]
-       
-        //[Range(booking.To>From)]
-
         public string To { get; set; }
 
         /// <summary>
@@ -55,21 +53,18 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// </summary>
         public string UserEmail { get; set; }
 
-
         /// <summary>
         /// Declaring UserMobileNumber Property
         /// </summary>
 
         [Required(ErrorMessage = "Please Fill 10 Digit Mob. No.")]
         [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Please Fill 10 Digit Mob. No. ")]
-
         public string UserMobileNumber { get; set; }
 
         /// <summary>
         /// Declaring Description Property
         /// </summary>
         public string Description { get; set; }
-
         #endregion
     }
 }

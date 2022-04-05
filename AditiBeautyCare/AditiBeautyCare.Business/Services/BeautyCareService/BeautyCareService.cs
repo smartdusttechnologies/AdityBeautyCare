@@ -139,12 +139,12 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
             _beautyCareServiceRepository.Updatebooking(beautyCareServicebooking);
             return new RequestResult<int>(1);
         }
+       
         /// <summary>
         /// Delete BEAUTY CARE SERVICE BY ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-
         public bool Delete(int id)
         {
             _beautyCareServiceRepository.Delete(id);

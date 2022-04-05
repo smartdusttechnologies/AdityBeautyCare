@@ -50,8 +50,6 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
         //    _getInTouchRepository.InsertCollection(mailsend);
         //    return new RequestResult<int>(1);
         //}
-
-
         #endregion
     }
 }

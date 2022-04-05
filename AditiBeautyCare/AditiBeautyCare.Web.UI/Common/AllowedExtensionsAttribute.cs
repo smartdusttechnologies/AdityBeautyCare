@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AditiBeautyCare.Web.UI.Common
 {
-/// <summary>
-///Check the File type upload i.e. it should be '.jpeg', '.jpg','.png' only 
-/// </summary>
+        /// <summary>
+        ///Check the File type upload i.e. it should be '.jpeg', '.jpg','.png' only 
+        /// </summary>
     public class AllowedExtensionsAttribute : ValidationAttribute
     {
         private readonly string[] _extensions;
@@ -18,7 +18,6 @@ namespace AditiBeautyCare.Web.UI.Common
         {
             _extensions = extensions;
         }
-
         protected override ValidationResult IsValid(
         object value, ValidationContext validationContext)
         {
@@ -31,10 +30,8 @@ namespace AditiBeautyCare.Web.UI.Common
                     return new ValidationResult(GetErrorMessage());
                 }
             }
-
             return ValidationResult.Success;
         }
-
         public string GetErrorMessage()
         {
             return $"Only jpg,jpeg, png type of Files allowed.";

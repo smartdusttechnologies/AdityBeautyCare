@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
 {
-    /// <summary>
-    /// Creating Interface for GetInTouchRepository
-    /// </summary>
+        /// <summary>
+        /// Creating Interface for GetInTouchRepository
+        /// </summary>
     public interface IGetInTouchRepository
     {
         /// <summary>

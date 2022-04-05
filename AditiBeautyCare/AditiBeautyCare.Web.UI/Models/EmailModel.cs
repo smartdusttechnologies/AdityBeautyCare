@@ -35,7 +35,5 @@ namespace AditiBeautyCare.Web.UI.Models
         /// Declaring Body property
         /// </summary>
         public string Message { get; set; }
-      
     }
-   
 }

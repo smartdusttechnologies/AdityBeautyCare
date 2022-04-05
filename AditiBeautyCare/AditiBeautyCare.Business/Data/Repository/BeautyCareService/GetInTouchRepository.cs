@@ -8,9 +8,9 @@ using System.Data;
 namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
 {
 
-    /// <summary>
-    /// Connection between Database using ISampleRepository we Establing a connection
-    /// </summary>
+        /// <summary>
+        /// Connection between Database using ISampleRepository we Establing a connection
+        /// </summary>
     public class GetInTouchRepository : IGetInTouchRepository
     {
         private readonly IConnectionFactory _connectionFactory;

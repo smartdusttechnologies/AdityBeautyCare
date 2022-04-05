@@ -52,7 +52,6 @@ namespace AditiBeautyCare.Web.UI.Controllers
             ViewBag.nextPage = 2;
             ViewBag.PreviousPage = 0;
             ViewBag.IsSuccess = TempData["IsTrue"] != null ? TempData["IsTrue"] : false;
-
             return View(servicess.AsEnumerable());
         }
 
@@ -101,7 +100,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
                 string uploadsFolder = _configuration["ImageString:Prefix"] + _configuration["ImageString:ImageStore"] + _configuration["ImageString:Postfix"];
                 string uniqueFileName = UploadedFile(addservice);
                 var beautyCareServicebussinessModel = new Business.Core.Model.BeautyCareService.BeautyCareServiceModel
-                               {
+                {
                     Name = addservice.Name,
                     Description = addservice.Description,
                     Duration = addservice.Duration,
@@ -326,5 +325,4 @@ namespace AditiBeautyCare.Web.UI.Controllers
             return RedirectToAction("adminDashboard");
         }
     }
-
-}
+ }

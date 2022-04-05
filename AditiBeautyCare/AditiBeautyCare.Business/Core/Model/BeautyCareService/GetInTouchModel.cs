@@ -5,9 +5,9 @@ using System.Text;
 
 namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
 {
-    /// <summary>
-    /// Declaring properties here
-    /// </summary>
+            /// <summary>
+            /// Declaring properties here
+            /// </summary>
     public class GetInTouchModel
     {
         /// <summary>
@@ -34,5 +34,4 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         [Required]
         public string Body { get; set; }
     }
-
 }

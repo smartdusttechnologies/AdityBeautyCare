@@ -34,7 +34,6 @@ namespace AditiBeautyCare.Web.UI.Common
                     return new ValidationResult(GetErrorMessage());
                 }
             }
-
             return ValidationResult.Success;
         }
 

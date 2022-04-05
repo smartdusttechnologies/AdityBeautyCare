@@ -24,43 +24,39 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// <summary>
         /// Declaring Name Property
         /// </summary>
-        
-        [Required(ErrorMessage ="Please mention service name.")]
+        [Required(ErrorMessage = "Please mention service name.")]
         public string Name { get; set; }
 
         /// <summary>
         /// Declaring Description Property
         /// </summary>
-        [Required(ErrorMessage ="Please mention the description of service.")]
-        
+        [Required(ErrorMessage = "Please mention the description of service.")]
         public string Description { get; set; }
 
         /// <summary>
         /// Declaring Price Property
         /// </summary>
-        [Required(ErrorMessage ="Please fill service price.")]
+        [Required(ErrorMessage = "Please fill service price.")]
         public int Price { get; set; }
 
         /// <summary>
         /// Declaring Duration Property
         /// </summary>
-        [Required(ErrorMessage ="Please fill service duration.")]
-
+        [Required(ErrorMessage = "Please fill service duration.")]
         public int Duration { get; set; }
 
         /// <summary>
         /// Declaring ImageUrl property
         /// </summary>
-
         [Required(ErrorMessage = "Please select an image to upload")]
-        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" } )]
+        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" })]
         [MaxFileSize(100000)]
-        public IFormFile ImageUrl { get; set; } 
+        public IFormFile ImageUrl { get; set; }
+        
         /// <summary>
         /// Declaring File Path to store file
         /// </summary>
-        public string FilePath{ get; set; }
+        public string FilePath { get; set; }
         #endregion
     }
-   
 }
