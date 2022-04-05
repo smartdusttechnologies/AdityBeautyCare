@@ -56,8 +56,10 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" } )]
         [MaxFileSize(100000)]
         public IFormFile ImageUrl { get; set; } 
-
-       public string FilePath{ get; set; }
+        /// <summary>
+        /// Declaring File Path to store file
+        /// </summary>
+        public string FilePath{ get; set; }
         #endregion
     }
    

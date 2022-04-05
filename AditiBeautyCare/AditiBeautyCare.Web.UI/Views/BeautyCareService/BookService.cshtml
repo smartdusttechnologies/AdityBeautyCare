@@ -33,9 +33,9 @@
             if (hours < 0)
                 error.innerHTML = "<span style='color: red;'>" +
                     ".......Booking time slot TO should be later than From!!!</span>"
-            }
+        }
     </script>
-    
+
     <style>
         .form-group > label {
             top: 12px;
@@ -45,7 +45,7 @@
             padding: 0px 0px 0px 0px;
         }
     </style>
-   
+
 </head>
 <body>
 
@@ -56,15 +56,15 @@
     <div class="container mt-5">
         <H2>Service Booking :  @Model.ServiceName </H2>
 
-        <form _lpchecked="1" asp-controller="BeautyCareService" asp-action="BookService" novalidate >
+        <form _lpchecked="1" asp-controller="BeautyCareService" asp-action="BookService" novalidate>
             <input type="hidden" asp-for="ServiceId" id="ServiceId" name="ServiceId" />
-            
+
             <div class="form-group">
                 <label for="Date">Booking Date</label>
                 <input type="date" id="Date" class="form-control" asp-for="Date">
             </div>
             <span asp-validation-for="Date" class="text-danger"></span>
-            
+
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
@@ -111,30 +111,23 @@
 
             <!-- Email input -->
             <div class="form-outline mb-4">
-
                 <label class="form-label" for="UserEmail" style="margin-left: 0px;">Email</label>
                 <input type="email" id="UserEmail" asp-for="UserEmail" class="form-control" />
                 <div class="form-notch">
                     <div class="form-notch-leading" style="width: 9px;">
-
                     </div>
                     <div class="form-notch-middle" style="width: 39.2px;">
-
                     </div>
                     <div class="form-notch-trailing">
-
                     </div>
-
                 </div>
                 <span asp-validation-for="UserEmail" class="text-danger"></span>
             </div>
 
             <!-- Number input -->
             <div class="form-outline mb-4">
-
                 <label class="form-label" for="UserMobileNumber" style="margin-left: 0px; ">Phone*</label>
                 <input type="tel" id="UserMobileNumber" asp-for="UserMobileNumber" placeholder="10 digit mobile no." class="form-control" maxlength="10" required>
-
                 <div class="form-notch">
                     <div class="form-notch-leading" style="width: 9px;"></div>
                     <div class="form-notch-middle" style="width: 44.8px;"></div>
@@ -146,22 +139,15 @@
             <!-- Message input -->
             <div class="form-outline mb-4">
                 <textarea class="form-control" id="Description" asp-for="Description" rows="4"></textarea> <label class="form-label" for="Description" style="margin-left: 0px;">Additional information</label>
-
                 <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 134.4px;"></div><div class="form-notch-trailing"></div></div>
             </div>
             <span asp-validation-for="Description" class="text-danger"></span>
             <!-- Submit button -->
-            <button type="submit" class="btn btn-lg btn-dark mt-2 text-white"  style="background-color: #102c44;">Book Service</button>
+            <button type="submit" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Book Service</button>
             <a asp-action="Index" class="btn btn-lg btn-dark mt-2 text-white" style="background-color: #102c44;">Back to List</a>
-
         </form>
-
     </div>
     <br />
-
     <br />
-   
-    
 </body>
-
 </html>

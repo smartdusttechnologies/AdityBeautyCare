@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace AditiBeautyCare.Web.UI.Common
 {
-
+    /// <summary>
+    /// To check the file (Image) size 
+    /// </summary>
     public class MaxFileSizeAttribute : ValidationAttribute
     {
         private readonly int _maxFileSize;
@@ -15,7 +17,12 @@ namespace AditiBeautyCare.Web.UI.Common
         {
             _maxFileSize = maxFileSize;
         }
-
+        /// <summary>
+        /// File Size check (image) is of 100Kb or more.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="validationContext"></param>
+        /// <returns></returns>
         protected override ValidationResult IsValid(
         object value, ValidationContext validationContext)
         {

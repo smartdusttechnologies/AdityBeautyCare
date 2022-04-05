@@ -171,7 +171,11 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
             using IDbConnection db = _connectionFactory.GetConnection;
             return db.Execute(query, beautyCareservicebooking);
         }
-        //TODO: ADD COMMENT
+        /// <summary>
+        /// Delete the Booking done by booking Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool Delete(int id)
         {
             string query = @"update [BeautyCareServicebooking] Set 
@@ -183,5 +187,4 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         }
         #endregion
     }
-
 }

@@ -22,19 +22,14 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// <summary>
         /// Declaring From Time Property
         /// </summary>
-       
-
-        
         [Required (ErrorMessage = "Please Choose Time Correctly")]
         [DataType(DataType.Time)]
         //[Range(From<To)]
-        
         public string From { get; set; }
 
         /// <summary>
         /// Declaring To Time Property
         /// </summary>
-        
         [Required(ErrorMessage = "Please Set To after From")]
         [DataType(DataType.Time)]
        

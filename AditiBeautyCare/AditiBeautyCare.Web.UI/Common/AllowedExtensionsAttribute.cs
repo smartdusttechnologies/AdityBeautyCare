@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace AditiBeautyCare.Web.UI.Common
 {
+/// <summary>
+///Check the File type upload i.e. it should be '.jpeg', '.jpg','.png' only 
+/// </summary>
     public class AllowedExtensionsAttribute : ValidationAttribute
     {
         private readonly string[] _extensions;

@@ -116,9 +116,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
 
         private string UploadedFile(Models.BeautyCareService.BeautyCareServiceModel addservice)
         {
-                       
-            string uniqueFileName = null;
-          // if (File.Length > 0 && File.Length < (1000000 / 5)) //Image Greater than 0 and equal up To 100Kb
+           string uniqueFileName = null;
             {
                 if (addservice.ImageUrl != null)
             {
@@ -126,14 +124,11 @@ namespace AditiBeautyCare.Web.UI.Controllers
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + addservice.ImageUrl.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
-
-                        //if (addservice.ImageUrl.Length > 0 && addservice.ImageUrl.Length < (100000)) //Image Greater than 0 and equal up To 100Kb
                         {
                             addservice.ImageUrl.CopyTo(fileStream);
                         }                   
                 }
             }
-
             return uniqueFileName;
         }
 
@@ -315,7 +310,11 @@ namespace AditiBeautyCare.Web.UI.Controllers
             };
             return View(beautyCareServiceUIModel);
         }
-
+        /// <summary>
+        /// Delete the booking by Id 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult DeleteConfirmed(int? id)
         {

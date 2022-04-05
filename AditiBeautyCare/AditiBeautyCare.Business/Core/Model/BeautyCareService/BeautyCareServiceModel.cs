@@ -38,6 +38,9 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         /// </summary>
         [Required]
         public IFormFile ImageUrl { get; set; }
+        /// <summary>
+        /// Declaring the file (image) stored
+        /// </summary>
         public string FilePath { get; set; }
 
         #endregion
