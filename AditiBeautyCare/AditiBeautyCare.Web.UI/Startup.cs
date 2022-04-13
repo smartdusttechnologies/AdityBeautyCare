@@ -44,6 +44,8 @@ namespace AditiBeautyCare.Web.UI
             services.AddScoped<ISampleRepository, SampleRepository>();
             services.AddScoped<IBeautyCareServiceRepository, BeautyCareRepository>();
             services.AddScoped<IGetInTouchRepository, GetInTouchRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

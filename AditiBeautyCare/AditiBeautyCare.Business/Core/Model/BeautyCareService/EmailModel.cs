@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
 {
@@ -31,6 +32,10 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         //TODO:ADD THE CORRESPONDING DB CHANGES
         [Required]
         public string Message { get; set; }
+
+        public List<string> Bcc { get; set; }
+
+        public List<string> Cc { get; set; }
     }
 }
 

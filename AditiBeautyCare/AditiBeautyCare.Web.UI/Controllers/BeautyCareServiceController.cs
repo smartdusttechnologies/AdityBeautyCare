@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace AditiBeautyCare.Web.UI.Controllers
 {
     /// <summary>
@@ -142,7 +143,6 @@ namespace AditiBeautyCare.Web.UI.Controllers
                 _beautyCareService.Add(beautyCareServicebussinessModel);
                 TempData["IsTrue"] = true;
                 return RedirectToAction("Index");
-
             }
             return View(booking);
         }

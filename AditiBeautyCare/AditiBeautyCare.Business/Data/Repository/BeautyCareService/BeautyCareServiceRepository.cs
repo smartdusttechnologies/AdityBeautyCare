@@ -183,5 +183,4 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         }
         #endregion
     }
-
 }

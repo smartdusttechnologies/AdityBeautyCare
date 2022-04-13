@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AditiBeautyCare.Web.UI.Common;
+using Org.BouncyCastle.Asn1.Cms;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
@@ -23,18 +25,21 @@ namespace AditiBeautyCare.Web.UI.Models.BeautyCareService
         /// Declaring From Property
         /// </summary>
         [Required]
+        
         public string From { get; set; }
 
         /// <summary>
         /// Declaring To Property
         /// </summary>
         [Required]
+        
         public string To { get; set; }
 
         /// <summary>
         /// Declaring Date Property
         /// </summary>
         [Required]
+        
         public DateTime Date { get; set; }
 
         /// <summary>

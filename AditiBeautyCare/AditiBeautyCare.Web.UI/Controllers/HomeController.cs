@@ -4,7 +4,8 @@ using AditiBeautyCare.Business.Core.Interfaces.BeautyCareService;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using AditiBeautyCare.Web.UI.Controllers;
-
+using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace AditiBeautyCare.Web.UI.Common
 {
@@ -16,6 +17,8 @@ namespace AditiBeautyCare.Web.UI.Common
         private readonly ILogger<HomeController> _logger;
         private readonly IGetInTouchService _getInTouchService;
         private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly IConfiguration _configuration;
+
 
         /// <summary>
         /// Declaring the variables for establing connection
@@ -23,11 +26,12 @@ namespace AditiBeautyCare.Web.UI.Common
         /// <param name="logger"></param>
         /// <param name="beautyCareService"></param>
         /// <param name="hostingEnvironment"></param>
-        public HomeController(ILogger<HomeController> logger, IGetInTouchService getInTouchService, IWebHostEnvironment hostingEnvironment)
+        public HomeController(ILogger<HomeController> logger, IGetInTouchService getInTouchService, IWebHostEnvironment hostingEnvironment, IConfiguration configuration)
         {
             _logger = logger;
             _getInTouchService = getInTouchService;
             _hostingEnvironment = hostingEnvironment;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -39,6 +43,7 @@ namespace AditiBeautyCare.Web.UI.Common
         {
             return View();
         }
+        
 
         /// <summary>
         /// Saving the mail details to database and sending mail to client
@@ -57,11 +62,13 @@ namespace AditiBeautyCare.Web.UI.Common
                     EmailTo = emailmodel.EmailTo,
                     Subject = emailmodel.Subject
                 };
+               
                 _getInTouchService.Add(getbussinessModel);
                 ViewBag.Message = "Email Sent Successfully";
             }
             return RedirectToAction("Index");
         }
+
         public IActionResult ContactUs()
         {
             return View();

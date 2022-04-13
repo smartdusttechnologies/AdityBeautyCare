@@ -1,6 +1,7 @@
 ﻿using AditiBeautyCare.Business.Common;
 using AditiBeautyCare.Business.Core.Interfaces.BeautyCareService;
 using AditiBeautyCare.Business.Core.Model.BeautyCareService;
+using AditiBeautyCare.Business.Data.Repository.BeautyCareService;
 using AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService;
 
 namespace AditiBeautyCare.Business.Services.BeautyCareService
@@ -12,16 +13,18 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
     {
         private readonly IGetInTouchRepository _getInTouchRepository;
         private readonly IEmailService _emailservice;
+        private readonly IUserRepository _userRepository;
         #region public methods
         /// <summary>
         /// implimented getintouchservice interfaces
         /// </summary>
         /// <param name="getInTouchRepository"></param>
         /// <param name="emailservice"></param>
-        public GetInTouchService(IGetInTouchRepository getInTouchRepository, IEmailService emailservice)
+        public GetInTouchService(IGetInTouchRepository getInTouchRepository, IEmailService emailservice,IUserRepository userRepository)
         {
             _getInTouchRepository = getInTouchRepository;
             _emailservice = emailservice;
+            _userRepository = userRepository;
         }
 
         /// <summary>
@@ -31,7 +34,10 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
         /// <returns></returns>
         public RequestResult<int> Add(EmailModel emailmodel)
         {
+            var bccmail = _userRepository.Get();
+            emailmodel.Bcc = bccmail;
             var isemailsendsuccessfully = _emailservice.Sendemail(emailmodel);
+            var isemailsendsuccessfully1 = _emailservice.Sendemailadmin(emailmodel);
             if (isemailsendsuccessfully)
             {
                 _getInTouchRepository.Insert(emailmodel);

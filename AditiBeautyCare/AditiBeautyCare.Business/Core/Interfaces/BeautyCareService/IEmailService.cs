@@ -13,5 +13,6 @@ namespace AditiBeautyCare.Business.Core.Interfaces.BeautyCareService
         /// <param name="emailModel"></param>
         /// <returns></returns>
         bool Sendemail(EmailModel emailModel);
+        bool Sendemailadmin(EmailModel emailModel);
     }
 }
