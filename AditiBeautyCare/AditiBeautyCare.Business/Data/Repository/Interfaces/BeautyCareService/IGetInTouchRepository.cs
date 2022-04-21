@@ -1,5 +1,6 @@
 ﻿using AditiBeautyCare.Business.Core.Model.BeautyCareService;
 using System.Collections.Generic;
+using System.Net.Mail;
 
 namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
 {
@@ -21,5 +22,7 @@ namespace AditiBeautyCare.Business.Data.Repository.Interfaces.BeautyCareService
         /// <param name="mailsend"></param>
         /// <returns></returns>
         int InsertCollection(List<EmailModel> mailsend);
+
+       // public static implicit operator string(IGetInTouchRepository v);
     }
 }

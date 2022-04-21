@@ -87,7 +87,5 @@ namespace AditiBeautyCare.Business.Core.Interfaces.BeautyCareService
         //TODO: ADD COMMENT 
 
         bool Delete(int id);
-
-
     }
 }

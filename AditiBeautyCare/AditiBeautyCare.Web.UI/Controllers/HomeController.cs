@@ -6,6 +6,10 @@ using Microsoft.Extensions.Logging;
 using AditiBeautyCare.Web.UI.Controllers;
 using System.IO;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using NPOI.SS.Formula.Functions;
+using System.Linq;
 
 namespace AditiBeautyCare.Web.UI.Common
 {
@@ -34,6 +38,7 @@ namespace AditiBeautyCare.Web.UI.Common
             _configuration = configuration;
         }
 
+
         /// <summary>
         /// load index
         /// </summary>
@@ -43,7 +48,7 @@ namespace AditiBeautyCare.Web.UI.Common
         {
             return View();
         }
-        
+
 
         /// <summary>
         /// Saving the mail details to database and sending mail to client
@@ -55,14 +60,22 @@ namespace AditiBeautyCare.Web.UI.Common
         {
             if (ModelState.IsValid)
             {
+                var emailTo = new List<string>();
+                emailTo.Add(emailmodel.EmailTo);
+
                 var getbussinessModel = new Business.Core.Model.BeautyCareService.EmailModel
                 {
                     Name = emailmodel.Name,
                     Message = emailmodel.Message,
-                    EmailTo = emailmodel.EmailTo,
-                    Subject = emailmodel.Subject
+                    Subject = emailmodel.Subject,
+                    //List<string> EmailTo = string.Join(",", emailmodel.EmailTo),
+                    //List<string> EmailTo = emailmodel.EmailTo.Split(','),ToList();
+                    //var readOnlyList = new ReadOnlyCollection<string>(existingList);
+                    //var EmailTo = new ReadOnlyCollection<T>(",", emailmodel.EmailTo)
+                    //EmailTo = string.Join<string>(',', IEnumerable.string(emailmodel.EmailTo))
+                    EmailTo = emailTo
                 };
-               
+
                 _getInTouchService.Add(getbussinessModel);
                 ViewBag.Message = "Email Sent Successfully";
             }

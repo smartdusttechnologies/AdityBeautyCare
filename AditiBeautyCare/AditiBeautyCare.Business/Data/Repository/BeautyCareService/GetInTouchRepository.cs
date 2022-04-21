@@ -4,6 +4,7 @@ using AditiBeautyCare.Business.Infrastructure;
 using Dapper;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
 {
@@ -34,7 +35,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
             string query = @"Insert into [GetInTouch](EmailTo,Name,Subject,Message) 
                 values (@EmailTo,@Name,@Subject,@Message)";
             using IDbConnection db = _connectionFactory.GetConnection;
-            return db.Execute(query, mailsend);
+            return db.Execute(query, new { EmailTo=mailsend.EmailTo.First(),Name=mailsend.Name, Subject=mailsend.Subject,Message=mailsend.Subject});
         }
 
         /// <summary>

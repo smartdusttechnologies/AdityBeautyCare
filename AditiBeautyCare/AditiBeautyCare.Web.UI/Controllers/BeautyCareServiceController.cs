@@ -24,7 +24,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <param name="logger"></param>
         /// <param name="beautyCareService"></param>
         /// <param name="hostingEnvironment"></param>
-        public BeautyCareServiceController(ILogger<BeautyCareServiceController> logger, IBeautyCareService beautyCareService, IWebHostEnvironment hostingEnvironment)
+        public BeautyCareServiceController(IBeautyCareService _beautyCareService, ILogger<BeautyCareServiceController> logger, IBeautyCareService beautyCareService, IWebHostEnvironment hostingEnvironment)
         {
             _logger = logger;
             _beautyCareService = beautyCareService;
@@ -127,6 +127,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult BookService([Bind] Models.BeautyCareService.BeautyCareServiceBookingModel booking)
         {
+
             if (ModelState.IsValid)
             {
                 var beautyCareServicebussinessModel = new Business.Core.Model.BeautyCareService.BeautyCareServiceBookingModel
