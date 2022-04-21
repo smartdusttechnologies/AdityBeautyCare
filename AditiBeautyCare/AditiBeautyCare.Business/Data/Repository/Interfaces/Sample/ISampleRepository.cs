@@ -4,9 +4,9 @@ using PagedList;
 
 namespace AditiBeautyCare.Business.Data.Repository.Interfaces
 {
-    /// <summary>
-    /// Creating Interface for SampleRepository
-    /// </summary>
+        /// <summary>
+        /// Creating Interface for SampleRepository
+        /// </summary>
     public interface ISampleRepository
     {
         int Insert(SampleModel sample);

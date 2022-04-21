@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using AditiBeautyCare.Web.UI.Controllers;
 
-
 namespace AditiBeautyCare.Web.UI.Common
 {
     /// <summary>
@@ -29,7 +28,6 @@ namespace AditiBeautyCare.Web.UI.Common
             _getInTouchService = getInTouchService;
             _hostingEnvironment = hostingEnvironment;
         }
-
         /// <summary>
         /// load index
         /// </summary>
@@ -39,7 +37,6 @@ namespace AditiBeautyCare.Web.UI.Common
         {
             return View();
         }
-
         /// <summary>
         /// Saving the mail details to database and sending mail to client
         /// </summary>

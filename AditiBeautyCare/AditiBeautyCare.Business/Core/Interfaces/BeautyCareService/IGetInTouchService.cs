@@ -21,6 +21,5 @@ namespace AditiBeautyCare.Business.Core.Interfaces.BeautyCareService
         /// <param name="mailsend"></param>
         /// <returns></returns>
         //RequestResult<int> AddCollection(List<EmailModel> mailsend);
-
     }
 }

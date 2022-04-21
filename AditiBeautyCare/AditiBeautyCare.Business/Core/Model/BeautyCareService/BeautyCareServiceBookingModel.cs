@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
 {
-    /// <summary>
-    /// Declaring properties here
-    /// </summary>
+            /// <summary>
+            /// Declaring properties here
+            /// </summary>
     public class BeautyCareServiceBookingModel:Entity
     {
         #region Public Properties
@@ -60,7 +60,6 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         /// Declaring Description Property
         /// </summary>
         public string Description { get; set; }
-
         #endregion
     }
 }

@@ -9,9 +9,9 @@ using System.Linq;
 
 namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
 {
-    /// <summary>
-    /// Connection between Database using ISampleRepository we Establing a connection
-    /// </summary>
+        /// <summary>
+        /// Connection between Database using ISampleRepository we Establing a connection
+        /// </summary>
     public class BeautyCareRepository : IBeautyCareServiceRepository
     {
         private readonly IConnectionFactory _connectionFactory;
@@ -55,7 +55,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         public IPagedList<BeautyCareServiceModel> GetPages(int pageIndex = 1, int pageSize = 10)
         {
             using IDbConnection db = _connectionFactory.GetConnection;
-            var query = db.QueryMultiple("SELECT COUNT(*) FROM [BeautyCareServices] where IsDeleted=0;SELECT* FROM [BeautyCareServices] where IsDeleted=0 ORDER BY Id desc OFFSET ((@PageNumber - 1) * @Rows) ROWS FETCH NEXT @Rows ROWS ONLY", new { PageNumber = pageIndex, Rows = pageSize }, commandType: CommandType.Text);
+            var query = db.QueryMultiple("SELECT COUNT(*) FROM [BeautyCareServices] where IsDeleted=0; SELECT Name, Description, Duration, Price, ImageUrl as FilePath FROM BeautyCareServices where IsDeleted=0 ORDER BY Id desc OFFSET ((@PageNumber - 1) * @Rows) ROWS FETCH NEXT @Rows ROWS ONLY", new { PageNumber = pageIndex, Rows = pageSize }, commandType: CommandType.Text);
             var row = query.Read<int>().First();
             var pageResult = query.Read<BeautyCareServiceModel>().ToList();
             return new StaticPagedList<BeautyCareServiceModel>(pageResult, pageIndex, pageSize, row);
@@ -70,7 +70,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         public int Insert(BeautyCareServiceModel beautyCareService)
         {
             string query = @"Insert into [BeautyCareServices](Name,Duration,ImageUrl,Price,Description) 
-                values (@Name,@Duration,@Price,@ImageUrl,@Description)";
+                values (@Name,@Duration,@FilePath,@Price,@Description)";
             using IDbConnection db = _connectionFactory.GetConnection;
             return db.Execute(query, beautyCareService);
         }
@@ -83,7 +83,7 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         public int InsertCollection(List<BeautyCareServiceModel> beautyCareService)
         {
             string query = @"Insert into [BeautyCareServices](Name,Duration,ImageUrl,Price,Description) 
-                values (@Name,@Duration,@Price,@ImageUrl,@Description)";
+                values (@Name,@Duration,@FilePath,@Price,@Description)";
             using IDbConnection db = _connectionFactory.GetConnection;
             return db.Execute(query, beautyCareService);
         }
@@ -171,7 +171,11 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
             using IDbConnection db = _connectionFactory.GetConnection;
             return db.Execute(query, beautyCareservicebooking);
         }
-        //TODO: ADD COMMENT
+        /// <summary>
+        /// Delete the Booking done by booking Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool Delete(int id)
         {
             string query = @"update [BeautyCareServicebooking] Set 
@@ -183,5 +187,4 @@ namespace AditiBeautyCare.Business.Data.Repository.BeautyCareService
         }
         #endregion
     }
-
 }

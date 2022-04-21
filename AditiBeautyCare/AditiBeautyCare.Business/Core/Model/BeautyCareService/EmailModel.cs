@@ -28,7 +28,6 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         /// <summary>
         /// Declaring Body property
         /// </summary>
-        //TODO:ADD THE CORRESPONDING DB CHANGES
         [Required]
         public string Message { get; set; }
     }

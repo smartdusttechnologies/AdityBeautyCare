@@ -43,8 +43,6 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
             {
                 mm.Subject = emailModel.Subject;
                 mm.Body = emailModel.Message;
-
-
                 mm.IsBodyHtml = false;
                 using (SmtpClient smtp = new SmtpClient())
                 {
@@ -55,9 +53,7 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
                     smtp.Credentials = NetworkCred;
                     smtp.Port = port;
                     smtp.Send(mm);
-
                 }
-
             }
             return true;
         }

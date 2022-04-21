@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
-
 namespace AditiBeautyCare.Web.UI.Common
 {
     public static class MvcExtensions
@@ -14,13 +12,10 @@ namespace AditiBeautyCare.Web.UI.Common
         {
             var currentController = htmlHelper?.ViewContext.RouteData.Values["controller"] as string;
             var currentAction = htmlHelper?.ViewContext.RouteData.Values["action"] as string;
-
             var acceptedControllers = (controllers ?? currentController ?? "").Split(',');
             var acceptedActions = (actions ?? currentAction ?? "").Split(',');
-
             return acceptedControllers.Contains(currentController) && acceptedActions.Contains(currentAction)
-                ? cssClass
-                : "";
+                ? cssClass : "";
         }
     }
 }

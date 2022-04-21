@@ -2,7 +2,6 @@
 using System.Data.Common;
 using Microsoft.Extensions.Configuration;
 
-
 namespace AditiBeautyCare.Business.Infrastructure
 {
     /// <summary>
@@ -19,6 +18,7 @@ namespace AditiBeautyCare.Business.Infrastructure
         {
             _configuration = configuration;
         }
+        
         /// <summary>
         /// Database Connection
         /// </summary>
