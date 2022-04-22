@@ -23,7 +23,6 @@ namespace AditiBeautyCare.Web.UI.Common
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IConfiguration _configuration;
 
-
         /// <summary>
         /// Declaring the variables for establing connection
         /// </summary>
@@ -38,7 +37,6 @@ namespace AditiBeautyCare.Web.UI.Common
             _configuration = configuration;
         }
 
-
         /// <summary>
         /// load index
         /// </summary>
@@ -46,9 +44,9 @@ namespace AditiBeautyCare.Web.UI.Common
         [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.IsSuccess = TempData["IsTrue"] != null ? TempData["IsTrue"] : false;
             return View();
         }
-
 
         /// <summary>
         /// Saving the mail details to database and sending mail to client
@@ -62,26 +60,18 @@ namespace AditiBeautyCare.Web.UI.Common
             {
                 var emailTo = new List<string>();
                 emailTo.Add(emailmodel.EmailTo);
-
                 var getbussinessModel = new Business.Core.Model.BeautyCareService.EmailModel
                 {
                     Name = emailmodel.Name,
                     Message = emailmodel.Message,
                     Subject = emailmodel.Subject,
-                    //List<string> EmailTo = string.Join(",", emailmodel.EmailTo),
-                    //List<string> EmailTo = emailmodel.EmailTo.Split(','),ToList();
-                    //var readOnlyList = new ReadOnlyCollection<string>(existingList);
-                    //var EmailTo = new ReadOnlyCollection<T>(",", emailmodel.EmailTo)
-                    //EmailTo = string.Join<string>(',', IEnumerable.string(emailmodel.EmailTo))
                     EmailTo = emailTo
                 };
-
-                _getInTouchService.Add(getbussinessModel);
-                ViewBag.Message = "Email Sent Successfully";
+                   _getInTouchService.Add(getbussinessModel); 
             }
+            TempData["IsTrue"] = true;
             return RedirectToAction("Index");
         }
-
         public IActionResult ContactUs()
         {
             return View();

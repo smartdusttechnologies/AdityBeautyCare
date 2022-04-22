@@ -19,28 +19,35 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         /// </summary>
         public string EmailTemplate { get; set; }
         /// <summary>
-        /// To Choose a Email Template to send Decorated eMails
+        /// To Choose a Logo Included in Email Template to send Decorated eMails
         /// </summary>
         public string LogoImage { get; set; }
-        public string BodyImage { get; set; }
-
-        public string EmailContact { get; set; }
-        public string HtmlMsg { get; set; }
-
-        public string MobileNumber { get; set; }
-
         /// <summary>
-        /// Declaring Name property
+        /// This represent the Aditi Beauty Care emailId
+        /// </summary>
+        public string EmailContact { get; set; }
+        /// <summary>
+        /// This is used to frame the message 
+        /// </summary>
+        public string HtmlMsg { get; set; }
+        /// <summary>
+        /// BodyImage
+        /// </summary>
+        public string BodyImage { get; set; }
+        /// <summary>
+        /// This represent the Aditi Beauty Care Contact Mobile NO.
+        /// </summary>
+        public string MobileNumber { get; set; }
+        /// <summary>
+        /// Declaring Name property of user
         /// </summary>
         [Required]
         public string Name { get; set; }
-
         /// <summary>
         /// Declaring Subject property
         /// </summary>
         [Required]
         public string Subject { get; set; }
-
         /// <summary>
         /// Declaring Body property
         /// </summary>
@@ -49,7 +56,6 @@ namespace AditiBeautyCare.Business.Core.Model.BeautyCareService
         public string Message { get; set; }
 
         public List<string> Bcc { get; set; }
-        public List<string> AdminMailId { get; set; }
         public List<string> Cc { get; set; }
     }
 }

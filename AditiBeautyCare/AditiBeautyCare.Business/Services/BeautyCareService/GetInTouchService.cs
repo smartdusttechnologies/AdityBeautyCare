@@ -84,7 +84,6 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
             emailmodel.HtmlMsg = emailmodel.HtmlMsg.Replace("*AditiEmailid*", emailmodel.EmailContact);
             emailmodel.HtmlMsg = emailmodel.HtmlMsg.Replace("*LogoLink*", emailmodel.LogoImage);
             emailmodel.HtmlMsg = emailmodel.HtmlMsg.Replace("*BodyImageLink*", emailmodel.BodyImage);
-
             emailmodel.EmailTo.RemoveAt(0);
 
             foreach (var item in emailsendTo)
@@ -96,7 +95,6 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
 
             if (isemailsendsuccessfully)
             {
-                //_getInTouchRepository.Insert(emailmodel);
                 return new RequestResult<int>(1);
             }
             return new RequestResult<int>(0);

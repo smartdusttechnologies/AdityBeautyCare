@@ -32,6 +32,15 @@
     </style>
 </head>
 <body>
+    @if (ViewBag.IsSuccess != null && ViewBag.IsSuccess)
+    {
+        <div class="alert alert-success d-flex align-items-center" id="snackbar" role="alert">
+            <div>
+                <h3> Mail sent successfully!!!</h3>
+            </div>
+        </div>
+
+    }
     <div class="container-fluid">
         <div style="margin:0 0 0 0; padding: 0 0 0 0;">
             <div class="bg">

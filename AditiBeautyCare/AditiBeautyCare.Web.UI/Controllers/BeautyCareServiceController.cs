@@ -46,7 +46,6 @@ namespace AditiBeautyCare.Web.UI.Controllers
             ViewBag.nextPage = 2;
             ViewBag.PreviousPage = 0;
             ViewBag.IsSuccess = TempData["IsTrue"] != null ? TempData["IsTrue"] : false;
-
             return View(servicess.AsEnumerable());
         }
 
@@ -127,7 +126,6 @@ namespace AditiBeautyCare.Web.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult BookService([Bind] Models.BeautyCareService.BeautyCareServiceBookingModel booking)
         {
-
             if (ModelState.IsValid)
             {
                 var beautyCareServicebussinessModel = new Business.Core.Model.BeautyCareService.BeautyCareServiceBookingModel
@@ -291,5 +289,4 @@ namespace AditiBeautyCare.Web.UI.Controllers
             return RedirectToAction("adminDashboard");
         }
     }
-
 }

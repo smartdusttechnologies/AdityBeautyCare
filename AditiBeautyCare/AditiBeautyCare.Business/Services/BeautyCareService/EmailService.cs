@@ -50,8 +50,6 @@ namespace AditiBeautyCare.Business.Services.BeautyCareService
             string password = _configuration["Smtp:Password"];
             string emailto = string.Join(",", emailModel.EmailTo);
             
-               
-
             //Read EmailAddress From User Table
             using (MailMessage mm = new MailMessage(fromAddress, emailto))
             {
