@@ -37,7 +37,8 @@
                 <div class="col-sm-4">
                     <div class="container mt-3">
                         <div class="card">
-                            <img src="@Url.Content(services.FilePath)" alt="@services.Description" height="300px">
+                            @*<img src="@Url.Content(services.FilePath)" alt="@services.Description" height="300px">*@
+                            <img src="https://drive.google.com/uc?export=view&id=@services.FilePath" alt="@services.Description" height="300px">
                             <div class="m-3">
                                 <h3 hidden>Service ID:@services.Id</h3>
                                 <h3>Service Name:@services.Name</h3>
@@ -58,3 +59,4 @@
     <br />
 
 </body>
+

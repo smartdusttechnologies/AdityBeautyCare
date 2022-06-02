@@ -1,6 +1,4 @@
-﻿
-
-body {
+﻿body {
     font-family: 'Times New Roman';
 }
 
@@ -8,8 +6,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
-
 
 /*text {
     background: transparent;
@@ -48,7 +44,6 @@ nav {
         nav ul li {
             margin: 0 2px;
         }
-
 
             nav ul li a {
                 color: darkslategray;
