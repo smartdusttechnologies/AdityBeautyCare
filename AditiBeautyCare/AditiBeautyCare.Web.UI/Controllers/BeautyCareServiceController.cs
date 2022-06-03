@@ -24,6 +24,7 @@ using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.AspNetCore.Http;
 using Org.BouncyCastle.Asn1.Ocsp;
 using System.Collections;
+using ServiceStack;
 
 namespace AditiBeautyCare.Web.UI.Controllers
 {
@@ -56,6 +57,8 @@ namespace AditiBeautyCare.Web.UI.Controllers
         private Google.Apis.Drive.v3.Data.File newFile;
         private object listRequest;
         private string ApplicationName;
+
+        public object ResponseBody { get; private set; }
 
         public DriveService GetService()
         {
@@ -93,7 +96,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
                 MimeType = "application/vnd.google-apps.folder"
             };
             FilesResource.ListRequest listRequest = service.Files.List();
-            listRequest.PageSize = 10;
+            listRequest.PageSize = 100;
             listRequest.Fields = "nextPageToken, files(id, name)";
             IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute().Files;
             bool isFolderExist = false;
@@ -122,7 +125,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
                 //Console.WriteLine("Folder ID: " + uniqueFileName + file.Id);
                 return file.Id;
              }
-            return string.Empty;
+            return (string)ResponseBody;
         }
 
         public string UploadFile(IFormFile file, string fileName, string fileMime, string folder, string fileDescription)
@@ -130,21 +133,25 @@ namespace AditiBeautyCare.Web.UI.Controllers
             DriveService service = GetService();
             var driveFile = new Google.Apis.Drive.v3.Data.File();
             var uniqueFileName = Guid.NewGuid().ToString();
-            driveFile.Name =  uniqueFileName + fileName;
+            driveFile.Name = uniqueFileName + fileName;
+
             driveFile.Description = fileDescription;
             //driveFile.MimeType = fileMime;
             driveFile.Parents = new string[] { folder };
-            using (var abc = file.OpenReadStream())
+            
+            using ( var abc = file.OpenReadStream())
             {
+                    var request = service.Files.Create(driveFile, abc, fileMime);
+                    request.Fields = "id";
 
-                var request = service.Files.Create(driveFile, abc, fileMime);
-                request.Fields = "id";
-                var response = request.Upload();
-                if (response.Status != Google.Apis.Upload.UploadStatus.Completed)
-                {
-                    throw response.Exception;
-                }
-                return request.ResponseBody.Id;
+                    var response = request.Upload();
+                    if (response.Status != Google.Apis.Upload.UploadStatus.Completed)
+                    {
+                        throw response.Exception;
+                    }
+                    var imageVal = request.ResponseBody.Id;
+                    //return request.ResponseBody.Id;
+                    return imageVal;
             }
         }
 
@@ -176,75 +183,22 @@ namespace AditiBeautyCare.Web.UI.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
-
+            //var abcd = UploadFile();
             var services = _beautyCareService.GetPages(1);
             List<UI.Models.BeautyCareService.BeautyCareServiceModel> servicess = new List<UI.Models.BeautyCareService.BeautyCareServiceModel>();
-
-            IList<Google.Apis.Drive.v3.Data.File> DriveSearchFiles()
+            
+            foreach (var item in services)
             {
-                try
-                {
-
-                    GoogleCredential credential = GoogleCredential.GetApplicationDefault()
-                        .CreateScoped(DriveService.Scope.Drive);
-
-                    // Create Drive API service.
-                    var service = new DriveService(new BaseClientService.Initializer
-                    {
-                        HttpClientInitializer = credential,
-                        ApplicationName = "Drive API Snippets"
-                    });
-                    var files = new List<Google.Apis.Drive.v3.Data.File>();
-
-                    string pageToken = null;
-                    do
-                    {
-                        var request = service.Files.List();
-                        request.Q = "mimeType='image/jpeg'";
-                        request.Spaces = "drive";
-                        request.Fields = "nextPageToken, files(id, name)";
-                        request.PageToken = pageToken;
-                        var result = request.Execute();
-                        foreach (var file in result.Files)
-                        {
-                            Console.WriteLine("Found file: {0} ({1})", file.Name, file.Id);
-                        }
-
-                        // [START_EXCLUDE silent]
-                        files.AddRange(result.Files);
-                        // [END_EXCLUDE]
-                        pageToken = result.NextPageToken;
-                    } while (pageToken != null);
-
-                    return files;
-                }
-                catch (Exception e)
-                {
-                    // TODO(developer) - handle error appropriately
-                    if (e is AggregateException)
-                    {
-                        Console.WriteLine("Credential Not found");
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return null;
-            }
-
-                foreach (var item in services)
-                {
                     servicess.Add(new Models.BeautyCareService.BeautyCareServiceModel 
                     { 
                         Id = item.Id, 
                         Name = item.Name, 
                         Duration = item.Duration, 
-                        Price = item.Price, 
-                        Description = item.Description, 
-                        FilePath = item.FilePath  
+                        Price = item.Price,
+                        Description = item.Description,
+                        FilePath = item.FilePath
                     });
-                }
+            }
                 ViewBag.nextPage = 2;
                 ViewBag.PreviousPage = 0;
                 ViewBag.IsSuccess = TempData["IsTrue"] != null ? TempData["IsTrue"] : false;
@@ -307,7 +261,8 @@ namespace AditiBeautyCare.Web.UI.Controllers
                 string uploadsFolder = CreateFolder("Test", "new");
                 var xyz = new FileExtensionContentTypeProvider();
                 xyz.TryGetContentType(addservice.FilePath, out string contenttype);
-                string uniqueFileName = UploadFile(addservice.ImageUrl, Path.GetFileName(addservice.FilePath), contenttype, uploadsFolder, "Test");
+                string uniqueFileName = UploadFile(addservice.ImageUrl, Path.GetFileName(addservice.FilePath), contenttype, uploadsFolder, "");
+               // var imgVal = UploadFile(asdf);
                 var beautyCareServicebussinessModel = new Business.Core.Model.BeautyCareService.BeautyCareServiceModel
                 {
                     Name = addservice.Name,
