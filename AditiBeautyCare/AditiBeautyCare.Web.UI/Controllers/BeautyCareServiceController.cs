@@ -268,7 +268,7 @@ namespace AditiBeautyCare.Web.UI.Controllers
                     Name = addservice.Name,
                     Description = addservice.Description,
                     Duration = addservice.Duration,
-                    FilePath = uploadsFolder,
+                    FilePath = uniqueFileName,
                     Price = addservice.Price
                 };
                 _beautyCareService.Add(beautyCareServicebussinessModel);
