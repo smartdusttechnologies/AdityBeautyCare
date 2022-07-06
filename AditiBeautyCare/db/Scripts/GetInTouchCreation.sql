@@ -1,0 +1,16 @@
+CREATE TABLE [dbo].[GetInTouch](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NOT NULL,
+	[EmailTo] [varchar](250) NOT NULL,
+	[Subject] [varchar](250) NOT NULL,
+	[Message] [varchar](500) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+ CONSTRAINT [PK_GetInTouch] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[GetInTouch] ADD  CONSTRAINT [D_DailySale_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
